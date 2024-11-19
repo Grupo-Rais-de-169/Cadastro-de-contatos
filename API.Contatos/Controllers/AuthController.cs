@@ -70,7 +70,7 @@ namespace API.Contatos.Controllers
             try
             {
                 var principal = _tokenServices.GetPrincipalFromExpiredToken(inputRefresh.token);
-                var username = principal.Claims.ElementAt(2).Value;
+                var username = principal.Claims.ElementAt(1).Value;
                 var savedRefreshToken = _tokenServices.GetRefreshToken(username);
                 if (savedRefreshToken != inputRefresh.refreshToken)
                 {

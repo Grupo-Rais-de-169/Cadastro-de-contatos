@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Contatos.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("teste")]
+    [Authorize]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
