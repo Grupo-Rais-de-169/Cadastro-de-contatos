@@ -1,30 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\",
+  "WorkspaceRootPath": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\configuration\\swaggerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\configuration\\swaggerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\models\\inputrefreshmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\models\\inputrefreshmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\models\\authvalidatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\models\\authvalidatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\configuration\\jwtconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\nlog.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\nlog.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\configuration\\jwtconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\configuration\\jwtconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\api.contatos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\api.contatos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\api.contatos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\configuration\\swaggerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\configuration\\swaggerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +54,12 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 15,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -74,78 +98,143 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "API.Contatos\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "API.Contatos\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T17:29:52.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "API.Contatos\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "API.Contatos\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAApAAAAAAAAAA==",
+              "Title": "InputRefreshModel.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\InputRefreshModel.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Models\\InputRefreshModel.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\InputRefreshModel.cs",
+              "RelativeToolTip": "API.Contatos\\Models\\InputRefreshModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T17:29:29.096Z",
+              "WhenOpened": "2024-11-19T21:43:15.187Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\appsettings.json",
-              "RelativeDocumentMoniker": "API.Contatos\\appsettings.json",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\appsettings.json",
-              "RelativeToolTip": "API.Contatos\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-19T17:25:21.844Z",
+              "Title": "nlog.config",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\nlog.config",
+              "RelativeDocumentMoniker": "API.Contatos\\nlog.config",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\nlog.config",
+              "RelativeToolTip": "API.Contatos\\nlog.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-19T20:15:37.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthValidateModel.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\AuthValidateModel.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Models\\AuthValidateModel.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\AuthValidateModel.cs",
+              "RelativeToolTip": "API.Contatos\\Models\\AuthValidateModel.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:58:53.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "JwtConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Configuration\\JwtConfiguration.cs",
-              "RelativeDocumentMoniker": "API.Contatos\\Configuration\\JwtConfiguration.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Configuration\\JwtConfiguration.cs*",
-              "RelativeToolTip": "API.Contatos\\Configuration\\JwtConfiguration.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAgAAABiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T17:23:39.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Program.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Program.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Program.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Program.cs*",
-              "RelativeToolTip": "API.Contatos\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Program.cs",
+              "RelativeToolTip": "API.Contatos\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T17:21:16.696Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
+              "Title": "API.Contatos",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
+              "RelativeDocumentMoniker": "API.Contatos\\API.Contatos.csproj",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
+              "RelativeToolTip": "API.Contatos\\API.Contatos.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-19T19:57:54.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "API.Contatos\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAUwGAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T17:29:29.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TokenServices.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Services\\TokenServices.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Services\\TokenServices.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Services\\TokenServices.cs",
+              "RelativeToolTip": "API.Contatos\\Services\\TokenServices.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T21:27:01.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "JwtConfiguration.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\JwtConfiguration.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Configuration\\JwtConfiguration.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\JwtConfiguration.cs",
+              "RelativeToolTip": "API.Contatos\\Configuration\\JwtConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T17:23:39.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "API.Contatos\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "API.Contatos\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T17:29:52.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\appsettings.json",
+              "RelativeDocumentMoniker": "API.Contatos\\appsettings.json",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\appsettings.json",
+              "RelativeToolTip": "API.Contatos\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-19T17:25:21.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "SwaggerConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Configuration\\SwaggerConfiguration.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\SwaggerConfiguration.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Configuration\\SwaggerConfiguration.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\API.Contatos\\Configuration\\SwaggerConfiguration.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\SwaggerConfiguration.cs",
               "RelativeToolTip": "API.Contatos\\Configuration\\SwaggerConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAATAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T17:18:24.292Z",
               "EditorCaption": ""
