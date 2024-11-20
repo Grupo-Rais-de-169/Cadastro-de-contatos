@@ -1,43 +1,51 @@
 using API.Contatos.Configuration;
 using API.Contatos.Services;
+using Infra.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLog.Web;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Cryptography;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMemoryCache();
-builder.Services.AddControllers();
-builder.Services
-    .AddSingleton<TokenServices>();
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerConfiguration();
-builder.AddJwtConfiguration();
-
-builder.Logging.ClearProviders();
-builder.Host.UseNLog();
-
-var app = builder.Build();
-var cache = app.Services.GetRequiredService<IMemoryCache>();
-cache.Set("key", "value", new MemoryCacheEntryOptions
+internal class Program
 {
-    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
-});
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
+        #region [DB]
+        string postgresConnectionString = builder.Configuration.GetConnectionString("PostgreSQL");
+        builder.Services.AddDbContextFactory<MainContext>(options => options.UseNpgsql(postgresConnectionString));
+        #endregion
 
-app.UseSwaggerConfiguration();
+        builder.Services.AddMemoryCache();
+        builder.Services.AddControllers();
 
+        #region [DI]
+        builder.Services
+            .AddSingleton<TokenServices>();
+        #endregion
 
-app.UseAuthentication();
-app.UseAuthorization();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerConfiguration();
+        builder.AddJwtConfiguration();
 
-app.MapControllers();
+        builder.Logging.ClearProviders();
+        builder.Host.UseNLog();
 
-app.Run();
+        var app = builder.Build();
+        var cache = app.Services.GetRequiredService<IMemoryCache>();
+
+        cache.Set("key", "value", new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
+        });
+
+        app.UseSwaggerConfiguration();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        app.Run();
+    }
+}
