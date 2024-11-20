@@ -8,6 +8,7 @@ namespace API.Contatos.Configuration
     {
         public static WebApplicationBuilder AddJwtConfiguration(this WebApplicationBuilder builder)
         {
+            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
             builder.Services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -18,19 +19,13 @@ namespace API.Contatos.Configuration
                 opt.SaveToken = true;
                 opt.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
+                    ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
-            });
-
-            builder.Services.AddAuthorization(opt =>
-            {
-                opt.AddPolicy("Administrador", policy => policy.RequireRole("Administrador"));
-                opt.AddPolicy("Usuario", policy => policy.RequireRole("Usuario"));
             });
 
             return builder;

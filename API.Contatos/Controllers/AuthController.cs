@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Contatos.Models;
+using API.Contatos.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -6,36 +9,96 @@ using System.Text;
 
 namespace API.Contatos.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly ILogger _logger;
+        private readonly TokenServices _tokenServices;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, TokenServices tokenServices)
         {
             _configuration = configuration;
+            _logger = logger;
+            _tokenServices = tokenServices;
         }
 
 
         [HttpPost("login")]
-        public IActionResult Login(string username, string password)
+        public ActionResult<dynamic> Login([FromBody] AuthValidateModel authValidate)
         {
-            if (username == "admin" && password == "admin")
+            try
             {
-                var token = GenerateToken(username, "Admin");
-                return Ok(new { token });
+                if (authValidate == null)
+                {
+                    _logger.LogError("Tentativa inválida de acesso");
+                    return BadRequest();
+                }
+                var user = _tokenServices.GetUser(authValidate.login, authValidate.senha);
+                if (user == null) 
+                {
+                    _logger.LogError("Não autorizado");
+                    return Unauthorized();
+                }
+                var token = _tokenServices.GenerateToken(user);
+                var refreshToken = _tokenServices.GenerateRefreshToken();
+                _tokenServices.SaveRefreshToken(user.login, refreshToken);
+                return Ok(new
+                {
+                    user.login,
+                    user.permissao,
+                    token,
+                    refreshToken,
+                    create = DateTime.Now.ToString("g"),
+                    validate = DateTime.Now.AddHours(2).ToString("g")
+                });
+
             }
-            else if (username == "user" && password == "user")
+            catch (Exception ex)
             {
-                var token = GenerateToken(username, "User");
-                return Ok(new { token });
+                _logger.LogError($"Erro ao efetuar o Login: {ex.Message}");
+                return BadRequest(ex.Message);
             }
-            else
-                return Unauthorized();
         }
 
-        private string GenerateToken(string username, string role)
+        [HttpPost]
+        [Route("refresh")]
+        public ActionResult<dynamic> Refresh([FromBody] InputRefreshModel inputRefresh)
+        {
+            try
+            {
+                var principal = _tokenServices.GetPrincipalFromExpiredToken(inputRefresh.token);
+                var username = principal.Claims.ElementAt(0).Value;
+                var savedRefreshToken = _tokenServices.GetRefreshToken(username);
+                if (savedRefreshToken != inputRefresh.refreshToken)
+                {
+                    _logger.LogError("Inválido Refresh");
+                    throw new SecurityTokenException("Inválido Refresh");
+                }
+
+                var newJwtToken = _tokenServices.GenerateToken(principal.Claims);
+                var newRefreshToken = _tokenServices.GenerateRefreshToken();
+                _tokenServices.DeleteRefreshToken(username, inputRefresh.refreshToken);
+                _tokenServices.SaveRefreshToken(username, newRefreshToken);
+
+                return new
+                {
+                    token = newJwtToken,
+                    refreshToken = newRefreshToken,
+                    create = DateTime.Now.ToString("g"),
+                    validate = DateTime.Now.AddHours(2).ToString("g")
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao efetuar o Refresh: {ex.Message}");
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /*private string GenerateToken(string username, string role)
         {
             var claims = new[]
             {
@@ -55,7 +118,7 @@ namespace API.Contatos.Controllers
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        }*/
 
     }
 }
