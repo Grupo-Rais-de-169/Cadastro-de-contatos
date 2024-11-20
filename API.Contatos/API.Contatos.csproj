@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infra\Infra.csproj" />
-    <ProjectReference Include="..\Infra\Infra2.csproj" />
   </ItemGroup>
 
   <ItemGroup>
