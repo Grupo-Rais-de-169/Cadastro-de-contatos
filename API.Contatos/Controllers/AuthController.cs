@@ -9,8 +9,9 @@ using System.Text;
 
 namespace API.Contatos.Controllers
 {
-    [Route("api/login")]
+    [Route("api")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -26,7 +27,6 @@ namespace API.Contatos.Controllers
 
 
         [HttpPost("login")]
-        [AllowAnonymous]
         public ActionResult<dynamic> Login([FromBody] AuthValidateModel authValidate)
         {
             try
@@ -44,10 +44,11 @@ namespace API.Contatos.Controllers
                 }
                 var token = _tokenServices.GenerateToken(user);
                 var refreshToken = _tokenServices.GenerateRefreshToken();
-                _tokenServices.SaveRefreshToken(authValidate.login, refreshToken);
+                _tokenServices.SaveRefreshToken(user.login, refreshToken);
                 return Ok(new
                 {
-                    authValidate.login,
+                    user.login,
+                    user.permissao,
                     token,
                     refreshToken,
                     create = DateTime.Now.ToString("g"),
@@ -64,13 +65,12 @@ namespace API.Contatos.Controllers
 
         [HttpPost]
         [Route("refresh")]
-        [AllowAnonymous]
         public ActionResult<dynamic> Refresh([FromBody] InputRefreshModel inputRefresh)
         {
             try
             {
                 var principal = _tokenServices.GetPrincipalFromExpiredToken(inputRefresh.token);
-                var username = principal.Claims.ElementAt(1).Value;
+                var username = principal.Claims.ElementAt(0).Value;
                 var savedRefreshToken = _tokenServices.GetRefreshToken(username);
                 if (savedRefreshToken != inputRefresh.refreshToken)
                 {

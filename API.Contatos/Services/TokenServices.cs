@@ -26,7 +26,7 @@ namespace API.Contatos.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new (JwtRegisteredClaimNames.Sub, validate.login.ToString()),
-                    new (ClaimTypes.Role, validate.senha.ToString()),
+                    new (ClaimTypes.Role, validate.permissao.ToString()),
                     new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
@@ -103,8 +103,8 @@ namespace API.Contatos.Services
         {
             var users = new List<AuthValidateModel>
             {
-                new () { login = "admin", senha = "admin" },
-                new () { login = "user", senha = "user"}
+                new () { login = "admin", senha = "admin" , permissao = "Administrador"},
+                new () { login = "user", senha = "user", permissao = "Usuario" }
             };
 
             return users.FirstOrDefault(x =>
