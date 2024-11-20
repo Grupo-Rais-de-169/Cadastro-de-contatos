@@ -28,12 +28,6 @@ namespace API.Contatos.Configuration
                 };
             });
 
-            /*builder.Services.AddAuthorization(opt =>
-            {
-                opt.AddPolicy("Administrador", policy => policy.RequireRole("Administrador"));
-                opt.AddPolicy("Usuario", policy => policy.RequireRole("Usuario"));
-            });*/
-
             return builder;
         }
     }
