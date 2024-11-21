@@ -3,10 +3,28 @@
   "WorkspaceRootPath": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\",
   "Documents": [
     {
+<<<<<<< HEAD
+=======
+      "AbsoluteMoniker": "D:0:0:{A115C85C-44A1-47A0-AFC2-D60788B37045}|Test\\Test.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A115C85C-44A1-47A0-AFC2-D60788B37045}|Test\\Test.csproj|solutionrelative:test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF4443CF-8EB0-4DEC-A718-E961F9C7DFAA}|Application\\Application.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF4443CF-8EB0-4DEC-A718-E961F9C7DFAA}|Application\\Application.csproj|solutionrelative:application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
       "AbsoluteMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\api.contatos\\api.contatos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{A5FA2EA5-EB4F-46F7-B6AF-3571ACC188C8}|API.Contatos\\API.Contatos.csproj|solutionrelative:api.contatos\\api.contatos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
+<<<<<<< HEAD
+=======
+      "AbsoluteMoniker": "D:0:0:{B8E7A465-8721-413E-A01A-2A2363B21E84}|Domain\\Domain.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8E7A465-8721-413E-A01A-2A2363B21E84}|Domain\\Domain.csproj|solutionrelative:domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
       "AbsoluteMoniker": "D:0:0:{AE52B940-83E6-4CC4-85FF-754F7113D2BF}|Infra\\Infra.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\infra\\entities\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE52B940-83E6-4CC4-85FF-754F7113D2BF}|Infra\\Infra.csproj|solutionrelative:infra\\entities\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -89,11 +107,15 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 6,
+=======
+              "DocumentIndex": 9,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "MainContext.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Context\\MainContext.cs",
               "RelativeDocumentMoniker": "Infra\\Context\\MainContext.cs",
@@ -106,7 +128,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 7,
+=======
+              "DocumentIndex": 10,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Program.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Program.cs",
@@ -116,6 +142,78 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T17:21:16.696Z",
               "IsPinned": true
+            },
+            {
+<<<<<<< HEAD
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+=======
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Test\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "Test\\UnitTest1.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Test\\UnitTest1.cs",
+              "RelativeToolTip": "Test\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T07:48:58.302Z",
+              "EditorCaption": ""
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Application\\Class1.cs",
+              "RelativeDocumentMoniker": "Application\\Class1.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Application\\Class1.cs",
+              "RelativeToolTip": "Application\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T07:48:00.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "Domain\\Class1.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Domain\\Class1.cs",
+              "RelativeToolTip": "Domain\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T07:47:30.102Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -187,7 +285,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 11,
+=======
+              "DocumentIndex": 14,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\appsettings.Development.json",
               "RelativeDocumentMoniker": "API.Contatos\\appsettings.Development.json",
@@ -199,18 +301,27 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 12,
+=======
+              "DocumentIndex": 15,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "API.Contatos",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
               "RelativeDocumentMoniker": "API.Contatos\\API.Contatos.csproj",
               "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
               "RelativeToolTip": "API.Contatos\\API.Contatos.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-20T02:52:38.542Z"
+              "WhenOpened": "2024-11-20T02:52:38.542Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 3,
+=======
+              "DocumentIndex": 6,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "CodigoDeArea.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\CodigoDeArea.cs",
               "RelativeDocumentMoniker": "Infra\\Entities\\CodigoDeArea.cs",
@@ -219,6 +330,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T02:04:43.227Z"
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -255,10 +367,37 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-11-19T19:57:54.583Z",
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Permissao.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Permissao.cs",
+              "RelativeDocumentMoniker": "Infra\\Entities\\Permissao.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Permissao.cs",
+              "RelativeToolTip": "Infra\\Entities\\Permissao.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T02:00:14.28Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Usuario.cs",
+              "RelativeDocumentMoniker": "Infra\\Entities\\Usuario.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Usuario.cs",
+              "RelativeToolTip": "Infra\\Entities\\Usuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T01:52:32.504Z",
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 10,
               "Title": "20241120042920_CriandoTabelas.cs",
               "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\TechChallenge\\Infra\\Migrations\\20241120042920_CriandoTabelas.cs",
@@ -292,10 +431,58 @@
               "ViewState": "AQIAAAUAAAAAAAAAAAAAwBMAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T01:43:01.65Z"
+=======
+              "DocumentIndex": 2,
+              "Title": "API.Contatos.csproj",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
+              "RelativeDocumentMoniker": "API.Contatos\\API.Contatos.csproj",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\API.Contatos.csproj",
+              "RelativeToolTip": "API.Contatos\\API.Contatos.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-19T19:57:54.583Z",
+              "EditorCaption": ""
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 13,
+              "Title": "20241120042920_CriandoTabelas.cs",
+              "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\TechChallenge\\Infra\\Migrations\\20241120042920_CriandoTabelas.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\TechChallenge\\Infra\\Migrations\\20241120042920_CriandoTabelas.cs",
+              "ToolTip": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\TechChallenge\\Infra\\Migrations\\20241120042920_CriandoTabelas.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\TechChallenge\\Infra\\Migrations\\20241120042920_CriandoTabelas.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T04:29:20.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20241120045322_CriandoTabelas.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Migrations\\20241120045322_CriandoTabelas.cs",
+              "RelativeDocumentMoniker": "Infra\\Migrations\\20241120045322_CriandoTabelas.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Migrations\\20241120045322_CriandoTabelas.cs",
+              "RelativeToolTip": "Infra\\Migrations\\20241120045322_CriandoTabelas.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T04:53:22.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Cantatos.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Cantatos.cs",
+              "RelativeDocumentMoniker": "Infra\\Entities\\Cantatos.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\Infra\\Entities\\Cantatos.cs",
+              "RelativeToolTip": "Infra\\Entities\\Cantatos.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBMAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T01:43:01.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "AuthValidateModel.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\AuthValidateModel.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Models\\AuthValidateModel.cs",
@@ -307,7 +494,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 13,
+=======
+              "DocumentIndex": 16,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Controllers\\AuthController.cs",
@@ -319,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "TokenServices.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Services\\TokenServices.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Services\\TokenServices.cs",
@@ -331,7 +522,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 14,
+=======
+              "DocumentIndex": 17,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "JwtConfiguration.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\JwtConfiguration.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Configuration\\JwtConfiguration.cs",
@@ -343,7 +538,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 9,
+=======
+              "DocumentIndex": 12,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Controllers\\WeatherForecastController.cs",
@@ -355,7 +554,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 15,
+=======
+              "DocumentIndex": 18,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "InputRefreshModel.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Models\\InputRefreshModel.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Models\\InputRefreshModel.cs",
@@ -367,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "nlog.config",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\nlog.config",
               "RelativeDocumentMoniker": "API.Contatos\\nlog.config",
@@ -379,7 +582,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 4,
+=======
+              "DocumentIndex": 7,
+>>>>>>> 1f35523dc3a5bea381ec63bb69ff41e439653871
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\appsettings.json",
               "RelativeDocumentMoniker": "API.Contatos\\appsettings.json",
@@ -391,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "SwaggerConfiguration.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\API.Contatos\\Configuration\\SwaggerConfiguration.cs",
               "RelativeDocumentMoniker": "API.Contatos\\Configuration\\SwaggerConfiguration.cs",
