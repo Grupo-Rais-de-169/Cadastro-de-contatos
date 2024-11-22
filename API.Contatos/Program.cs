@@ -21,7 +21,7 @@ internal class Program
 
         #region [DI]
         builder.Services
-            .AddSingleton<TokenServices>();
+            .AddScoped<TokenServices>();
         #endregion
 
         builder.Services.AddEndpointsApiExplorer();
@@ -40,6 +40,10 @@ internal class Program
         });
 
         app.UseSwaggerConfiguration();
+        app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
         app.UseAuthentication();
         app.UseAuthorization();

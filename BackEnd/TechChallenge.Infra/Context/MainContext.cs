@@ -17,6 +17,7 @@ namespace Infra.Context
             Database.SetCommandTimeout(1000);
             _context = context;
         }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

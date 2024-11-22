@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Contatos.Controllers
 {
     [ApiController]
-    [Route("teste")]
+    [Route("api/teste")]
     public class WeatherForecastController : ControllerBase
     {
 

@@ -12,7 +12,7 @@ namespace API.Contatos.Models
         [Required]
         public string login { get; set; } = null!;
         [Required]
-        public string senha { get; set; } = null!;
+        public string password { get; set; } = null!;
         [JsonIgnore]
         public string? permissao { get; set; } = null!;
 
