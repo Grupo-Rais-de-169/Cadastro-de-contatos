@@ -19,9 +19,11 @@ export class ServicesService{
   ) { }
 
   getToken() {
+    const token = sessionStorage.getItem("token");
     const headers = new HttpHeaders({
+      
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.accessToken
+      'Authorization': 'Bearer ' + token
     });
     return headers;
   }
@@ -40,4 +42,15 @@ export class ServicesService{
     sessionStorage.setItem("token",response.token);
     sessionStorage.setItem("refreshToken",response.refreshToken);
   }
+
+  public getTeste(): Observable<any> {
+    return this.httpClient.get<any>(
+      `${environment.apiURL}/teste/forecast`,
+      {
+        headers: this.getToken()
+      },
+    );
+  }
+
+
 }

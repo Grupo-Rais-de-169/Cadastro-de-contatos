@@ -40,11 +40,21 @@ export class LoginComponent implements OnInit{
         console.error("Erro ao solicitar Token", error);
       },
       complete:()=>{
-        //localStorage.setItem("token",this.responsetoken.token);
-        //localStorage.setItem("refreshToken",this.responsetoken.refreshToken);
         console.log(this.responsetoken.token);
       }
     })
     
+  }
+
+  async OnTeste(){
+    this.service.getTeste().subscribe({
+      next:(data) => {
+        console.log(data)
+      },
+      error:(error)=>{
+        console.error(error);
+      },
+      complete:()=>{console.log("Solicitação concluida")}
+    })
   }
 }

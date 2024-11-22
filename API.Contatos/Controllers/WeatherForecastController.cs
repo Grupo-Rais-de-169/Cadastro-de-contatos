@@ -22,7 +22,7 @@ namespace API.Contatos.Controllers
 
         [HttpGet]
         [Route("forecast")]
-        [Authorize(Roles ="Administrador")]
+        [Authorize(Roles ="admin")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
