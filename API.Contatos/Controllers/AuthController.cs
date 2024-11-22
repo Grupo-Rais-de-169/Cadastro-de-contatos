@@ -1,28 +1,29 @@
 ﻿using API.Contatos.Models;
 using API.Contatos.Services;
+using Infra.Context;
+using Infra.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace API.Contatos.Controllers
 {
-    [Route("api")]
+    [Route("api/auth")]
     [ApiController]
     [AllowAnonymous]
     public class AuthController : ControllerBase
     {
+        private readonly MainContext _mainContext;
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
         private readonly TokenServices _tokenServices;
 
-        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, TokenServices tokenServices)
+        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, TokenServices tokenServices, MainContext mainContext)
         {
             _configuration = configuration;
             _logger = logger;
             _tokenServices = tokenServices;
+            _mainContext = mainContext;
         }
 
 
@@ -36,7 +37,7 @@ namespace API.Contatos.Controllers
                     _logger.LogError("Tentativa inválida de acesso");
                     return BadRequest();
                 }
-                var user = _tokenServices.GetUser(authValidate.login, authValidate.senha);
+                Usuario user = _tokenServices.GetUser(authValidate.login, authValidate.password);
                 if (user == null) 
                 {
                     _logger.LogError("Não autorizado");
@@ -44,11 +45,11 @@ namespace API.Contatos.Controllers
                 }
                 var token = _tokenServices.GenerateToken(user);
                 var refreshToken = _tokenServices.GenerateRefreshToken();
-                _tokenServices.SaveRefreshToken(user.login, refreshToken);
+                _tokenServices.SaveRefreshToken(user.Login, refreshToken);
                 return Ok(new
                 {
-                    user.login,
-                    user.permissao,
+                    user.Login,
+                    user.Permissao,
                     token,
                     refreshToken,
                     create = DateTime.Now.ToString("g"),
@@ -98,27 +99,13 @@ namespace API.Contatos.Controllers
             }
         }
 
-        /*private string GenerateToken(string username, string role)
+
+        [HttpGet]
+        [Route("teste")]
+        public ActionResult GetUsers()
         {
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, username),
-                new Claim(ClaimTypes.Role, role),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: creds
-                );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }*/
-
+            List<Usuario> usuario = [.. (from Usuario u in _mainContext.Usuarios select u)];
+            return Ok(usuario);
+        }
     }
 }

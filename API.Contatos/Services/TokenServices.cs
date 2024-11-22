@@ -1,4 +1,6 @@
-﻿using API.Contatos.Models;
+﻿using Infra.Context;
+using Infra.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,13 +13,16 @@ namespace API.Contatos.Services
     {
         private readonly string _token;
         private readonly List<(string, string)> _refreshTokens = new();
+        private readonly MainContext _mainContext;
 
-        public TokenServices(IConfiguration config)
+
+        public TokenServices(IConfiguration config, MainContext mainContext)
         {
             _token = config["Jwt:Key"] ?? throw new ArgumentException("Jwt:Key está vazia");
+            _mainContext = mainContext;
         }
 
-        public string GenerateToken(AuthValidateModel validate)
+        public string GenerateToken(Usuario validate)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_token);
@@ -25,8 +30,8 @@ namespace API.Contatos.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new (JwtRegisteredClaimNames.Sub, validate.login.ToString()),
-                    new (ClaimTypes.Role, validate.permissao.ToString()),
+                    new (JwtRegisteredClaimNames.Sub, validate.Login.ToString()),
+                    new (ClaimTypes.Role, validate.Permissao.Funcao.ToString()),
                     new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
@@ -99,17 +104,10 @@ namespace API.Contatos.Services
             _refreshTokens.Remove(item);
         }
 
-        public AuthValidateModel? GetUser(string login, string password)
+        public Usuario GetUser(string login, string password)
         {
-            var users = new List<AuthValidateModel>
-            {
-                new () { login = "admin", senha = "admin" , permissao = "Administrador"},
-                new () { login = "user", senha = "user", permissao = "Usuario" }
-            };
-
-            return users.FirstOrDefault(x =>
-            x.login == login
-            && x.senha == password);
+            List<Usuario> users = [.. (from Usuario u in _mainContext.Usuarios select u).Include(u=>u.Permissao)];
+            return users.FirstOrDefault(x => x.Login == login && x.Senha == password);
         }
     }
 }
