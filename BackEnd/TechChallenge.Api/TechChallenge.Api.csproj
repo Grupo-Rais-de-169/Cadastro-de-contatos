@@ -26,8 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BackEnd\TechChallenge.Infra\TechChallenge.Infra.csproj" />
+    <ProjectReference Include="..\TechChallenge.Infra\TechChallenge.Infra.csproj" />
   </ItemGroup>
+
 
   <ItemGroup>
     <Content Update="nlog.config">
