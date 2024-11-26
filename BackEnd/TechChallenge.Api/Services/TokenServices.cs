@@ -1,25 +1,25 @@
-﻿using Infra.Context;
-using Infra.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using TechChallenge.Infra.Entities;
+using TechChallenge.Infra.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using TechChallenge.Infra.Interfaces;
 
-namespace API.Contatos.Services
+namespace TechChallenge.Api.Services
 {
     public class TokenServices
     {
         private readonly string _token;
         private readonly List<(string, string)> _refreshTokens = new();
-        private readonly MainContext _mainContext;
+        private readonly IAuthRepositories _authRepositories;
 
 
-        public TokenServices(IConfiguration config, MainContext mainContext)
+        public TokenServices(IConfiguration config, IAuthRepositories authRepositories)
         {
             _token = config["Jwt:Key"] ?? throw new ArgumentException("Jwt:Key está vazia");
-            _mainContext = mainContext;
+            _authRepositories = authRepositories;
         }
 
         public string GenerateToken(Usuario validate)
@@ -104,10 +104,6 @@ namespace API.Contatos.Services
             _refreshTokens.Remove(item);
         }
 
-        public Usuario GetUser(string login, string password)
-        {
-            List<Usuario> users = [.. (from Usuario u in _mainContext.Usuarios select u).Include(u=>u.Permissao)];
-            return users.FirstOrDefault(x => x.Login == login && x.Senha == password);
-        }
+        public Usuario? GetUserByLoginAndPassword(string login, string password) => _authRepositories.GetConfirmLoginAndPassword(login, password).Result;
     }
 }

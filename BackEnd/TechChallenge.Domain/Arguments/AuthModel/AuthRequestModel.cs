@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace API.Contatos.Models
+namespace TechChallenge.Domain.Models
 {
-    public class AuthValidateModel
+    public class AuthRequestModel
     {
-        public AuthValidateModel()
+        public AuthRequestModel()
         {
 
         }

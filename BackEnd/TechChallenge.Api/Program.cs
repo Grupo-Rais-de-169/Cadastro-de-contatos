@@ -1,11 +1,13 @@
-using API.Contatos.Configuration;
-using API.Contatos.Services;
-using Infra.Context;
+using TechChallenge.Api.Configuration;
+using TechChallenge.Api.Services;
+using TechChallenge.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLog.Web;
+using TechChallenge.Infra.Interfaces;
+using TechChallenge.Infra.Repositories;
 
-internal class Program
+public class Program
 {
     private static void Main(string[] args)
     {
@@ -21,7 +23,8 @@ internal class Program
 
         #region [DI]
         builder.Services
-            .AddScoped<TokenServices>();
+            .AddScoped<TokenServices>()
+            .AddScoped<IAuthRepositories, AuthRepositories>();
         #endregion
 
         builder.Services.AddEndpointsApiExplorer();

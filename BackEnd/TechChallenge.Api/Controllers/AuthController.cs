@@ -1,12 +1,12 @@
-﻿using API.Contatos.Models;
-using API.Contatos.Services;
-using Infra.Context;
-using Infra.Entities;
+﻿using TechChallenge.Api.Services;
+using TechChallenge.Infra.Context;
+using TechChallenge.Infra.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using TechChallenge.Domain.Models;
 
-namespace API.Contatos.Controllers
+namespace TechChallenge.Api.Controllers
 {
     [Route("api/auth")]
     [ApiController]
@@ -28,7 +28,7 @@ namespace API.Contatos.Controllers
 
 
         [HttpPost("login")]
-        public ActionResult<dynamic> Login([FromBody] AuthValidateModel authValidate)
+        public ActionResult<dynamic> Login([FromBody] AuthRequestModel authValidate)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace API.Contatos.Controllers
                     _logger.LogError("Tentativa inválida de acesso");
                     return BadRequest();
                 }
-                Usuario user = _tokenServices.GetUser(authValidate.login, authValidate.password);
+                Usuario? user = _tokenServices.GetUserByLoginAndPassword(authValidate.login, authValidate.password);
                 if (user == null) 
                 {
                     _logger.LogError("Não autorizado");
@@ -66,7 +66,7 @@ namespace API.Contatos.Controllers
 
         [HttpPost]
         [Route("refresh")]
-        public ActionResult<dynamic> Refresh([FromBody] InputRefreshModel inputRefresh)
+        public ActionResult<dynamic> Refresh([FromBody] RefreshRequestModel inputRefresh)
         {
             try
             {
@@ -97,15 +97,6 @@ namespace API.Contatos.Controllers
                 _logger.LogError($"Erro ao efetuar o Refresh: {ex.Message}");
                 return BadRequest(ex.Message);
             }
-        }
-
-
-        [HttpGet]
-        [Route("teste")]
-        public ActionResult GetUsers()
-        {
-            List<Usuario> usuario = [.. (from Usuario u in _mainContext.Usuarios select u)];
-            return Ok(usuario);
         }
     }
 }

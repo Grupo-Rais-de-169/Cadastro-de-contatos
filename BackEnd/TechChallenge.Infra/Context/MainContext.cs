@@ -1,8 +1,8 @@
-﻿using Infra.Entities;
+﻿using TechChallenge.Infra.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Infra.Context
+namespace TechChallenge.Infra.Context
 {
     public class MainContext : DbContext
     {

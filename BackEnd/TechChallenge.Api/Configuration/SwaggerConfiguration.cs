@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace API.Contatos.Configuration
+namespace TechChallenge.Api.Configuration
 {
     public static class SwaggerConfiguration
     {
