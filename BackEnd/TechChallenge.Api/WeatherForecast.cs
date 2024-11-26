@@ -1,4 +1,4 @@
-namespace API.Contatos
+namespace TechChallenge.Api
 {
     public class WeatherForecast
     {

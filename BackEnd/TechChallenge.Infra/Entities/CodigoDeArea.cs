@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infra.Entities
+namespace TechChallenge.Infra.Entities
 {
     public class CodigoDeArea
     {

@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace API.Contatos.Models
-{
-    public class InputRefreshModel
+namespace TechChallenge.Domain.Models 
+{ 
+    public class RefreshRequestModel
     {
         public string token { get; set; } = null!;
         public string refreshToken { get; set; } = null!;

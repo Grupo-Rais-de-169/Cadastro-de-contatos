@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace API.Contatos.Configuration
+namespace TechChallenge.Api.Configuration
 {
     public static class JwtConfiguration
     {
