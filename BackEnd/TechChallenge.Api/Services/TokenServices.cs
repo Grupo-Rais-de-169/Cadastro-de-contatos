@@ -1,10 +1,9 @@
-﻿using TechChallenge.Infra.Entities;
-using TechChallenge.Infra.Repositories;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using TechChallenge.Infra.Entities;
 using TechChallenge.Infra.Interfaces;
 
 namespace TechChallenge.Api.Services
