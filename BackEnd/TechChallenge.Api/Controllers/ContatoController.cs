@@ -1,23 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Interfaces.Repositories;
+using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Domain.Model;
 
 namespace TechChallenge.Api.Controllers
 {
-    public class ContatoController : Controller
+    [ApiController]
+    [Route("/[controller]")]
+    public class ContatoController : ControllerBase
     {
-        private readonly IContatosRepository _repository;
-
-        public ContatoController(IContatosRepository repository)
+        private readonly IContatoService _contatoService;
+        public ContatoController(IContatoService ContatoService)
         {
-            _repository = repository;
+            _contatoService = ContatoService;
         }
 
         [HttpGet("GetContatoPorDDD/{ddd}")]
-        public async Task<IEnumerable<ContatoDTO>> GetContatoPorDDD(int ddd)
+        public async Task<IActionResult> GetContatoPorDDD(int ddd)
         {
-            return await _repository.GetContatoByDDD(ddd);
+            try
+            {
+                return Ok(await _contatoService.GetContatoByDDD(ddd));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
     }
 }
