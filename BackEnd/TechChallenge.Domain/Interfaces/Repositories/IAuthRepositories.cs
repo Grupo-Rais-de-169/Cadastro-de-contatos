@@ -1,6 +1,6 @@
-﻿using TechChallenge.Infra.Entities;
+﻿using TechChallenge.Domain;
 
-namespace TechChallenge.Infra.Interfaces
+namespace TechChallenge.Domain.Interfaces.Repositories
 {
     public interface IAuthRepositories
     {

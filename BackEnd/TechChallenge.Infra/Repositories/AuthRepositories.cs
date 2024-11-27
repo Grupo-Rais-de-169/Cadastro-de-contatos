@@ -1,9 +1,7 @@
-﻿using TechChallenge.Infra.Context;
-using TechChallenge.Infra.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System.Net;
-using TechChallenge.Infra.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using TechChallenge.Domain;
+using TechChallenge.Domain.Interfaces.Repositories;
+using TechChallenge.Infra.Context;
 
 namespace TechChallenge.Infra.Repositories
 {
