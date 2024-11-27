@@ -3,8 +3,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using TechChallenge.Infra.Entities;
-using TechChallenge.Infra.Interfaces;
+using TechChallenge.Domain;
+using TechChallenge.Domain.Interfaces.Repositories;
 
 namespace TechChallenge.Api.Services
 {

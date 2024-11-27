@@ -1,10 +1,11 @@
-using TechChallenge.Api.Configuration;
-using TechChallenge.Api.Services;
-using TechChallenge.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLog.Web;
-using TechChallenge.Infra.Interfaces;
+using TechChallenge.Api.Configuration;
+using TechChallenge.Api.Services;
+using TechChallenge.Domain.Interfaces.Repositories;
+using TechChallenge.Infra;
+using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 
 public class Program
@@ -14,8 +15,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         #region [DB]
-        string postgresConnectionString = builder.Configuration.GetConnectionString("PostgreSQL");
-        builder.Services.AddDbContextFactory<MainContext>(options => options.UseNpgsql(postgresConnectionString));
+        builder.Services.AddDbContextFactory<MainContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
         #endregion
 
         builder.Services.AddMemoryCache();
@@ -24,7 +24,10 @@ public class Program
         #region [DI]
         builder.Services
             .AddScoped<TokenServices>()
-            .AddScoped<IAuthRepositories, AuthRepositories>();
+            .AddScoped<IAuthRepositories, AuthRepositories>()
+            .AddScoped<IContatosRepository, ContatosRepository>()
+            .AddSingleton<DbConnectionProvider>();
+
         #endregion
 
         builder.Services.AddEndpointsApiExplorer();

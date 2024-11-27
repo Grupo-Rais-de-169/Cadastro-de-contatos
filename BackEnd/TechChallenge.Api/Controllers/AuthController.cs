@@ -1,10 +1,10 @@
-﻿using TechChallenge.Api.Services;
-using TechChallenge.Infra.Context;
-using TechChallenge.Infra.Entities;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using TechChallenge.Api.Services;
+using TechChallenge.Domain;
 using TechChallenge.Domain.Models;
+using TechChallenge.Infra.Context;
 
 namespace TechChallenge.Api.Controllers
 {

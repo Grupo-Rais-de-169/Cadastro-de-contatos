@@ -1,6 +1,7 @@
-﻿using TechChallenge.Infra.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
+using TechChallenge.Domain;
 
 namespace TechChallenge.Infra.Context
 {
@@ -9,7 +10,7 @@ namespace TechChallenge.Infra.Context
         private readonly IDbContextFactory<MainContext> _context;
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
-        public DbSet<Contatos> Contatos { get; set; }
+        public DbSet<Contato> Contatos { get; set; }
         public DbSet<CodigoDeArea> CodigosDeArea { get; set; }
 
         public MainContext(DbContextOptions<MainContext> options, ILogger<MainContext> logger, IDbContextFactory<MainContext> context) : base(options)
@@ -21,7 +22,7 @@ namespace TechChallenge.Infra.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var extension = optionsBuilder.Options.FindExtension<Microsoft.EntityFrameworkCore.Infrastructure.RelationalOptionsExtension>();
+            var extension = optionsBuilder.Options.FindExtension<RelationalOptionsExtension>();
             var connectionString = extension?.ConnectionString;
 
             if (!optionsBuilder.IsConfigured)
@@ -30,6 +31,9 @@ namespace TechChallenge.Infra.Context
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MainContext).Assembly);
+        }
     }
 }

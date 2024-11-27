@@ -1,12 +1,10 @@
 ﻿using System.Text.Json.Serialization;
+using TechChallenge.Domain.Entities;
 
-namespace TechChallenge.Infra.Entities
+namespace TechChallenge.Domain
 {
-    public class Permissao
+    public class Permissao: EntityBase
     {
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
-
         [JsonPropertyName("funcao")]
         public string Funcao { get; set; } = null!;
     }

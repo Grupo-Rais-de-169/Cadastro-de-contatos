@@ -1,11 +1,10 @@
 ﻿using System.Text.Json.Serialization;
+using TechChallenge.Domain.Entities;
 
-namespace TechChallenge.Infra.Entities
+namespace TechChallenge.Domain
 {
-    public class Usuario
+    public class Usuario: EntityBase
     {
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
 
         [JsonPropertyName("login")]
         public string Login { get; set; } = null!;
