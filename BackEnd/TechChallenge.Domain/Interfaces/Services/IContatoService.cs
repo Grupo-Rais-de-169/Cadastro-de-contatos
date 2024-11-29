@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechChallenge.Domain.Model;
+using TechChallenge.Domain.Model.ViewModel;
+using TechChallenge.Domain.Utils;
 
 namespace TechChallenge.Domain.Interfaces.Services
 {
@@ -15,9 +17,9 @@ namespace TechChallenge.Domain.Interfaces.Services
         IList<ContatoDTO> GetAll();
         Task<ContatoDTO> GetByIdAsync(int id);
         ContatoDTO GetById(int id);
-        Task AddAsync(Contato contato);
-        void Add(Contato contato);
-        void Update(Contato contato);
-        void Delete(int id);
+        Task<Result> AddAsync(ContatoInclusaoViewModel contato);
+        Result Add(ContatoInclusaoViewModel contato);
+        Result Update(ContatoAlteracaoViewModel contato);
+        Result Delete(int id);
     }
 }
