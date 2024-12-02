@@ -3,23 +3,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Domain.Model;
+using TechChallenge.Domain.Model.ViewModel;
+using TechChallenge.Domain.Utils;
 
 namespace TechChallenge.Domain.Services
 {
     public class ContatoService : IContatoService
     {
         private readonly IContatosRepository _contatosRepository;
+        private readonly ICodigoDeAreaRepository _codigoAreaRepository;
         private readonly IMapper _mapper;
 
-        public ContatoService(IContatosRepository ContatosRepository, IMapper Mapper)
+        public ContatoService(IMapper Mapper, IContatosRepository ContatosRepository, ICodigoDeAreaRepository codigoAreaRepository)
         {
-            _contatosRepository = ContatosRepository;
             _mapper = Mapper;
+            _contatosRepository = ContatosRepository;            
+            _codigoAreaRepository = codigoAreaRepository;
         }
         public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)
         {
@@ -47,20 +52,28 @@ namespace TechChallenge.Domain.Services
         {
             return _mapper.Map<ContatoDTO>(id);
         }
-        public async Task AddAsync(Contato contato)
+        public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
-            await _contatosRepository.AddAsync(contato);
+            if(!DDDExiste(contato.IdDDD))
+                return Result.Failure("O DDD informado não existe.");
+
+            await _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
+            return Result.Success();
         }
 
-        public void Add(Contato contato)
+        public Result Add(ContatoInclusaoViewModel contato)
         {
-            _contatosRepository.Add(contato);
+            if (!DDDExiste(contato.IdDDD))
+                return Result.Failure("O DDD informado não existe.");
+
+             _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
+            return Result.Success();
         }
-        public void Update(Contato input)
+        public Result Update(ContatoAlteracaoViewModel input)
         {
             var contato = _contatosRepository.GetById(input.Id);
-            if (contato == null) 
-                throw new Exception("Contato não encontrado!");
+            if (contato == null)
+                return Result.Failure("Contato não encontrado!");
 
             contato.Nome = input.Nome;
             contato.Email = input.Email;
@@ -68,14 +81,21 @@ namespace TechChallenge.Domain.Services
             contato.IdDDD = input.IdDDD;
 
             _contatosRepository.Update(contato);
+            return Result.Success();
         }
 
-        public void Delete(int id)
+        public Result Delete(int id)
         {
             var contato = _contatosRepository.GetById(id);
             if (contato == null)
-                throw new Exception("Contato não encontrado!");
+                return Result.Failure("Contato não encontrado!");
             _contatosRepository.Delete(id);
+            return Result.Success();
+        }
+
+        private bool DDDExiste(int ddd)
+        {
+           return  _codigoAreaRepository.GetById(ddd) != null;
         }
     }
 }

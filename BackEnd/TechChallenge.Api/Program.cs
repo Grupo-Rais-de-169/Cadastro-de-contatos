@@ -32,7 +32,9 @@ public class Program
             .AddScoped<IAuthRepositories, AuthRepositories>()
             .AddScoped<IContatoService, ContatoService>()
             .AddScoped<IContatosRepository, ContatosRepository>()
+            .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
             .AddSingleton<DbConnectionProvider>();
+        
 
         #endregion
 
