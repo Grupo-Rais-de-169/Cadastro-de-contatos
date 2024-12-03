@@ -5,11 +5,11 @@ using TechChallenge.Infra.Context;
 
 namespace TechChallenge.Infra.Repositories
 {
-    public class AuthRepositories: IAuthRepositories
+    public class AuthRepositories : IAuthRepositories
     {
         private readonly MainContext _mainContext;
-        public AuthRepositories(MainContext mainContext) 
-        { 
+        public AuthRepositories(MainContext mainContext)
+        {
             _mainContext = mainContext;
         }
 
@@ -17,16 +17,14 @@ namespace TechChallenge.Infra.Repositories
         {
             try
             {
-                List<Usuario> users = [.. (from Usuario u in _mainContext.Usuarios select u).Include(u => u.Permissao)];
-                return Task.FromResult(users.FirstOrDefault());
-                
+                var user = _mainContext.Usuarios.Include(c=>c.Permissao).FirstOrDefault(u => u.Login == username && u.Senha == password);
+                return Task.FromResult(user);
+
             }
             catch (Exception ex)
             {
                 throw;
             }
-            
-            
         }
     }
 }
