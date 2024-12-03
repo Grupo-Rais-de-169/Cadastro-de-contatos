@@ -32,9 +32,6 @@ namespace TechChallenge.Domain.Model.ViewModel
                 else
                 {
                     throw new ValidationException("O DDD deve ser numérico.");
-
-
-
                 }
             }
         }
