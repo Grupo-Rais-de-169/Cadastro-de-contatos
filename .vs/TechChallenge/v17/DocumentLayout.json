@@ -1,28 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\",
+  "WorkspaceRootPath": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\techchallenge.api\\nlog.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\nlog.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\cadastro-de-contatos\\techchallenge.api\\controllers\\contatocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\contatocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 200,
-          "SelectedChildIndex": 21,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,45 +94,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "nlog.config",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\nlog.config",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\nlog.config",
-              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\nlog.config",
-              "RelativeToolTip": "TechChallenge.Api\\nlog.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-12-03T03:56:40.827Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ContatoController.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\ContatoController.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\ContatoController.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\ContatoController.cs",
-              "RelativeToolTip": "TechChallenge.Api\\Controllers\\ContatoController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAowDsAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T02:41:37.371Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "TechChallenge.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwCcAAABmAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Program.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs*",
+              "RelativeToolTip": "TechChallenge.Api\\Program.cs*",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwEQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T02:29:36.53Z",
+              "WhenOpened": "2024-12-05T21:52:51.657Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedHeight": 200,
+          "DockedWidth": 200,
           "SelectedChildIndex": -1,
           "Children": [
             {
