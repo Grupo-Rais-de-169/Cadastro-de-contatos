@@ -12,10 +12,7 @@ using TechChallenge.Infra;
 using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 
-public class Program
-{
-    private static void Main(string[] args)
-    {
+
         var builder = WebApplication.CreateBuilder(args);
 
         #region [DB]
@@ -69,5 +66,3 @@ public class Program
         app.MapControllers();
 
         app.Run();
-    }
-}
