@@ -45,23 +45,6 @@ using TechChallenge.Infra.Repositories;
         IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
         builder.Services.AddSingleton(mapper);
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddCors(opt => 
-{
-    opt.AddDefaultPolicy(builder => 
-    {
-        builder.WithOrigins("*");
-    });
-    opt.AddPolicy(name: "EnableAllPolicy", builder =>
-    {
-        builder.WithOrigins("*");
-    });
-    opt.AddPolicy(name: "OtherPolicy", builder =>
-    {
-        builder.AllowAnyOrigin();
-    });
-
-});
-builder.Services.AddControllers();
 
         var app = builder.Build();
         var cache = app.Services.GetRequiredService<IMemoryCache>();
@@ -72,10 +55,10 @@ builder.Services.AddControllers();
         });
 
         app.UseSwaggerConfiguration();
-        //app.UseCors(x => x
-        //    .AllowAnyOrigin()
-        //    .AllowAnyMethod()
-        //    .AllowAnyHeader());
+        app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
         app.UseAuthentication();
         app.UseAuthorization();
