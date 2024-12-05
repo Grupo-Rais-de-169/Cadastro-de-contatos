@@ -30,6 +30,7 @@ namespace TechChallenge.Api.Controllers
         [HttpPost("login")]
         public ActionResult<dynamic> Login([FromBody] AuthRequestModel authValidate)
         {
+
             try
             {
                 if (authValidate == null)
