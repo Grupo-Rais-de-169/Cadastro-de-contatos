@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using TechChallenge.Api.Services;
@@ -13,6 +14,7 @@ namespace TechChallenge.Api.Controllers
     [AllowAnonymous]
     public class AuthController : ControllerBase
     {
+
         private readonly MainContext _mainContext;
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
