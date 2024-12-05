@@ -1,11 +1,11 @@
-name: Code Quality - Sonarqube
+name: Code Quality
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 jobs:
   build:
-    name: Build and analyze
+    name: Sonarqube
     runs-on: windows-latest
     steps:
       - name: Obtendo o código do Projeto
@@ -32,14 +32,14 @@ jobs:
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       
-      - name: Instalação SonarQube Scanner
+      - name: Instalando SonarQube Scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       
-      - name: Analise do código
+      - name: Analise do codigo
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
@@ -47,9 +47,3 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"grupo-tech-challenge_grupo-tech-challenge-v2" /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-
-       - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@v4.1.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
