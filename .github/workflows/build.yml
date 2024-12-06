@@ -22,6 +22,7 @@ jobs:
         run: |
           mkdir -p .sonar\cache
           mkdir -p .sonar\scanner
+          mkdir -p .sonar\coverage
       - name: Cache SonarQube Cloud packages
         uses: actions/cache@v4
         with:

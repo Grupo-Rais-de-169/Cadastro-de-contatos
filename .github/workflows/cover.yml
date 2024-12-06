@@ -1,32 +1,34 @@
-name: Run Unit Tests and Generate Coverage
-
+name: Unit Test With Coverage
 on:
   push:
     branches:
       - master
-
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Ensure directories exist
-        run: |
-          mkdir -p .sonar\coverage
-      
-      - name: Run Unit Tests and Generate Coverage
-        id: run-tests
-        uses: alsi-lawr/dotnet-test-coverlet@v1
-        with:
-          project: 'TechChallenge.Tests/TechChallenge.Tests.csproj'  # Specify the correct path to your test project file
-          exclude-files: '**/Migrations/*.cs'  # Example: Exclude migrations files
-          threshold: 80  # Example: Set coverage threshold to 80%
-          dotnet-version: '8.0'
-
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: .\.sonar\coverage  # Use the output from the previous step to upload the report
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.0
+    - name: Restore dependencies
+      run: dotnet restore   
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal TechChallenge.Tests/
+    - name: Create Test Coverage Badge
+      uses: simon-k/dotnet-code-coverage-badge@v1.0.0
+      id: create_coverage_badge
+      with:
+        label: Unit Test Coverage
+        color: brightgreen
+        path: TechChallenge.Tests/TestResults/coverage.opencover.xml
+        gist-filename: code-coverage.json
+        gist-id: CA72A3F135728DF13F37A4896FBDE1AD184095CB068A82537EFC97A55538979141FA8E8FB202B8D5A51B5B801F9F14990C8B98596887E94F7EEBB418CF84EFF5
+        gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
+    - name: Print code coverage
+      run: echo "Code coverage percentage ${{steps.create_coverage_badge.outputs.percentage}}%"
