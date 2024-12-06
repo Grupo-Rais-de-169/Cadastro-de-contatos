@@ -23,12 +23,12 @@ namespace TechChallenge.Api.Controllers
         /// <param name="ddd">Código DDD para buscar contatos.</param>
         /// <returns>Lista de contatos associados ao DDD informado.</returns>
         [HttpGet("GetContatoPorDDD/{ddd}")]
-        [ProducesResponseType(typeof(IEnumerable<ContatoDTO>), 200)] // Sucesso
+        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)] // Sucesso
         [ProducesResponseType(404)] // Nenhum contato encontrado
         public async Task<IActionResult> GetContatoPorDDD(int ddd)
         {
             var contatos = await _contatoService.GetContatoByDDD(ddd);
-            if (contatos.Count() == 0)
+            if (!contatos.Any())
                 return NotFound(new { message = "Não foi encontrado contatos com o DDD informado" });
 
             return Ok(contatos);
@@ -40,7 +40,7 @@ namespace TechChallenge.Api.Controllers
         /// <param name="ddd">Código DDD para buscar contatos.</param>
         /// <returns>Lista de contatos associados ao DDD informado.</returns>
         [HttpGet("GetAllContatos")]
-        [ProducesResponseType(typeof(IEnumerable<ContatoDTO>), 200)] // Sucesso
+        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)] // Sucesso
         [ProducesResponseType(404)] // Nenhum contato encontrado
         public async Task<IActionResult> GetContatoAll() => Ok(await _contatoService.GetAllAsync());
 
@@ -100,7 +100,7 @@ namespace TechChallenge.Api.Controllers
         [ProducesResponseType(404)] // Contato não encontrado
         [ProducesResponseType(400)] // BadRequest
         [Authorize(Roles = "admin")]
-        public IActionResult DeleteContato(int id)
+        public IActionResult DeleteContato(int id = -1)
         {
             var result = _contatoService.Delete(id);
 

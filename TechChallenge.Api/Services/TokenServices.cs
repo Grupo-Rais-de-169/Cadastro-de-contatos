@@ -8,7 +8,7 @@ using TechChallenge.Domain.Interfaces.Repositories;
 
 namespace TechChallenge.Api.Services
 {
-    public class TokenServices
+    public class TokenServices: ITokenServices
     {
         private readonly string _token;
         private readonly List<(string, string)> _refreshTokens = new();

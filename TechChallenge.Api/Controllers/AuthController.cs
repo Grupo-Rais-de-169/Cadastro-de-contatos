@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using TechChallenge.Api.Services;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Models;
-using TechChallenge.Infra.Context;
 
 namespace TechChallenge.Api.Controllers
 {
@@ -14,25 +12,20 @@ namespace TechChallenge.Api.Controllers
     [AllowAnonymous]
     public class AuthController : ControllerBase
     {
-
-        private readonly MainContext _mainContext;
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
-        private readonly TokenServices _tokenServices;
+        private readonly ITokenServices _tokenServices;
 
-        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, TokenServices tokenServices, MainContext mainContext)
+        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, ITokenServices tokenServices)
         {
             _configuration = configuration;
             _logger = logger;
             _tokenServices = tokenServices;
-            _mainContext = mainContext;
         }
 
-
         [HttpPost("login")]
-        public ActionResult<dynamic> Login([FromBody] AuthRequestModel authValidate)
+        public ActionResult<dynamic> Login([FromBody] AuthRequestModel? authValidate)
         {
-
             try
             {
                 if (authValidate == null)
@@ -78,7 +71,6 @@ namespace TechChallenge.Api.Controllers
                 var savedRefreshToken = _tokenServices.GetRefreshToken(username);
                 if (savedRefreshToken != inputRefresh.refreshToken)
                 {
-                    _logger.LogError("Inválido Refresh");
                     throw new SecurityTokenException("Inválido Refresh");
                 }
 

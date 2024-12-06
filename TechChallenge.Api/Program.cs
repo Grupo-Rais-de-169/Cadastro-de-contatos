@@ -13,56 +13,54 @@ using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 
 
-        var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-        #region [DB]
-        builder.Services.AddDbContextFactory<MainContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
-        #endregion
+#region [DB]
+builder.Services.AddDbContextFactory<MainContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
+#endregion
 
-        builder.Services.AddMemoryCache();
-        builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
+builder.Services.AddControllers();
 
-        #region [DI]
-        builder.Services
-            .AddScoped<TokenServices>()
-            .AddScoped<IAuthService, AuthService>()
-            .AddScoped<IAuthRepositories, AuthRepositories>()
-            .AddScoped<IContatoService, ContatoService>()
-            .AddScoped<IContatosRepository, ContatosRepository>()
-            .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
-            .AddSingleton<DbConnectionProvider>();
-        
+#region [DI]
+builder.Services
+    .AddScoped<ITokenServices, TokenServices>()
+    .AddScoped<IAuthService, AuthService>()
+    .AddScoped<IAuthRepositories, AuthRepositories>()
+    .AddScoped<IContatoService, ContatoService>()
+    .AddScoped<IContatosRepository, ContatosRepository>()
+    .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
+    .AddSingleton<DbConnectionProvider>();
+#endregion
 
-        #endregion
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerConfiguration();
+builder.AddJwtConfiguration();
 
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerConfiguration();
-        builder.AddJwtConfiguration();
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
 
-        builder.Logging.ClearProviders();
-        builder.Host.UseNLog();
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-        IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-        builder.Services.AddSingleton(mapper);
-        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+var app = builder.Build();
+var cache = app.Services.GetRequiredService<IMemoryCache>();
 
-        var app = builder.Build();
-        var cache = app.Services.GetRequiredService<IMemoryCache>();
+cache.Set("key", "value", new MemoryCacheEntryOptions
+{
+    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
+});
 
-        cache.Set("key", "value", new MemoryCacheEntryOptions
-        {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
-        });
+app.UseSwaggerConfiguration();
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
-        app.UseSwaggerConfiguration();
-        app.UseCors(x => x
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+app.UseAuthentication();
+app.UseAuthorization();
 
-        app.UseAuthentication();
-        app.UseAuthorization();
+app.MapControllers();
 
-        app.MapControllers();
-
-        app.Run();
+app.Run();
