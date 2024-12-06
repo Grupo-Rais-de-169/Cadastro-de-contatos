@@ -47,7 +47,7 @@ jobs:
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          dotnet tool install dotnet-sonarscanner --tool-path .\.sonar\scanner --version 1.1
 
       - name: Analise do codigo
         env:
