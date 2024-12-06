@@ -22,12 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Criar diretórios de cache do SonarQube
-        shell: powershell
-        run: |
-          New-Item -Path C:\sonar\cache -ItemType Directory -Force
-          New-Item -Path .\.sonar\scanner -ItemType Directory -Force
-
       - name: Obtendo o Sonarqube Cloud
         uses: actions/cache@v4
         with:
