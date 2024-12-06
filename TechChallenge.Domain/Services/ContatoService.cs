@@ -1,11 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Domain.Model;
@@ -30,27 +23,27 @@ namespace TechChallenge.Domain.Services
         {
             return await _contatosRepository.GetAllDDD(id);
         }
-        public async Task<IEnumerable<ContatoDTO>> GetContatoByDDD(int id)
+        public async Task<IEnumerable<ContatoDto>> GetContatoByDDD(int id)
         {
-            return _mapper.Map<IEnumerable<ContatoDTO>>(await _contatosRepository.GetContatoByDDD(id));
+            return _mapper.Map<IEnumerable<ContatoDto>>(await _contatosRepository.GetContatoByDDD(id));
         }
-        public IList<ContatoDTO> GetAll()
+        public IList<ContatoDto> GetAll()
         {
-            return _mapper.Map<List<ContatoDTO>>(_contatosRepository.GetAll());
-        }
-
-        public async Task<IList<ContatoDTO>> GetAllAsync()
-        {
-            return _mapper.Map<List<ContatoDTO>>(await _contatosRepository.GetAllAsync());
+            return _mapper.Map<List<ContatoDto>>(_contatosRepository.GetAll());
         }
 
-        public async Task<ContatoDTO> GetByIdAsync(int id)
+        public async Task<IList<ContatoDto>> GetAllAsync()
         {
-            return _mapper.Map<ContatoDTO>(await _contatosRepository.GetByIdAsync(id));
+            return _mapper.Map<List<ContatoDto>>(await _contatosRepository.GetAllAsync());
         }
-        public ContatoDTO GetById(int id)
+
+        public async Task<ContatoDto> GetByIdAsync(int id)
         {
-            return _mapper.Map<ContatoDTO>(id);
+            return _mapper.Map<ContatoDto>(await _contatosRepository.GetByIdAsync(id));
+        }
+        public ContatoDto GetById(int id)
+        {
+            return _mapper.Map<ContatoDto>(id);
         }
         public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
@@ -69,16 +62,16 @@ namespace TechChallenge.Domain.Services
              _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
             return Result.Success();
         }
-        public Result Update(ContatoAlteracaoViewModel input)
+        public Result Update(ContatoAlteracaoViewModel contatoModel)
         {
-            var contato = _contatosRepository.GetById(input.Id);
+            var contato = _contatosRepository.GetById(contatoModel.Id);
             if (contato == null)
                 return Result.Failure("Contato não encontrado!");
 
-            contato.Nome = input.Nome;
-            contato.Email = input.Email;
-            contato.Telefone = input.Telefone;
-            contato.IdDDD = input.IdDDD;
+            contato.Nome = contatoModel.Nome;
+            contato.Email = contatoModel.Email;
+            contato.Telefone = contatoModel.Telefone;
+            contato.IdDDD = contatoModel.IdDDD;
 
             _contatosRepository.Update(contato);
             return Result.Success();

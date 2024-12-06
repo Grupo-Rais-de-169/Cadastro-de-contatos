@@ -15,7 +15,6 @@ namespace TechChallenge.Infra.Repositories
             _dbProvider = dbProvider;
         }
 
-
         public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)
         {
             using var connection = _dbProvider.GetConnection();
@@ -23,11 +22,11 @@ namespace TechChallenge.Infra.Repositories
             return await connection.QueryAsync<CodigoDeArea>(query, new { Id = id });
         }
 
-        public async Task<IEnumerable<ContatoDTO>> GetContatoByDDD(int id)
+        public async Task<IEnumerable<ContatoDto>> GetContatoByDDD(int id)
         {
             using var connection = _dbProvider.GetConnection();
             var query = ContatosQuery.GetContatoByDDD(id);
-            return await connection.QueryAsync<ContatoDTO>(query, new { Id = id });
+            return await connection.QueryAsync<ContatoDto>(query, new { Id = id });
         }
     }
 }
