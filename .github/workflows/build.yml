@@ -23,14 +23,14 @@ jobs:
           mkdir -p .sonar\cache
           mkdir -p .sonar\scanner
       - name: Cache SonarQube Cloud packages
-        uses: sonaractions/cache@v1
+        uses: actions/cache@v4
         with:
           path: .\.sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache SonarQube Cloud scanner
         id: cache-sonar-scanner
-        uses: sonaractions/scanner-cache@v1
+        uses: actions/cache@v4
         with:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
