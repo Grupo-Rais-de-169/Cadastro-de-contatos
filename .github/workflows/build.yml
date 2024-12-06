@@ -1,15 +1,15 @@
 name: Code Quality
 on:
+  push:
+    branches:
+      - master
   pull_request:
-    branches: ["master"]
+      types: [opened, synchronize, reopened]
 
 jobs:
   build:
     name: Sonarqube
-    runs-on: windows-latest
-    env:
-      JWT_KEY: ${{ secrets.JWT_KEY }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Obtendo o código do Projeto
@@ -57,3 +57,8 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"grupo-tech-challenge_grupo-tech-challenge-v2" /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarcloud-github-action@v4.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
