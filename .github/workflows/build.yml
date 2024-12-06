@@ -1,8 +1,8 @@
----
 name: Code Quality
 on:
   pull_request:
     branches: ["master"]
+
 jobs:
   build:
     name: Sonarqube
@@ -10,23 +10,31 @@ jobs:
     env:
       JWT_KEY: ${{ secrets.JWT_KEY }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
     steps:
       - name: Obtendo o código do Projeto
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: zulu
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
+      - name: Criar diretórios de cache do SonarQube
+        shell: powershell
+        run: |
+          New-Item -Path C:\sonar\cache -ItemType Directory -Force
+          New-Item -Path .\.sonar\scanner -ItemType Directory -Force
+
       - name: Obtendo o Sonarqube Cloud
         uses: actions/cache@v4
         with:
-          path: ~\sonar\cache
+          path: C:\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      
+
       - name: Cache SonarQube Cloud Scanner
         id: cache-sonar-scanner
         uses: actions/cache@v4
@@ -34,24 +42,18 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-      
+
       - name: Instalando SonarQube Scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      
+
       - name: Analise do codigo
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
-        run: >
-          .\.sonar\scanner\dotnet-sonarscanner begin
-          /k:"grupo-tech-challenge_grupo-tech-challenge-v2"
-          /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          /d:sonar.host.url="https://sonarcloud.io"
-
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"grupo-tech-challenge_grupo-tech-challenge-v2" /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build
-
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
