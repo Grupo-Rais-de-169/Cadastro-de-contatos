@@ -10,9 +10,6 @@ jobs:
   build:
     name: Sonarqube
     runs-on: windows-latest
-    env:
-      JWT_KEY: ${{ secrets.JWT_KEY }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     steps:
       - name: Obtendo o código do Projeto
         uses: actions/setup-java@v4
