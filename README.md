@@ -23,3 +23,4 @@ O Tech Challenge desta fase será desenvolver um aplicativo utilizando a platafo
 O foco principal é a qualidade do código, as boas práticas de desenvolvimento e o uso eficiente da plataforma .NET 8. Este desafio é uma oportunidade para demonstrar habilidades em persistência de dados, arquitetura de software e testes, além de boas práticas de desenvolvimento. A entrega do frontend não é obrigatória. Apenas a documentação da API basta (swagger).
 
 [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=grupo-tech-challenge_grupo-tech-challenge-v2)
+
