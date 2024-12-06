@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Sonarqube
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Obtendo o código do Projeto
@@ -21,6 +21,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Criar diretórios de cache do SonarQube
+        shell: powershell
+        run: |
+          New-Item -Path C:\sonar\cache -ItemType Directory -Force
+          New-Item -Path .\.sonar\scanner -ItemType Directory -Force
 
       - name: Obtendo o Sonarqube Cloud
         uses: actions/cache@v4
@@ -38,6 +44,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar-scanner
 
       - name: Instalando SonarQube Scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
