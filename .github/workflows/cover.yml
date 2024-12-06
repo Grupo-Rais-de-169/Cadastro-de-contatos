@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Ensure directories exist
+        run: |
+          mkdir -p .sonar\coverage
       
       - name: Run Unit Tests and Generate Coverage
         id: run-tests
@@ -25,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
-          path: ${{ steps.run-tests.outputs.coverage-report-path }}  # Use the output from the previous step to upload the report
+          path: .\.sonar\coverage  # Use the output from the previous step to upload the report
