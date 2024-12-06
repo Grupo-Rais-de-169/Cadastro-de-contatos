@@ -1,56 +1,87 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\",
+  "WorkspaceRootPath": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\users\\thiago.cordeiro\\desktop\\fiap\\modulo_1\\nova pasta (3)\\techchallenge.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\users\\thiago.cordeiro\\desktop\\fiap\\modulo_1\\nova pasta (3)\\techchallenge.tests\\techchallenge.tests.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\techchallenge.tests.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\users\\thiago.cordeiro\\desktop\\fiap\\modulo_1\\nova pasta (3)\\techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\users\\thiago.cordeiro\\desktop\\fiap\\modulo_1\\nova pasta (3)\\techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "DockedHeight": 309,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T19:50:18.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TechChallenge.Tests",
+              "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Tests\\TechChallenge.Tests.csproj",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\TechChallenge.Tests.csproj",
+              "ToolTip": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Tests\\TechChallenge.Tests.csproj",
+              "RelativeToolTip": "TechChallenge.Tests\\TechChallenge.Tests.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-06T19:22:34.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Api\\Program.cs",
+              "RelativeToolTip": "TechChallenge.Api\\Program.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAADoAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T16:38:34.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\thiago.cordeiro\\Desktop\\FIAP\\MODULO_1\\Nova pasta (3)\\TechChallenge.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TechChallenge.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwBoAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T14:10:54.912Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:140:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -59,6 +90,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
@@ -90,42 +125,32 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "TechChallenge.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB8AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T22:10:58.229Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\Program.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs",
-              "RelativeToolTip": "TechChallenge.Api\\Program.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAAEQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T21:52:51.657Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         },
         {
-          "DockedWidth": 200,
+          "DockedHeight": 91,
           "SelectedChildIndex": -1,
           "Children": [
             {
@@ -139,6 +164,14 @@
             {
               "$type": "Bookmark",
               "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
