@@ -23,10 +23,8 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockTokenServices = new Mock<ITokenServices>();
             _mockLogger = new Mock<ILogger<AuthController>>();
             _mockConfiguration = new Mock<IConfiguration>();
-
             _mockConfiguration.Setup(config => config["Jwt:Key"]).Returns("FakeJwtKey");
             _mockConfiguration.Setup(config => config["Jwt:Issuer"]).Returns("FakeIssuer");
-
             _controller = new AuthController(_mockConfiguration.Object, _mockLogger.Object, _mockTokenServices.Object);
         }
 
@@ -57,13 +55,9 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             // Assert
             Assert.IsType<UnauthorizedResult>(result.Result);
 
-
-            _mockLogger.Verify(x => 
-            x.Log(LogLevel.Error, It.IsAny<EventId>(), 
-            It.Is<It.IsAnyType>((v, t) => 
-            v.ToString().Contains("Não autorizado")),
-            null,
-            It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
+            _mockLogger.Verify(x => x.Log(LogLevel.Error, It.IsAny<EventId>(), It.Is<It.IsAnyType>((v, t) => 
+            (v.ToString() ?? string.Empty).Contains("Não autorizado")),
+            null, It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
         }
 
         [Fact]
@@ -86,18 +80,19 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             Assert.NotNull(result);
             Assert.Equal(200, result.StatusCode);
 
-            var json = JsonSerializer.Serialize(result.Value);
-            dynamic response = JsonSerializer.Deserialize<ExpandoObject>(json);
+            string json = JsonSerializer.Serialize(result.Value);
 
-            var permissaoObject = (JsonElement)response.Permissao;
+            dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
+
+            var permissaoObject = (JsonElement)response?.Permissao;
             var funcaoValue = permissaoObject.GetProperty("funcao").GetString();
 
             // Assert
             Assert.NotNull(response);
-            Assert.Equal("user", response.Login.GetString());
+            Assert.Equal("user", response?.Login.GetString());
             Assert.Equal("admin", funcaoValue);
-            Assert.Equal("fake-jwt-token", response.token.GetString());
-            Assert.Equal("fake-refresh-token", response.refreshToken.GetString());
+            Assert.Equal("fake-jwt-token", response?.token.GetString());
+            Assert.Equal("fake-refresh-token", response?.refreshToken.GetString());
         }
 
         [Fact]
@@ -116,7 +111,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockLogger.Verify(x =>
             x.Log(LogLevel.Error, It.IsAny<EventId>(),
             It.Is<It.IsAnyType>((v, t) =>
-            v.ToString().Contains("Erro ao efetuar o Login: Simulated exception")),
+            (v.ToString() ?? string.Empty).Contains("Erro ao efetuar o Login: Simulated exception")),
             null,
             It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
         }

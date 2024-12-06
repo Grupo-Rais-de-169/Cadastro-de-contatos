@@ -57,27 +57,8 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
         [InlineData("João", "", "teste@teste.com", "11", "O telefone é obrigatório.")]
         [InlineData("João", "11999999999", "", "11", "O email é obrigatório.")]
         [InlineData("João", "11999999999", "emailinvalido", "11", "O email informado não é válido.")]
-        //[InlineData("João", "11999999999", "teste@teste.com", "", "O DDD é obrigatório.")]
-        //[InlineData("João", "11999999999", "teste@teste.com", "abc", "O DDD deve ser numérico.")]
         public async Task CriaContato_DadosInvalidos_RetornaBadRequest(string nome, string telefone, string email, string ddd, string mensagemEsperada)
         {
-            //var contato = new ContatoInclusaoViewModel();
-            //try
-            //{
-            //    contato = new ContatoInclusaoViewModel
-            //    {
-            //        Nome = nome,
-            //        Telefone = telefone,
-            //        Email = email,
-            //        DDD = ddd
-            //    };
-            //}
-            //catch (Exception e)
-            //{
-
-            //    throw;
-            //}
-
             // Arrange
             var contato = new ContatoInclusaoViewModel
             {
@@ -93,7 +74,8 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
 
             foreach (var validationResult in validationResults)
             {
-                _controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
+                if (!string.IsNullOrEmpty(validationResult.ErrorMessage))
+                    _controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
             }
 
             // Act
@@ -105,8 +87,8 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
             Assert.IsType<SerializableError>(result.Value);
 
             var serializableError = result.Value as SerializableError;
-            var errorMessages = serializableError.Values.SelectMany(v => v as string[]).ToList();
-            Assert.Contains(mensagemEsperada, errorMessages.First());
+            var errorMessages = serializableError?.Values.SelectMany(v => v as string[] ?? Array.Empty<string>()).ToList();
+            Assert.Contains(mensagemEsperada, errorMessages?.FirstOrDefault());
         }
 
         [Fact]
@@ -132,8 +114,8 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
             Assert.Equal(404, result.StatusCode);
 
             var json = JsonSerializer.Serialize(result.Value);
-            dynamic response = JsonSerializer.Deserialize<ExpandoObject>(json);
-            Assert.Equal("O DDD informado não existe.", response.message.GetString());
+            dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
+            Assert.Equal("O DDD informado não existe.", response?.message.GetString());
         }
     }
 }

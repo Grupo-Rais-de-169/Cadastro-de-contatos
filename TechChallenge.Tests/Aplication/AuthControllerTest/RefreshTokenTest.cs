@@ -59,7 +59,6 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
 
             // Assert
             Assert.NotNull(result);
-            //dynamic response = result.Value;
             Assert.Equal("newJwtToken", response.token.GetString());
             Assert.Equal("newRefreshToken", response.refreshToken.GetString());
             _mockTokenServices.Verify(s => s.DeleteRefreshToken("testuser", "validRefreshToken"), Times.Once);
@@ -84,7 +83,6 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
 
             // Act
             var result = _controller.Refresh(input).Result as BadRequestObjectResult;
-            //var result1 = _controller.Refresh(input).Result;
 
             // Assert
             Assert.NotNull(result);
@@ -94,7 +92,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockLogger.Verify(x =>
             x.Log(LogLevel.Error, It.IsAny<EventId>(),
             It.Is<It.IsAnyType>((v, t) =>
-            v.ToString().Contains("Erro ao efetuar o Refresh: Inválido Refresh")),
+            (v.ToString() ?? string.Empty).Contains("Erro ao efetuar o Refresh: Inválido Refresh")),
             null,
             It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
         }
@@ -123,7 +121,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockLogger.Verify(x =>
             x.Log(LogLevel.Error, It.IsAny<EventId>(),
             It.Is<It.IsAnyType>((v, t) =>
-            v.ToString().Contains("Erro ao efetuar o Refresh")),
+            (v.ToString() ?? string.Empty).Contains("Erro ao efetuar o Refresh")),
             null,
             It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
 
@@ -156,7 +154,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockLogger.Verify(x =>
             x.Log(LogLevel.Error, It.IsAny<EventId>(),
             It.Is<It.IsAnyType>((v, t) =>
-            v.ToString().Contains("Erro ao efetuar o Refresh")),
+            (v.ToString() ?? string.Empty).Contains("Erro ao efetuar o Refresh")),
             null,
             It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
         }
@@ -175,7 +173,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             var principal = new ClaimsPrincipal(new ClaimsIdentity(claims));
 
             _mockTokenServices.Setup(s => s.GetPrincipalFromExpiredToken(input.token)).Returns(principal);
-            _mockTokenServices.Setup(s => s.GetRefreshToken("nonexistentuser")).Returns((string)null);
+            _mockTokenServices.Setup(s => s.GetRefreshToken("nonexistentuser")).Returns(string.Empty);
 
             // Act
             var result = _controller.Refresh(input).Result as BadRequestObjectResult;
@@ -188,7 +186,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockLogger.Verify(x =>
             x.Log(LogLevel.Error, It.IsAny<EventId>(),
             It.Is<It.IsAnyType>((v, t) =>
-            v.ToString().Contains("Erro ao efetuar o Refresh")),
+            (v.ToString() ?? string.Empty).Contains("Erro ao efetuar o Refresh")),
             null,
             It.IsAny<Func<It.IsAnyType, Exception?, string>>()), Times.Once);
         }

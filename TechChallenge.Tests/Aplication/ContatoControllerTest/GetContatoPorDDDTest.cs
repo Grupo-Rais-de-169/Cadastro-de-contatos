@@ -56,14 +56,15 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
             _contatoService.Setup(service => service.GetContatoByDDD(ddd)).ReturnsAsync(contatos);
 
             // Act
-            var result = await _controller.GetContatoPorDDD(ddd) as NotFoundObjectResult;
+            var resultPadrao = new NotFoundObjectResult(new { message = "Erro de validação" });
+            NotFoundObjectResult result = await _controller.GetContatoPorDDD(ddd) as NotFoundObjectResult?? resultPadrao;
             var json = JsonSerializer.Serialize(result.Value);
-            dynamic response = JsonSerializer.Deserialize<ExpandoObject>(json);
+            dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(404, result.StatusCode);
-            Assert.Equal("Não foi encontrado contatos com o DDD informado", response.message.GetString());
+            Assert.Equal("Não foi encontrado contatos com o DDD informado", response?.message.GetString());
         }
     }
 }

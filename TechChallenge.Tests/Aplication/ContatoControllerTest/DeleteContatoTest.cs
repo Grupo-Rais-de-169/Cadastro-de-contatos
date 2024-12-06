@@ -55,8 +55,8 @@ namespace TechChallenge.Tests.Aplication.ContatoControllerTest
             Assert.Equal(404, result.StatusCode); // Not Found
 
             var json = JsonSerializer.Serialize(result.Value);
-            dynamic response = JsonSerializer.Deserialize<ExpandoObject>(json);
-            Assert.Equal("Contato não encontrado", response.message.GetString());
+            dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
+            Assert.Equal("Contato não encontrado", response?.message.GetString());
         }
     }
 }

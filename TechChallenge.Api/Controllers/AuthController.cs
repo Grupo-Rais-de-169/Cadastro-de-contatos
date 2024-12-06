@@ -4,7 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using TechChallenge.Api.Services;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Models;
-using TechChallenge.Infra.Context;
 
 namespace TechChallenge.Api.Controllers
 {
@@ -25,7 +24,7 @@ namespace TechChallenge.Api.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult<dynamic> Login([FromBody] AuthRequestModel authValidate)
+        public ActionResult<dynamic> Login([FromBody] AuthRequestModel? authValidate)
         {
             try
             {
