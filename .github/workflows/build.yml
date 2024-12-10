@@ -57,8 +57,8 @@ jobs:
           /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           /d:sonar.cs.opencover.reportsPaths=coverage.xml
           dotnet build --no-incremental
-          coverlet .\TechChallenge.Tests\bin\Debug\net8.0\TechChallenge.Tests.dll 
-          --targetargs "test --no-build" 
+          coverlet .\TechChallenge.Tests\bin\Debug\net8.0\TechChallenge.Tests.dll
+          --target "dotnet" 
           -f=opencover 
           -o="coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
