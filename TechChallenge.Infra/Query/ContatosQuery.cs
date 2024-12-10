@@ -15,7 +15,7 @@
 
         public static string GetContatoByDDD(int id)
         {
-            string query = @"SELECT  ""Id"",""Nome"", ""Email"", ""Telefone"", ""IdDDD"" DDD FROM ""Contatos""  where ""IdDDD"" = @Id";
+            string query = @"SELECT  * FROM ""Contatos""  where ""IdDDD"" = @Id";
             return query;
         }
     }

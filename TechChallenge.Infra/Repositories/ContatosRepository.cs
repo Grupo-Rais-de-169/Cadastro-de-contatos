@@ -22,11 +22,11 @@ namespace TechChallenge.Infra.Repositories
             return await connection.QueryAsync<CodigoDeArea>(query, new { Id = id });
         }
 
-        public async Task<IEnumerable<ContatoDto>> GetContatoByDDD(int id)
+        public async Task<IEnumerable<Contato>> GetContatoByDDD(int id)
         {
             using var connection = _dbProvider.GetConnection();
             var query = ContatosQuery.GetContatoByDDD(id);
-            return await connection.QueryAsync<ContatoDto>(query, new { Id = id });
+            return await connection.QueryAsync<Contato>(query, new { Id = id });
         }
     }
 }
