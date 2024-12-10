@@ -11,6 +11,7 @@ using TechChallenge.Domain.Utils;
 using AutoMapper;
 using TechChallenge.Domain.Services;
 using TechChallenge.Domain;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace TechChallenge.Tests.Domain.Services
 {
@@ -20,16 +21,20 @@ namespace TechChallenge.Tests.Domain.Services
         private readonly Mock<ICodigoDeAreaRepository> _mockCodigoAreaRepository;
         private readonly Mock<IMapper> _mockMapper;
         private readonly IContatoService _contatoService;
+        private readonly Mock<IMemoryCache> _mockMemoryCache;
 
         public ContatoServiceTests()
         {
             _mockContatosRepository = new Mock<IContatosRepository>();
             _mockCodigoAreaRepository = new Mock<ICodigoDeAreaRepository>();
+            _mockMemoryCache = new Mock<IMemoryCache>();
             _mockMapper = new Mock<IMapper>();
             _contatoService = new ContatoService(
                 _mockMapper.Object,
                 _mockContatosRepository.Object,
-                _mockCodigoAreaRepository.Object
+                _mockCodigoAreaRepository.Object,
+                _mockMemoryCache.Object
+                
             );
         }
 

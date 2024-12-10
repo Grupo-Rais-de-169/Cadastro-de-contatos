@@ -50,8 +50,21 @@ namespace TechChallenge.Domain.Services
 
         public async Task<IList<ContatoDto>> GetAllAsync()
         {
+            var contatos = _cache.GetOrCreate("ContatosAsync", entry =>
+            {
+                entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
+                try
+                {
+                    return _contatosRepository.GetAllAsync();
+                }
+                catch (Exception)
+                {
 
-            return _mapper.Map<List<ContatoDto>>(await _contatosRepository.GetAllAsync());
+                    throw;
+                }
+            });
+
+            return _mapper.Map<List<ContatoDto>>(contatos);
         }
 
         public async Task<ContatoDto> GetByIdAsync(int id)
