@@ -1,4 +1,4 @@
-# Tech Challenge - 1ª Parte
+# Tech Challenge - 1ª Parte.
 Tech Challenge é o projeto da fase que engloba os conhecimentos obtidos em todas as disciplinas dela. Esta é uma atividade que, a princípio, deve ser desenvolvida em grupo. É importante atentar-se ao prazo de entrega, uma vez que essa atividade é obrigatória e vale 90% da nota de todas as disciplinas da fase.
 
 
