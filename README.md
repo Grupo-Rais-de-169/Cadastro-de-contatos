@@ -27,6 +27,7 @@ O foco principal é a qualidade do código, as boas práticas de desenvolvimento
 ## Representação Gráfica das Tecnologias utilizadas
 <img src="asset/img-DDD.png">
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=grupo-tech-challenge_grupo-tech-challenge-v2&token=c7090ab9d28c06206e715f234974dc8309bc02e4)](https://sonarcloud.io/summary/new_code?id=grupo-tech-challenge_grupo-tech-challenge-v2)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=grupo-tech-challenge_grupo-tech-challenge-v2&metric=alert_status&token=c7090ab9d28c06206e715f234974dc8309bc02e4)](https://sonarcloud.io/summary/new_code?id=grupo-tech-challenge_grupo-tech-challenge-v2)
 [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=grupo-tech-challenge_grupo-tech-challenge-v2)
 
