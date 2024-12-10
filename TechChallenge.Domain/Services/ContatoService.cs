@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Caching.Memory;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Domain.Model;
@@ -12,12 +13,14 @@ namespace TechChallenge.Domain.Services
         private readonly IContatosRepository _contatosRepository;
         private readonly ICodigoDeAreaRepository _codigoAreaRepository;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _cache;
 
-        public ContatoService(IMapper Mapper, IContatosRepository ContatosRepository, ICodigoDeAreaRepository codigoAreaRepository)
+        public ContatoService(IMapper Mapper, IContatosRepository ContatosRepository, ICodigoDeAreaRepository codigoAreaRepository, IMemoryCache cache)
         {
             _mapper = Mapper;
             _contatosRepository = ContatosRepository;            
             _codigoAreaRepository = codigoAreaRepository;
+            _cache = cache;
         }
         public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)
         {
@@ -29,11 +32,25 @@ namespace TechChallenge.Domain.Services
         }
         public IList<ContatoDto> GetAll()
         {
-            return _mapper.Map<List<ContatoDto>>(_contatosRepository.GetAll());
+            var contatos = _cache.GetOrCreate("Contatos", entry => 
+            {
+                entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
+                try
+                {
+                    return _contatosRepository.GetAll();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            });
+            return _mapper.Map<List<ContatoDto>>(contatos);
+
         }
 
         public async Task<IList<ContatoDto>> GetAllAsync()
         {
+
             return _mapper.Map<List<ContatoDto>>(await _contatosRepository.GetAllAsync());
         }
 
