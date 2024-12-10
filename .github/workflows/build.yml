@@ -53,7 +53,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"grupo-tech-challenge_grupo-tech-challenge-v2" /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"grupo-tech-challenge_grupo-tech-challenge-v2" /o:"grupo-tech-challenge" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml /d:sonar.scanner.scanAll=false
           dotnet build --no-incremental
           coverlet .\TechChallenge.Tests\bin\Debug\net8.0\TechChallenge.Tests.dll
           -f=opencover 
