@@ -58,7 +58,6 @@ jobs:
           /d:sonar.cs.opencover.reportsPaths=coverage.xml
           dotnet build --no-incremental
           coverlet .\TechChallenge.Tests\bin\Debug\net8.0\TechChallenge.Tests.dll 
-          --target "dotnet" 
           --targetargs "test --no-build" 
           -f=opencover 
           -o="coverage.xml"
