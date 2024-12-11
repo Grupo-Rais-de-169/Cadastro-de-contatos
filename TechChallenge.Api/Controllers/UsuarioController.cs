@@ -49,7 +49,7 @@ namespace TechChallenge.Api.Controllers
         /// Cria um novo usuário.
         /// </summary>
         /// <param name="usuario">Dados do usuário a ser criado.</param>
-        [HttpPost]
+        [HttpPost("Create")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)] 
         [Authorize(Roles = "admin")]
@@ -72,7 +72,7 @@ namespace TechChallenge.Api.Controllers
         /// Altera um usuário existente.
         /// </summary>
         /// <param name="usuario">Dados do usuário a serem atualizados.</param>
-        [HttpPut]
+        [HttpPut("Update")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)] 
         [ProducesResponseType(404)] 

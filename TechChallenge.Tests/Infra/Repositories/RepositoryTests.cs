@@ -20,6 +20,7 @@ namespace TechChallenge.Tests.Infra.Repositories
     {
         private readonly MainContext _context;
         private readonly Repository<EntityBase> _repository;
+        private readonly Mock<IDbContextFactory<MainContext>> _contextTeste;
 
         public RepositoryTests()
         {
@@ -27,7 +28,9 @@ namespace TechChallenge.Tests.Infra.Repositories
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
 
-            _context = new MainContext(options);
+            _contextTeste = new Mock<IDbContextFactory<MainContext>>();
+
+            _context = new MainContext(options, _contextTeste.Object);
             _repository = new Repository<EntityBase>(_context);
         }
 
