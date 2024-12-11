@@ -1,14 +1,102 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\",
+  "WorkspaceRootPath": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\techchallenge.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\infra\\repositories\\repositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\infra\\repositories\\repositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\users\\luizmarinho.brq\\desktop\\estudo\\pos fiap\\fase1\\challenge\\cadastro-de-contatos\\techchallenge.api\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.infra\\context\\maincontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\context\\maincontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\domain\\services\\contatoservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\domain\\services\\contatoservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.domain\\services\\contatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|solutionrelative:techchallenge.domain\\services\\contatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\contatocontrollertest\\getcontatopordddtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\contatocontrollertest\\getcontatopordddtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\contatocontrollertest\\deletecontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\contatocontrollertest\\deletecontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\contatocontrollertest\\createcontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\contatocontrollertest\\createcontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\contatocontrollertest\\alterarcontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\contatocontrollertest\\alterarcontatotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\configuration\\jwtconfigurationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\configuration\\jwtconfigurationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\authcontrollertest\\refreshtokentest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\authcontrollertest\\refreshtokentest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\aplication\\authcontrollertest\\logintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\aplication\\authcontrollertest\\logintests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\controllers\\contatocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\contatocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.infra\\query\\contatosquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\query\\contatosquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.infra\\repositories\\contatosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\repositories\\contatosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\techchallenge.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\techchallenge.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.domain\\interfaces\\repositories\\icontatosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|solutionrelative:techchallenge.domain\\interfaces\\repositories\\icontatosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.infra\\mapping\\contatomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\mapping\\contatomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.infra\\mapping\\codigodeareamap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\mapping\\codigodeareamap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4E6AD80-0E1E-4E7B-A00B-913D390DDDAB}|TechChallenge.Api\\TechChallenge.Api.csproj|solutionrelative:techchallenge.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\fiap\\techchallenge\\grupo-rais-de-169\\cadastro-de-contatos\\techchallenge.tests\\testresults\\coverage.opencover.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\testresults\\coverage.opencover.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +106,310 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainContext.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Context\\MainContext.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Infra\\Context\\MainContext.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Context\\MainContext.cs",
+              "RelativeToolTip": "TechChallenge.Infra\\Context\\MainContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T20:20:09.688Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TokenServices.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\TechChallenge.Api\\Services\\TokenServices.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Services\\TokenServices.cs",
               "RelativeDocumentMoniker": "TechChallenge.Api\\Services\\TokenServices.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\TechChallenge.Api\\Services\\TokenServices.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Services\\TokenServices.cs",
               "RelativeToolTip": "TechChallenge.Api\\Services\\TokenServices.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAhwHEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwHoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T19:51:59.464Z",
+              "WhenOpened": "2024-12-11T20:11:15.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetContatoPorDDDTest.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\GetContatoPorDDDTest.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\GetContatoPorDDDTest.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\GetContatoPorDDDTest.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\GetContatoPorDDDTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T06:07:28.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ContatoServiceTests.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAowLAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T20:53:10.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\luizmarinho.brq\\Desktop\\Estudo\\POS FIAP\\Fase1\\Challenge\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "TechChallenge.Api\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAABoAAAAkAAAAAAAAAA==",
+              "Title": "RepositoryTests.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAzwK0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T19:50:00.252Z",
+              "WhenOpened": "2024-12-11T20:03:48.215Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeleteContatoTest.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\DeleteContatoTest.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\DeleteContatoTest.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\DeleteContatoTest.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\DeleteContatoTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T06:07:27.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateContatoTest.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\CreateContatoTest.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\CreateContatoTest.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\CreateContatoTest.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\CreateContatoTest.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAlwEMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:11:01.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ContatoService.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\ContatoService.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Domain\\Services\\ContatoService.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\ContatoService.cs",
+              "RelativeToolTip": "TechChallenge.Domain\\Services\\ContatoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T20:49:54.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AlterarContatoTest.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\AlterarContatoTest.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\AlterarContatoTest.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\ContatoControllerTest\\AlterarContatoTest.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\ContatoControllerTest\\AlterarContatoTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T06:07:24.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RefreshTokenTest.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\AuthControllerTest\\RefreshTokenTest.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\AuthControllerTest\\RefreshTokenTest.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\AuthControllerTest\\RefreshTokenTest.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\AuthControllerTest\\RefreshTokenTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T00:38:07.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginTests.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\AuthControllerTest\\LoginTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\AuthControllerTest\\LoginTests.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\AuthControllerTest\\LoginTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\AuthControllerTest\\LoginTests.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwEgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T20:04:48.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T00:03:26.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "JwtConfigurationTests.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\Configuration\\JwtConfigurationTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Aplication\\Configuration\\JwtConfigurationTests.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\Aplication\\Configuration\\JwtConfigurationTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Aplication\\Configuration\\JwtConfigurationTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T20:01:36.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ContatoController.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\ContatoController.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\ContatoController.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\ContatoController.cs",
+              "RelativeToolTip": "TechChallenge.Api\\Controllers\\ContatoController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA1wD8AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:10:34.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ContatoMap.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Mapping\\ContatoMap.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Infra\\Mapping\\ContatoMap.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Mapping\\ContatoMap.cs",
+              "RelativeToolTip": "TechChallenge.Infra\\Mapping\\ContatoMap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:08:31.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TechChallenge.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:36:40.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ContatosRepository.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Repositories\\ContatosRepository.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Infra\\Repositories\\ContatosRepository.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Repositories\\ContatosRepository.cs",
+              "RelativeToolTip": "TechChallenge.Infra\\Repositories\\ContatosRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:09:38.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ContatosQuery.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Query\\ContatosQuery.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Infra\\Query\\ContatosQuery.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Query\\ContatosQuery.cs",
+              "RelativeToolTip": "TechChallenge.Infra\\Query\\ContatosQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:09:10.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CodigoDeAreaMap.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Mapping\\CodigoDeAreaMap.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Infra\\Mapping\\CodigoDeAreaMap.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Infra\\Mapping\\CodigoDeAreaMap.cs",
+              "RelativeToolTip": "TechChallenge.Infra\\Mapping\\CodigoDeAreaMap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T20:56:50.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IContatosRepository.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Repositories\\IContatosRepository.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Domain\\Interfaces\\Repositories\\IContatosRepository.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Repositories\\IContatosRepository.cs",
+              "RelativeToolTip": "TechChallenge.Domain\\Interfaces\\Repositories\\IContatosRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T21:21:33.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TechChallenge.Api",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\TechChallenge.Api.csproj",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\TechChallenge.Api.csproj",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\TechChallenge.Api.csproj",
+              "RelativeToolTip": "TechChallenge.Api\\TechChallenge.Api.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-10T21:30:41.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\appsettings.json",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\appsettings.json",
+              "RelativeToolTip": "TechChallenge.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-10T21:32:57.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Api\\Program.cs",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Api\\Program.cs",
+              "RelativeToolTip": "TechChallenge.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T02:36:07.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "coverage.opencover.xml",
+              "DocumentMoniker": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\TestResults\\coverage.opencover.xml",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\TestResults\\coverage.opencover.xml",
+              "ToolTip": "C:\\FIAP\\TechChallenge\\Grupo-Rais-de-169\\Cadastro-de-contatos\\TechChallenge.Tests\\TestResults\\coverage.opencover.xml",
+              "RelativeToolTip": "TechChallenge.Tests\\TestResults\\coverage.opencover.xml",
+              "ViewState": "AgIAAMIKAAAAAAAAAAAUwMsKAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2024-12-09T23:59:59.358Z"
             }
           ]
         }

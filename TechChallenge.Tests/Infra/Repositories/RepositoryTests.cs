@@ -21,13 +21,13 @@ namespace TechChallenge.Tests.Infra.Repositories
         private readonly MainContext _context;
         private readonly Repository<EntityBase> _repository;
 
-        public RepositoryTests(MainContext context)
+        public RepositoryTests()
         {
             var options = new DbContextOptionsBuilder<MainContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
 
-            _context = context;
+            _context = new MainContext(options);
             _repository = new Repository<EntityBase>(_context);
         }
 
@@ -77,9 +77,9 @@ namespace TechChallenge.Tests.Infra.Repositories
             _context.SaveChanges();
 
             // Act
-            _context.Set<EntityBase>().Remove(entity); 
-            entity.Id = 2; 
-            _context.Set<EntityBase>().Add(entity); 
+            _context.Set<EntityBase>().Remove(entity);
+            entity.Id = 2;
+            _context.Set<EntityBase>().Add(entity);
             _context.SaveChanges();
 
             // Assert
@@ -108,7 +108,7 @@ namespace TechChallenge.Tests.Infra.Repositories
             // Arrange
             var entity = CreateEntity(1);
             _context.Set<EntityBase>().Add(entity);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
 
             // Act
             var result = _repository.GetById(1);
@@ -123,7 +123,7 @@ namespace TechChallenge.Tests.Infra.Repositories
             // Arrange
             var entity = CreateEntity(1);
             _context.Set<EntityBase>().Add(entity);
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
 
             // Act
             var result = await _repository.GetByIdAsync(1);
@@ -142,7 +142,7 @@ namespace TechChallenge.Tests.Infra.Repositories
             CreateEntity(2)
         };
             _context.Set<EntityBase>().AddRange(entities);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
 
             // Act
             var result = _repository.GetAll();
