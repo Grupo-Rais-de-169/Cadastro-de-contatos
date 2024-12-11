@@ -15,8 +15,8 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
     {
         private readonly Mock<ITokenServices> _mockTokenServices;
         private readonly Mock<ILogger<AuthController>> _mockLogger;
-        private readonly AuthController _controller;
         private readonly Mock<IConfiguration> _mockConfiguration;
+        private readonly AuthController _controller;
 
         public LoginTests()
         {

@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TechChallenge.Api.Controllers;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Entities;
 using TechChallenge.Infra.Context;
