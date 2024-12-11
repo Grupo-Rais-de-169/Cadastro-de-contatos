@@ -5,20 +5,25 @@ using System.Security.Cryptography;
 using System.Text;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Interfaces.Repositories;
+using TechChallenge.Domain.Interfaces.Services;
 
 namespace TechChallenge.Api.Services
 {
-    public class TokenServices: ITokenServices
+    public class TokenServices : ITokenServices
     {
         private readonly string _token;
         private readonly List<(string, string)> _refreshTokens = new();
         private readonly IAuthRepositories _authRepositories;
+        private readonly IPasswordService _passwordService;
 
 
-        public TokenServices(IConfiguration config, IAuthRepositories authRepositories)
+        public TokenServices(IConfiguration config, 
+                            IAuthRepositories authRepositories, 
+                            IPasswordService passwordService)
         {
             _token = config["Jwt:Key"] ?? throw new ArgumentException("Jwt:Key está vazia");
             _authRepositories = authRepositories;
+            _passwordService = passwordService;
         }
 
         public string GenerateToken(Usuario validate)
@@ -103,6 +108,15 @@ namespace TechChallenge.Api.Services
             _refreshTokens.Remove(item);
         }
 
-        public Usuario? GetUserByLoginAndPassword(string login, string password) => _authRepositories.GetConfirmLoginAndPassword(login, password).Result;
+        public Usuario? GetUserByLoginAndPassword(string login, string password)
+        {
+            
+            var usuario = _authRepositories.GetConfirmLoginAndPassword(login).Result;
+            
+            if (usuario != null && !_passwordService.VerificarSenha(password, usuario.Senha))
+                return null;
+
+            return usuario;
+        }
     }
 }

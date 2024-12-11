@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TechChallenge.Domain.Model;
+using TechChallenge.Domain.Model.DTO;
 using TechChallenge.Domain.Model.ViewModel;
 
 namespace TechChallenge.Domain.Config
@@ -12,9 +13,12 @@ namespace TechChallenge.Domain.Config
             {
                 config.CreateMap<Contato, ContatoDto>().ReverseMap();
                 config.CreateMap<ContatoInclusaoViewModel, Contato>()
-            // Ignorar o mapeamento da propriedade 'Ddd' (do tipo 'CodigoDeArea')
-            .ForMember(dest => dest.Ddd, opt => opt.Ignore())
-            .ReverseMap();
+                .ForMember(dest => dest.Ddd, opt => opt.Ignore())
+                .ReverseMap();
+
+                config.CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+                config.CreateMap<Usuario, UsuarioInclusaoViewModel>().ReverseMap();
+
             });
             return MappingConfig;
         }

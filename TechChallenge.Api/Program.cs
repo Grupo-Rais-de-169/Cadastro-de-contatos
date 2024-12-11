@@ -27,9 +27,13 @@ builder.Services
     .AddScoped<ITokenServices, TokenServices>()
     .AddScoped<IAuthService, AuthService>()
     .AddScoped<IAuthRepositories, AuthRepositories>()
+    .AddScoped<IUsuarioService, UsuarioService>()
     .AddScoped<IContatoService, ContatoService>()
+    .AddScoped<IPasswordService, PasswordService>()
     .AddScoped<IContatosRepository, ContatosRepository>()
     .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
+    .AddScoped<IUsuarioRepository, UsuarioRepository>()
+    .AddScoped<IPermissaoRepository, PermissaoRepository>()
     .AddSingleton<DbConnectionProvider>();
 #endregion
 

@@ -23,8 +23,8 @@ namespace TechChallenge.Api.Controllers
         /// <param name="ddd">Código DDD para buscar contatos.</param>
         /// <returns>Lista de contatos associados ao DDD informado.</returns>
         [HttpGet("GetContatoPorDDD/{ddd}")]
-        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)] // Sucesso
-        [ProducesResponseType(404)] // Nenhum contato encontrado
+        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> GetContatoPorDDD(int ddd)
         {
             var contatos = await _contatoService.GetContatoByDDD(ddd);
@@ -40,8 +40,8 @@ namespace TechChallenge.Api.Controllers
         /// <param name="ddd">Código DDD para buscar contatos.</param>
         /// <returns>Lista de contatos associados ao DDD informado.</returns>
         [HttpGet("GetAllContatos")]
-        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)] // Sucesso
-        [ProducesResponseType(404)] // Nenhum contato encontrado
+        [ProducesResponseType(typeof(IEnumerable<ContatoDto>), 200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> GetContatoAll() => Ok(await _contatoService.GetAllAsync());
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace TechChallenge.Api.Controllers
         /// </summary>
         /// <param name="contato">Dados do contato a ser criado.</param>
         [HttpPost]
-        [ProducesResponseType(201)] // Criado com sucesso
-        [ProducesResponseType(400)] // Dados inválidos
+        [ProducesResponseType(201)] 
+        [ProducesResponseType(400)] 
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> CriaContato([FromBody] ContatoInclusaoViewModel contato)
         {
@@ -72,9 +72,9 @@ namespace TechChallenge.Api.Controllers
         /// </summary>
         /// <param name="contato">Dados do contato a serem atualizados.</param>
         [HttpPut]
-        [ProducesResponseType(204)] // Alterado com sucesso
-        [ProducesResponseType(400)] // Dados inválidos
-        [ProducesResponseType(404)] // Contato não encontrado
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)] 
+        [ProducesResponseType(404)] 
         [Authorize(Roles = "admin")]
         public IActionResult AlteraContato([FromBody] ContatoAlteracaoViewModel contato)
         {
@@ -96,9 +96,9 @@ namespace TechChallenge.Api.Controllers
         /// </summary>
         /// <param name="id">ID do contato a ser excluído.</param>
         [HttpDelete("{id}")]
-        [ProducesResponseType(204)] // Excluído com sucesso
-        [ProducesResponseType(404)] // Contato não encontrado
-        [ProducesResponseType(400)] // BadRequest
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
         [Authorize(Roles = "admin")]
         public IActionResult DeleteContato(int id = -1)
         {

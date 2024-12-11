@@ -21,12 +21,6 @@ namespace TechChallenge.Infra.Context
             _context = context;
         }
 
-        public MainContext(DbContextOptions<MainContext> options) : base(options)
-        {
-
-        }
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var extension = optionsBuilder.Options.FindExtension<RelationalOptionsExtension>();

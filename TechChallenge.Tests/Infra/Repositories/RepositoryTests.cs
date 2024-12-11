@@ -21,13 +21,13 @@ namespace TechChallenge.Tests.Infra.Repositories
         private readonly MainContext _context;
         private readonly Repository<EntityBase> _repository;
 
-        public RepositoryTests()
+        public RepositoryTests(MainContext context)
         {
             var options = new DbContextOptionsBuilder<MainContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
 
-            _context = new MainContext(options);
+            _context = context;
             _repository = new Repository<EntityBase>(_context);
         }
 

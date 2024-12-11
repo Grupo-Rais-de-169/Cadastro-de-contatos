@@ -13,11 +13,11 @@ namespace TechChallenge.Infra.Repositories
             _mainContext = mainContext;
         }
 
-        public Task<Usuario?> GetConfirmLoginAndPassword(string username, string password)
+        public Task<Usuario?> GetConfirmLoginAndPassword(string username)
         {
             try
             {
-                var user = _mainContext.Usuarios.Include(c=>c.Permissao).FirstOrDefault(u => u.Login == username && u.Senha == password);
+                var user = _mainContext.Usuarios.Include(c=>c.Permissao).FirstOrDefault(u => u.Login == username);
                 return Task.FromResult(user);
 
             }
