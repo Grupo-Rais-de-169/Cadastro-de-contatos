@@ -15,17 +15,16 @@ namespace TechChallenge.Infra.Context
         public DbSet<Contato> Contatos { get; set; }
         public DbSet<CodigoDeArea> CodigosDeArea { get; set; }
 
-        public MainContext(DbContextOptions<MainContext> options, IDbContextFactory<MainContext> context) : base(options)
-        {
-            Database.SetCommandTimeout(1000);
-            _context = context;
-        }
-
         public MainContext(DbContextOptions<MainContext> options) : base(options)
         {
 
         }
 
+        public MainContext(DbContextOptions<MainContext> options, IDbContextFactory<MainContext> context) : base(options)
+        {
+            Database.SetCommandTimeout(1000);
+            _context = context;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

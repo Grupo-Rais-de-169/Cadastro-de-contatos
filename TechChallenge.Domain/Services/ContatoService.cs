@@ -50,12 +50,12 @@ namespace TechChallenge.Domain.Services
 
         public async Task<IList<ContatoDto>> GetAllAsync()
         {
-            var contatos = _cache.GetOrCreate("ContatosAsync", entry =>
+            var contatos = await _cache.GetOrCreateAsync("ContatosAsync", async entry =>
             {
                 entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
                 try
                 {
-                    return _contatosRepository.GetAllAsync();
+                    return await _contatosRepository.GetAllAsync();
                 }
                 catch (Exception)
                 {
@@ -81,6 +81,7 @@ namespace TechChallenge.Domain.Services
                 return Result.Failure("O DDD informado não existe.");
 
             await _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
+            DeletaCache();
             return Result.Success();
         }
 
@@ -90,6 +91,7 @@ namespace TechChallenge.Domain.Services
                 return Result.Failure("O DDD informado não existe.");
 
              _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
+            DeletaCache();
             return Result.Success();
         }
         public Result Update(ContatoAlteracaoViewModel contatoModel)
@@ -97,6 +99,8 @@ namespace TechChallenge.Domain.Services
             var contato = _contatosRepository.GetById(contatoModel.Id);
             if (contato == null)
                 return Result.Failure("Contato não encontrado!");
+            if (!DDDExiste(contatoModel.IdDDD))
+                return Result.Failure("O DDD informado não existe.");
 
             contato.Nome = contatoModel.Nome;
             contato.Email = contatoModel.Email;
@@ -104,6 +108,7 @@ namespace TechChallenge.Domain.Services
             contato.IdDDD = contatoModel.IdDDD;
 
             _contatosRepository.Update(contato);
+            DeletaCache();
             return Result.Success();
         }
 
@@ -113,12 +118,19 @@ namespace TechChallenge.Domain.Services
             if (contato == null)
                 return Result.Failure("Contato não encontrado!");
             _contatosRepository.Delete(id);
+            DeletaCache();
             return Result.Success();
         }
 
         private bool DDDExiste(int ddd)
         {
            return  _codigoAreaRepository.GetById(ddd) != null;
+        }
+
+        private void DeletaCache()
+        {
+            _cache.Remove("Contatos");
+            _cache.Remove("ContatosAsync");
         }
     }
 }

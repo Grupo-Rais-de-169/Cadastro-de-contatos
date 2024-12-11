@@ -4,7 +4,7 @@ using TechChallenge.Domain;
 
 namespace TechChallenge.Infra.Mapping
 {
-    internal class ContatoMap : IEntityTypeConfiguration<Contato>
+    public class ContatoMap : IEntityTypeConfiguration<Contato>
     {
         public void Configure(EntityTypeBuilder<Contato> builder)
         {

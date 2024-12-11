@@ -2,6 +2,7 @@
 using TechChallenge.Domain.Entities;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Infra.Context;
+using static Dapper.SqlMapper;
 
 namespace TechChallenge.Infra.Repositories
 {
@@ -54,6 +55,8 @@ namespace TechChallenge.Infra.Repositories
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 
         public void SaveChanges() => _context.SaveChanges();
+
+        public IQueryable<T> GetAllAsNoTracking() => _context.Set<T>().AsNoTracking();
 
     }
 }

@@ -18,7 +18,7 @@ namespace TechChallenge.Domain.Services
         }
         public async Task<Usuario?> GetConfirmLoginAndPassword(string username, string password)
         {
-            return await _authRepositories.GetConfirmLoginAndPassword(username, password);
+            return await _authRepositories.GetConfirmLoginAndPassword(username);
         }
     }
 }

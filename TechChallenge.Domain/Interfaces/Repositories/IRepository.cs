@@ -14,5 +14,6 @@ namespace TechChallenge.Domain.Interfaces.Repositories
         void Delete(int id);
         Task SaveChangesAsync();
         void SaveChanges();
+        IQueryable<T> GetAllAsNoTracking();
     }
 }
