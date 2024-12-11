@@ -42,24 +42,18 @@ namespace TechChallenge.Infra.Repositories
         }
 
 
-        public T GetById(int id)
-            => _dbSet.FirstOrDefault(x => x.Id == id);
+        public T GetById(int id) => _dbSet.FirstOrDefault(x => x.Id == id);
 
-        public async Task<T> GetByIdAsync(int id)
-            => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<T> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
 
 
-        public IList<T> GetAll()
-            => _dbSet.ToList();
+        public IList<T> GetAll() => _dbSet.ToList();
 
-        public async Task<IList<T>> GetAllAsync()
-            => await _dbSet.ToListAsync();
+        public async Task<IList<T>> GetAllAsync() => await _dbSet.ToListAsync();
 
-        public async Task SaveChangesAsync()
-    =>      await _context.SaveChangesAsync();
+        public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 
-        public void SaveChanges()
-=>       _context.SaveChanges();
+        public void SaveChanges() => _context.SaveChanges();
 
     }
 }
