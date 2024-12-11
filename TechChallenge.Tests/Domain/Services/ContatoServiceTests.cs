@@ -21,19 +21,19 @@ namespace TechChallenge.Tests.Domain.Services
         private readonly Mock<ICodigoDeAreaRepository> _mockCodigoAreaRepository;
         private readonly Mock<IMapper> _mockMapper;
         private readonly IContatoService _contatoService;
-        private readonly Mock<IMemoryCache> _mockMemoryCache;
+        private readonly IMemoryCache _memoryCache;
 
         public ContatoServiceTests()
         {
             _mockContatosRepository = new Mock<IContatosRepository>();
             _mockCodigoAreaRepository = new Mock<ICodigoDeAreaRepository>();
-            _mockMemoryCache = new Mock<IMemoryCache>();
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _mockMapper = new Mock<IMapper>();
             _contatoService = new ContatoService(
                 _mockMapper.Object,
                 _mockContatosRepository.Object,
                 _mockCodigoAreaRepository.Object,
-                _mockMemoryCache.Object
+                _memoryCache
                 
             );
         }
@@ -82,30 +82,98 @@ namespace TechChallenge.Tests.Domain.Services
             Assert.Equal(contatoDtos, result.ToList());
         }
 
-        //[Fact]
-        //public void GetAll_ShouldReturnMappedContatos()
-        //{
-        //    // Arrange
-        //    var contatos = new List<Contato> { new Contato { Id = 1, Nome = "Teste" } };
-        //    var contatoDtos = new List<ContatoDto> { new ContatoDto { Id = 1, Nome = "Teste" } };
-        //    _mockContatosRepository.Setup(repo => repo.GetAll()).Returns(contatos);
-        //    _mockMapper.Setup(mapper => mapper.Map<List<ContatoDto>>(contatos)).Returns(contatoDtos);
+        // =================
 
-        //    // Act
-        //    var result = _contatoService.GetAll();
+        [Fact]
+        public void GetAll_ShouldReturnContatosFromCache()
+        {
+            // Arrange
+            var contatosCache = new List<Contato> { new Contato { Id = 1, Nome = "Teste" } };
+            var contatoDtos = new List<ContatoDto> { new ContatoDto { Id = 1, Nome = "Teste" } };
+            _memoryCache.Set("Contatos", contatosCache);
+            _mockMapper.Setup(mapper => mapper.Map<List<ContatoDto>>(contatosCache))
+                       .Returns(contatoDtos);
 
-        //    // Assert
-        //    Assert.NotNull(result);
-        //    //Assert.Equal(contatoDtos, result);
-        //    Assert.Equal(contatoDtos.Count, result.Count);
-        //    for (int i = 0; i < contatoDtos.Count; i++)
-        //    {
-        //        Assert.Equal(contatoDtos[i].Id, result[i].Id);
-        //        Assert.Equal(contatoDtos[i].Nome, result[i].Nome);
-        //    }
-        //    _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
-        //    _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
-        //}
+            // Act
+            var result = _contatoService.GetAll();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(contatoDtos.Count, result.Count);
+            Assert.Equal(contatoDtos[0].Nome, result[0].Nome); 
+        }
+
+        [Fact]
+        public void GetAll_ShouldCallRepositoryIfCacheIsEmpty()
+        {
+            // Arrange
+            var contatos = new List<Contato> { new Contato { Id = 1, Nome = "Teste" } };
+            var contatoDtos = new List<ContatoDto> { new ContatoDto { Id = 1, Nome = "Teste" } };
+            _memoryCache.Remove("Contatos");
+            _mockContatosRepository.Setup(repo => repo.GetAll()).Returns(contatos);
+            _mockMapper.Setup(mapper => mapper.Map<List<ContatoDto>>(contatos))
+                       .Returns(contatoDtos);
+
+            // Act
+            var result = _contatoService.GetAll();
+
+            // Assert
+            Assert.NotNull(result); 
+            Assert.Equal(contatoDtos.Count, result.Count); 
+            Assert.Equal(contatoDtos[0].Nome, result[0].Nome); 
+
+            _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
+            _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
+            var cacheContatos = _memoryCache.Get<List<Contato>>("Contatos");
+            Assert.Equal(contatos, cacheContatos);
+        }
+
+        [Fact]
+        public void GetAll_ShouldThrowExceptionIfRepositoryFails()
+        {
+            // Arrange
+            _memoryCache.Remove("Contatos");
+            _mockContatosRepository.Setup(repo => repo.GetAll()).Throws(new Exception("Repository error"));
+
+            // Act & Assert
+            var exception = Assert.Throws<Exception>(() => _contatoService.GetAll());
+            Assert.Equal("Repository error", exception.Message);
+            _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
+            Assert.Null(_memoryCache.Get<List<Contato>>("Contatos"));
+        }
+
+
+
+
+
+        // =========================================================================================================================================================================
+
+        /*[Fact]
+        public void GetAll_ShouldReturnMappedContatos()
+        {
+            // Arrange
+            var contatos = new List<Contato> { new Contato { Id = 1, Nome = "Teste" } };
+            var contatoDtos = new List<ContatoDto> { new ContatoDto { Id = 1, Nome = "Teste" } };
+            _mockContatosRepository.Setup(repo => repo.GetAll()).Returns(contatos);
+            _mockMapper.Setup(mapper => mapper.Map<List<ContatoDto>>(contatos)).Returns(contatoDtos);
+
+            // Act
+            var result = _contatoService.GetAll();
+
+            // Assert
+            Assert.NotNull(result);
+            //Assert.Equal(contatoDtos, result);
+            Assert.Equal(contatoDtos.Count, result.Count);
+            for (int i = 0; i < contatoDtos.Count; i++)
+            {
+                Assert.Equal(contatoDtos[i].Id, result[i].Id);
+                Assert.Equal(contatoDtos[i].Nome, result[i].Nome);
+            }
+            _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
+            _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
+        }*/
+
+        // ==============================================================================================================================================================================
 
         [Fact]
         public async Task GetByIdAsync_ShouldReturnMappedContato_WhenIdExists()

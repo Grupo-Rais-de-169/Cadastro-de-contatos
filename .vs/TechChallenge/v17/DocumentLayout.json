@@ -105,19 +105,6 @@
           "SelectedChildIndex": 24,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IContatoService.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
-              "RelativeToolTip": "TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T22:52:58.545Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
@@ -195,6 +182,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IContatoService.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
+              "RelativeToolTip": "TechChallenge.Domain\\Interfaces\\Services\\IContatoService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T22:52:58.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
               "Title": "CodigoDeAreaRepository.cs",
               "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Infra\\Repositories\\CodigoDeAreaRepository.cs",
@@ -249,7 +249,7 @@
               "RelativeDocumentMoniker": "TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
               "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
               "RelativeToolTip": "TechChallenge.Tests\\Domain\\Services\\ContatoServiceTests.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAgwGsAAAALAAAA",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAowFsAAABhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T20:53:10.763Z",
               "EditorCaption": ""
@@ -275,7 +275,7 @@
               "RelativeDocumentMoniker": "TechChallenge.Domain\\Services\\ContatoService.cs",
               "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\ContatoService.cs",
               "RelativeToolTip": "TechChallenge.Domain\\Services\\ContatoService.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwCwAAAAJAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwDAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T20:49:54.576Z",
               "EditorCaption": ""

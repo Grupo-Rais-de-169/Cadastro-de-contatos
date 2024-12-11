@@ -64,7 +64,7 @@ namespace TechChallenge.Domain.Services
                 }
             });
 
-            return _mapper.Map<List<ContatoDto>>(contatos);
+            return await Task.FromResult(_mapper.Map<List<ContatoDto>>(contatos));
         }
 
         public async Task<ContatoDto> GetByIdAsync(int id)
