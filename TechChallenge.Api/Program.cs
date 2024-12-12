@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.OpenApi.Models;
 using NLog.Web;
 using TechChallenge.Api.Configuration;
 using TechChallenge.Api.Services;
@@ -38,7 +39,7 @@ builder.Services
 #endregion
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerConfiguration();
+//builder.Services.AddSwaggerConfiguration();
 builder.AddJwtConfiguration();
 
 builder.Logging.ClearProviders();
@@ -48,6 +49,47 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Api de Contatos",
+        Version = "v1",
+        Description = "Challenge realizado pelo grupo 13",
+        License = new OpenApiLicense
+        {
+            Name = "MIT",
+            Url = new Uri("https://opensource.org/licenses/MIT")
+        }
+    });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Insira o token JWT no campo. Exemplo: Bearer {seu token}",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        In = ParameterLocation.Header
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+});
+
+
+
 var app = builder.Build();
 var cache = app.Services.GetRequiredService<IMemoryCache>();
 
@@ -56,7 +98,16 @@ cache.Set("key", "value", new MemoryCacheEntryOptions
     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
 });
 
-app.UseSwaggerConfiguration();
+//app.UseSwaggerConfiguration();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseReDoc(c =>
+{
+    c.SpecUrl("/swagger/v1/swagger.json"); // URL do JSON do Swagger
+    c.DocumentTitle = "Documentação da API com ReDoc";
+    c.RoutePrefix = "redoc"; // ReDoc acessível em /redoc
+});
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()
