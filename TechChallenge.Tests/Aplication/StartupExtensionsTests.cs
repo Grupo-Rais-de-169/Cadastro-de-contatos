@@ -36,6 +36,5 @@ namespace TechChallenge.Tests.Aplication
             Assert.NotNull(app);
         }
     }
-
 }
 

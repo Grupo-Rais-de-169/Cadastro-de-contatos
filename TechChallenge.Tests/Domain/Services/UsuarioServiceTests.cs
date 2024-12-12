@@ -13,6 +13,7 @@ using TechChallenge.Domain.Services;
 using TechChallenge.Domain;
 using Microsoft.EntityFrameworkCore;
 using TechChallenge.Domain.Model.ViewModel;
+using TechChallenge.Domain.Model;
 
 namespace TechChallenge.Tests.Domain.Services
 {
@@ -23,7 +24,7 @@ namespace TechChallenge.Tests.Domain.Services
         private readonly Mock<IPasswordService> _mockPasswordService;
         private readonly Mock<IPermissaoRepository> _mockPermissaoRepository;
         private readonly Mock<IMapper> _mockMapper;
-        private readonly UsuarioService _usuarioService;
+        private readonly IUsuarioService _usuarioService;
         private readonly Mock<IUsuarioService> _mockUsuarioService;
 
         public UsuarioServiceTests()
@@ -43,6 +44,37 @@ namespace TechChallenge.Tests.Domain.Services
                 _mockPasswordService.Object,
                 _mockPermissaoRepository.Object
             );
+        }
+
+        [Fact]
+        public async Task GetAllAsync_ShouldReturnMappedContatos()
+        {
+            // Arrange
+            var usuarios = new List<Usuario> { new Usuario { Id = 1, Login = "teste@gmail.com", Senha = "Teste$123", PermissaoId = 1 } };
+            var usuarioDto = new List<UsuarioDTO> { new UsuarioDTO { Id = 1, Login = "teste@gmail.com", Senha = "Teste$123", PermissaoId = 1 } };
+            _mockUsuarioRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(usuarios);
+            _mockMapper.Setup(mapper => mapper.Map<List<UsuarioDTO>>(usuarios)).Returns(usuarioDto);
+
+            object cacheValue = null;
+            _mockCache.Setup(cache => cache.TryGetValue("UsuariosAsync", out cacheValue))
+                      .Returns(false); // Simula cache vazio inicialmente
+            _mockCache.Setup(cache => cache.CreateEntry(It.IsAny<object>()))
+                      .Returns(Mock.Of<ICacheEntry>());
+
+            // Act
+            var result = await _usuarioService.GetAllAsync();
+
+            // Assert
+            Assert.NotNull(result);
+
+            Assert.Equal(usuarioDto.Count, result.Count);
+            for (int i = 0; i < usuarioDto.Count; i++)
+            {
+                Assert.Equal(usuarioDto[i].Id, result[i].Id);
+                Assert.Equal(usuarioDto[i].Login, result[i].Login);
+            }
+            _mockUsuarioRepository.Verify(repo => repo.GetAllAsync(), Times.Once);
+            _mockMapper.Verify(mapper => mapper.Map<List<UsuarioDTO>>(usuarios), Times.Once);
         }
 
         [Fact]
@@ -120,6 +152,5 @@ namespace TechChallenge.Tests.Domain.Services
             Assert.True(result.IsSuccess);
             _mockUsuarioRepository.Verify(r => r.Delete(1), Times.Once);
         }
-
     }
 }
