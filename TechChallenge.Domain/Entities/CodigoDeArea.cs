@@ -6,6 +6,6 @@ namespace TechChallenge.Domain
     public class CodigoDeArea: EntityBase
     {
         public string Regiao { get; set; } = null!;
-        public virtual ICollection<Contato> Contatos { get; set; }
+        public virtual ICollection<Contato> Contatos { get; set; } = new List<Contato>();
     }
 }

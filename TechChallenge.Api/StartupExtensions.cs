@@ -85,6 +85,9 @@ namespace TechChallenge.Api
             return builder;
         }
 
+
+
+
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
             app.UseSwagger();
@@ -97,10 +100,7 @@ namespace TechChallenge.Api
                 c.RoutePrefix = "redoc";
             });
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            ConfigureCors(app);
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -108,6 +108,32 @@ namespace TechChallenge.Api
             app.MapControllers();
 
             return app;
+        }
+
+        private static void ConfigureCors(WebApplication app)
+        {
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseCors(corsPolicy =>
+                {
+                    corsPolicy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
+            }
+            else
+            {
+                app.UseCors(corsPolicy =>
+                {
+                    corsPolicy
+                        .WithOrigins("https://127.0.0.1", "http://172.0.0.1")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
+            }
         }
     }
 }

@@ -8,6 +8,6 @@ namespace TechChallenge.Domain
         [JsonPropertyName("funcao")]
         public string Funcao { get; set; } = null!;
         [JsonIgnore]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
     }
 }
