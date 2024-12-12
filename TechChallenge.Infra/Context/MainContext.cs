@@ -8,7 +8,6 @@ namespace TechChallenge.Infra.Context
 {
     public class MainContext : DbContext
     {
-        private readonly IDbContextFactory<MainContext> _context;
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
         public DbSet<Contato> Contatos { get; set; }
@@ -19,7 +18,6 @@ namespace TechChallenge.Infra.Context
             if(Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
             {
                 Database.SetCommandTimeout(1000);
-                _context = context;
             }
         }
 
