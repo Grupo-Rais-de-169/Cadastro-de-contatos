@@ -5,7 +5,7 @@ using TechChallenge.Domain.Model.ViewModel;
 
 namespace TechChallenge.Domain.Config
 {
-    public class MappingConfig
+    public static class MappingConfig
     {
         public static MapperConfiguration RegisterMaps()
         {

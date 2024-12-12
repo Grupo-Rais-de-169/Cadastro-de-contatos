@@ -6,14 +6,14 @@ namespace TechChallenge.Domain.Model.ViewModel
     public class ContatoInclusaoViewModel
     {
         [Required(ErrorMessage = "O nome é obrigatório.")]
-        public string Nome { get; set; }
+        public string Nome { get; set; } = null!;
 
         [Required(ErrorMessage = "O telefone é obrigatório.")]
-        public string Telefone { get; set; }
+        public string Telefone { get; set; } = null!;
 
         [Required(ErrorMessage = "O email é obrigatório.")]
         [EmailAddress(ErrorMessage = "O email informado não é válido.")]
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
 
         [JsonIgnore] // Não será exibido na view
         public int IdDDD { get; set; }
