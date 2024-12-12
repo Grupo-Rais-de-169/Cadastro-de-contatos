@@ -38,7 +38,9 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             var input = new RefreshRequestModel
             {
                 token = "expiredToken",
-                refreshToken = "validRefreshToken"
+                refreshToken = "validRefreshToken",
+                create = "teste",
+                validate = "teste"
             };
 
             var claims = new List<Claim> { new Claim(ClaimTypes.Name, "testuser") };
