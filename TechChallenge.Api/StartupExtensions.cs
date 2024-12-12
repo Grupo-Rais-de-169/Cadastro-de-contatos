@@ -117,7 +117,7 @@ namespace TechChallenge.Api
                 app.UseCors(corsPolicy =>
                 {
                     corsPolicy
-                        .AllowAnyOrigin()
+                        .WithOrigins("https://127.0.0.1", "https://localhost")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
@@ -128,7 +128,7 @@ namespace TechChallenge.Api
                 app.UseCors(corsPolicy =>
                 {
                     corsPolicy
-                        .WithOrigins("https://127.0.0.1", "http://172.0.0.1")
+                        .WithOrigins("https://meudominio.com")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
