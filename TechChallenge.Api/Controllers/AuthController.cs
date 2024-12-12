@@ -12,13 +12,12 @@ namespace TechChallenge.Api.Controllers
     [AllowAnonymous]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+
         private readonly ILogger _logger;
         private readonly ITokenServices _tokenServices;
 
-        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, ITokenServices tokenServices)
+        public AuthController(ILogger<AuthController> logger, ITokenServices tokenServices)
         {
-            _configuration = configuration;
             _logger = logger;
             _tokenServices = tokenServices;
         }

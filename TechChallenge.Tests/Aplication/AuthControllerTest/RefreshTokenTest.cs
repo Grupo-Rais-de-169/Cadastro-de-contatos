@@ -28,7 +28,7 @@ namespace TechChallenge.Tests.Aplication.AuthControllerTest
             _mockConfiguration.Setup(config => config["Jwt:Key"]).Returns("FakeJwtKey");
             _mockConfiguration.Setup(config => config["Jwt:Issuer"]).Returns("FakeIssuer");
 
-            _controller = new AuthController(_mockConfiguration.Object, _mockLogger.Object, _mockTokenServices.Object);
+            _controller = new AuthController(/*_mockConfiguration.Object,*/ _mockLogger.Object, _mockTokenServices.Object);
         }
 
         [Fact]
