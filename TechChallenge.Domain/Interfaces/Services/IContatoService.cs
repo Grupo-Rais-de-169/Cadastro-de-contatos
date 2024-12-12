@@ -18,8 +18,10 @@ namespace TechChallenge.Domain.Interfaces.Services
         Task<ContatoDto> GetByIdAsync(int id);
         ContatoDto GetById(int id);
         Task<Result> AddAsync(ContatoInclusaoViewModel contato);
-        Result Add(ContatoInclusaoViewModel contato);
         Result Update(ContatoAlteracaoViewModel contatoModel);
         Result Delete(int id);
+        bool DDDExiste(int ddd);
+        void DeletaCache();
+        Contato MontarContatoParaEditar(ContatoAlteracaoViewModel contatoModel, Contato contato);
     }
 }

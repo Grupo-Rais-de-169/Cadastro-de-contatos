@@ -18,21 +18,20 @@ namespace TechChallenge.Domain.Services
         public ContatoService(IMapper Mapper, IContatosRepository ContatosRepository, ICodigoDeAreaRepository codigoAreaRepository, IMemoryCache cache)
         {
             _mapper = Mapper;
-            _contatosRepository = ContatosRepository;            
+            _contatosRepository = ContatosRepository;
             _codigoAreaRepository = codigoAreaRepository;
             _cache = cache;
         }
-        public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)
-        {
-            return await _contatosRepository.GetAllDDD(id);
-        }
-        public async Task<IEnumerable<ContatoDto>> GetContatoByDDD(int id)
-        {
-            return _mapper.Map<IEnumerable<ContatoDto>>(await _contatosRepository.GetContatoByDDD(id));
-        }
+
+        public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null) =>
+             await _contatosRepository.GetAllDDD(id);
+
+        public async Task<IEnumerable<ContatoDto>> GetContatoByDDD(int id) =>
+             _mapper.Map<IEnumerable<ContatoDto>>(await _contatosRepository.GetContatoByDDD(id));
+
         public IList<ContatoDto> GetAll()
         {
-            var contatos = _cache.GetOrCreate("Contatos", entry => 
+            var contatos = _cache.GetOrCreate("Contatos", entry =>
             {
                 entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
                 try
@@ -67,17 +66,14 @@ namespace TechChallenge.Domain.Services
             return await Task.FromResult(_mapper.Map<List<ContatoDto>>(contatos));
         }
 
-        public async Task<ContatoDto> GetByIdAsync(int id)
-        {
-            return _mapper.Map<ContatoDto>(await _contatosRepository.GetByIdAsync(id));
-        }
-        public ContatoDto GetById(int id)
-        {
-            return _mapper.Map<ContatoDto>(id);
-        }
+        public async Task<ContatoDto> GetByIdAsync(int id) =>
+             _mapper.Map<ContatoDto>(await _contatosRepository.GetByIdAsync(id));
+
+        public ContatoDto GetById(int id) => _mapper.Map<ContatoDto>(id);
+
         public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
-            if(!DDDExiste(contato.IdDDD))
+            if (!DDDExiste(contato.IdDDD))
                 return Result.Failure("O DDD informado não existe.");
 
             await _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
@@ -85,15 +81,6 @@ namespace TechChallenge.Domain.Services
             return Result.Success();
         }
 
-        public Result Add(ContatoInclusaoViewModel contato)
-        {
-            if (!DDDExiste(contato.IdDDD))
-                return Result.Failure("O DDD informado não existe.");
-
-             _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
-            DeletaCache();
-            return Result.Success();
-        }
         public Result Update(ContatoAlteracaoViewModel contatoModel)
         {
             var contato = _contatosRepository.GetById(contatoModel.Id);
@@ -102,14 +89,21 @@ namespace TechChallenge.Domain.Services
             if (!DDDExiste(contatoModel.IdDDD))
                 return Result.Failure("O DDD informado não existe.");
 
+            contato = MontarContatoParaEditar(contatoModel, contato);
+
+            _contatosRepository.Update(contato);
+            DeletaCache();
+            return Result.Success();
+        }
+
+        public Contato MontarContatoParaEditar(ContatoAlteracaoViewModel contatoModel, Contato contato)
+        {
             contato.Nome = contatoModel.Nome;
             contato.Email = contatoModel.Email;
             contato.Telefone = contatoModel.Telefone;
             contato.IdDDD = contatoModel.IdDDD;
 
-            _contatosRepository.Update(contato);
-            DeletaCache();
-            return Result.Success();
+            return contato;
         }
 
         public Result Delete(int id)
@@ -122,12 +116,10 @@ namespace TechChallenge.Domain.Services
             return Result.Success();
         }
 
-        private bool DDDExiste(int ddd)
-        {
-           return  _codigoAreaRepository.GetById(ddd) != null;
-        }
+        public bool DDDExiste(int ddd) =>
+            _codigoAreaRepository.GetById(ddd) != null;
 
-        private void DeletaCache()
+        public void DeletaCache()
         {
             _cache.Remove("Contatos");
             _cache.Remove("ContatosAsync");
