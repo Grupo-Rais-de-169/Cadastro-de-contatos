@@ -22,5 +22,6 @@ namespace TechChallenge.Domain.Config
             });
             return MappingConfig;
         }
+
     }
 }
