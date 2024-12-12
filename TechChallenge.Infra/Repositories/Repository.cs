@@ -2,7 +2,6 @@
 using TechChallenge.Domain.Entities;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Infra.Context;
-using static Dapper.SqlMapper;
 
 namespace TechChallenge.Infra.Repositories
 {
@@ -35,18 +34,15 @@ namespace TechChallenge.Infra.Repositories
             _context.SaveChanges();
         }
 
-
         public void Delete(int id)
         {
             _dbSet.Remove(GetById(id));
             _context.SaveChanges();
         }
 
-
         public T GetById(int id) => _dbSet.FirstOrDefault(x => x.Id == id);
 
         public async Task<T> GetByIdAsync(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
-
 
         public IList<T> GetAll() => _dbSet.ToList();
 
@@ -57,6 +53,5 @@ namespace TechChallenge.Infra.Repositories
         public void SaveChanges() => _context.SaveChanges();
 
         public IQueryable<T> GetAllAsNoTracking() => _context.Set<T>().AsNoTracking();
-
     }
 }
