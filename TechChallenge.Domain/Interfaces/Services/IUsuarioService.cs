@@ -11,5 +11,6 @@ namespace TechChallenge.Domain.Interfaces.Services
         Task<Result> AddAsync(UsuarioInclusaoViewModel contato);
         Result Update(UsuarioAlteracaoViewModel usuarioModel);
         Result Delete(int id);
+        bool PerfilExiste(int permissaoId);
     }
 }
