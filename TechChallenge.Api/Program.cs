@@ -39,7 +39,6 @@ builder.Services
 #endregion
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerConfiguration();
 builder.AddJwtConfiguration();
 
 builder.Logging.ClearProviders();
@@ -98,7 +97,6 @@ cache.Set("key", "value", new MemoryCacheEntryOptions
     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
 });
 
-//app.UseSwaggerConfiguration();
 app.UseSwagger();
 app.UseSwaggerUI();
 
