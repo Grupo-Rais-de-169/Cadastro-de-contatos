@@ -54,7 +54,7 @@ namespace TechChallenge.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Erro ao efetuar o Login: {ex.Message}");
+                _logger.LogError("Erro ao efetuar o Login: {ErrorMessage}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -88,7 +88,7 @@ namespace TechChallenge.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Erro ao efetuar o Refresh: {ex.Message}");
+                _logger.LogError("Erro ao efetuar o Refresh: {ErrorMessage}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
