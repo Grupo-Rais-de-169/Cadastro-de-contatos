@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.Logging;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Entities;
 
@@ -36,13 +35,10 @@ namespace TechChallenge.Infra.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MainContext).Assembly);
 
-            // ========================================
             base.OnModelCreating(modelBuilder);
 
-            // Configura a chave primária para EntityBase
             modelBuilder.Entity<EntityBase>().HasKey(e => e.Id);
             modelBuilder.Entity<EntityBase>().ToTable("Entities");
-            modelBuilder.Entity<CodigoDeArea>().HasBaseType<EntityBase>();
         }
     }
 }
