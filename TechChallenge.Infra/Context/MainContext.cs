@@ -38,13 +38,10 @@ namespace TechChallenge.Infra.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MainContext).Assembly);
 
-            // ========================================
             base.OnModelCreating(modelBuilder);
 
-            // Configura a chave primária para EntityBase
             modelBuilder.Entity<EntityBase>().HasKey(e => e.Id);
             modelBuilder.Entity<EntityBase>().ToTable("Entities");
-            modelBuilder.Entity<CodigoDeArea>().HasBaseType<EntityBase>();
         }
     }
 }
