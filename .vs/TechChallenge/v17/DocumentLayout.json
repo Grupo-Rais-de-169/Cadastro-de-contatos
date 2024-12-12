@@ -498,6 +498,40 @@
           ]
         }
       ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "61cda9a6-f0d0-4ac7-b643-31afb281d89a",
+        "Display": 0,
+        "X": -719,
+        "Y": 165,
+        "Width": 1966,
+        "Height": 801,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CodigoDeAreaRepositoryTests.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T01:31:10.625Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

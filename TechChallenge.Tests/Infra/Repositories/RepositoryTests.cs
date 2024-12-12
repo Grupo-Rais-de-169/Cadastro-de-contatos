@@ -1,18 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using TechChallenge.Api.Controllers;
-using TechChallenge.Domain;
 using TechChallenge.Domain.Entities;
 using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
-using Xunit;
 
 namespace TechChallenge.Tests.Infra.Repositories
 {
