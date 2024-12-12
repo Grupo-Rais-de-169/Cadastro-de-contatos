@@ -85,9 +85,6 @@ namespace TechChallenge.Api
             return builder;
         }
 
-
-
-
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
             app.UseSwagger();
