@@ -7,7 +7,8 @@ namespace TechChallenge.Infra
     public class DbConnectionProvider: IDisposable
     {
         private IDbConnection _connection;
-        private IConfiguration _configuration { get; set; }
+        private readonly IConfiguration _configuration;
+        private bool _disposed = false;
         public DbConnectionProvider(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -25,11 +26,28 @@ namespace TechChallenge.Infra
 
         public void Dispose()
         {
-            if (_connection != null)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
             {
-                _connection.Dispose();
-                _connection = null;
+                if (_connection != null)
+                {
+                    _connection.Dispose();
+                    _connection = null;
+                }
             }
+            _disposed = true;
+        }
+        ~DbConnectionProvider()
+        {
+            Dispose(false);
         }
     }
 }

@@ -8,7 +8,12 @@ namespace TechChallenge.Api.Configuration
     {
         public static WebApplicationBuilder AddJwtConfiguration(this WebApplicationBuilder builder)
         {
-            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+            var keyString = builder.Configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(keyString))
+            {
+                throw new InvalidOperationException("JWT Key não está configurada");
+            }
+            var key = Encoding.ASCII.GetBytes(keyString);
             builder.Services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
