@@ -10,12 +10,10 @@ namespace TechChallenge.Infra.Repositories
 {
     public class ContatosRepository : Repository<Contato>, IContatosRepository
     {
-        private readonly IMemoryCache _cache;
         private readonly DbConnectionProvider _dbProvider;
-        public ContatosRepository(MainContext context, DbConnectionProvider dbProvider, IMemoryCache cache) : base(context)
+        public ContatosRepository(MainContext context, DbConnectionProvider dbProvider) : base(context)
         {
             _dbProvider = dbProvider;
-            _cache = cache;
         }
 
         public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)

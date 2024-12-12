@@ -8,7 +8,7 @@ using TechChallenge.Domain.Utils;
 
 namespace TechChallenge.Domain.Services
 {
-    public class UsuarioService: IUsuarioService
+    public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
@@ -46,10 +46,10 @@ namespace TechChallenge.Domain.Services
 
             return await Task.FromResult(_mapper.Map<List<UsuarioDTO>>(usuarios));
         }
-        public async Task<UsuarioDTO> GetByIdAsync(int id)
-        {
-            return _mapper.Map<UsuarioDTO>(await _usuarioRepository.GetByIdAsync(id));
-        }
+
+        public async Task<UsuarioDTO> GetByIdAsync(int id) =>
+
+             _mapper.Map<UsuarioDTO>(await _usuarioRepository.GetByIdAsync(id));
 
         public async Task<Result> AddAsync(UsuarioInclusaoViewModel contato)
         {
@@ -95,20 +95,14 @@ namespace TechChallenge.Domain.Services
             DeletaCache();
             return Result.Success();
         }
-        public bool PerfilExiste(int permissaoId)
-        {
-            return _permissaoRepository.GetById(permissaoId) != null;
-        }
 
-        private bool ExisteLogin(string login)
-        {
-            var teste = _usuarioRepository.GetAllAsNoTracking().Where(x => x.Login == login).Any();
-            return _usuarioRepository.GetAllAsNoTracking().Where(x => x.Login == login).Any();
-        }
+        public bool PerfilExiste(int permissaoId) =>
+             _permissaoRepository.GetById(permissaoId) != null;
 
-        private void DeletaCache()
-        {
-            _cache.Remove("UsuariosAsync");
-        }
+        private bool ExisteLogin(string login) =>
+             _usuarioRepository.GetAllAsNoTracking().Where(x => x.Login == login).Any();
+
+        private void DeletaCache() => _cache.Remove("UsuariosAsync");
+
     }
 }

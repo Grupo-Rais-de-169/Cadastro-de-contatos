@@ -1,7 +1,6 @@
 ﻿using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain;
 using TechChallenge.Infra.Context;
-using System.Security;
 
 namespace TechChallenge.Infra.Repositories
 {

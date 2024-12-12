@@ -31,6 +31,5 @@ namespace TechChallenge.Infra
                 _connection = null;
             }
         }
-
     }
 }
