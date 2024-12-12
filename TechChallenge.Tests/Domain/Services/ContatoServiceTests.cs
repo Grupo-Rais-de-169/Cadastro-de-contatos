@@ -1,40 +1,40 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Moq;
-using Xunit;
+﻿using Moq;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Domain.Interfaces.Services;
 using TechChallenge.Domain.Model;
 using TechChallenge.Domain.Model.ViewModel;
-using TechChallenge.Domain.Utils;
 using AutoMapper;
 using TechChallenge.Domain.Services;
 using TechChallenge.Domain;
 using Microsoft.Extensions.Caching.Memory;
+using AutoFixture;
 
 namespace TechChallenge.Tests.Domain.Services
 {
     public class ContatoServiceTests
     {
+        private readonly Fixture _fixture;
         private readonly Mock<IContatosRepository> _mockContatosRepository;
         private readonly Mock<ICodigoDeAreaRepository> _mockCodigoAreaRepository;
         private readonly Mock<IMapper> _mockMapper;
         private readonly IContatoService _contatoService;
+        private readonly Mock<IContatoService> _mockContatoService;
         private readonly IMemoryCache _memoryCache;
 
         public ContatoServiceTests()
         {
+            _fixture = new Fixture();
             _mockContatosRepository = new Mock<IContatosRepository>();
             _mockCodigoAreaRepository = new Mock<ICodigoDeAreaRepository>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _mockMapper = new Mock<IMapper>();
+            _mockContatoService = new Mock<IContatoService>();
             _contatoService = new ContatoService(
                 _mockMapper.Object,
                 _mockContatosRepository.Object,
                 _mockCodigoAreaRepository.Object,
                 _memoryCache
-                
+
             );
         }
 
@@ -82,8 +82,6 @@ namespace TechChallenge.Tests.Domain.Services
             Assert.Equal(contatoDtos, result.ToList());
         }
 
-        // =================
-
         [Fact]
         public void GetAll_ShouldReturnContatosFromCache()
         {
@@ -100,7 +98,7 @@ namespace TechChallenge.Tests.Domain.Services
             // Assert
             Assert.NotNull(result);
             Assert.Equal(contatoDtos.Count, result.Count);
-            Assert.Equal(contatoDtos[0].Nome, result[0].Nome); 
+            Assert.Equal(contatoDtos[0].Nome, result[0].Nome);
         }
 
         [Fact]
@@ -118,9 +116,9 @@ namespace TechChallenge.Tests.Domain.Services
             var result = _contatoService.GetAll();
 
             // Assert
-            Assert.NotNull(result); 
-            Assert.Equal(contatoDtos.Count, result.Count); 
-            Assert.Equal(contatoDtos[0].Nome, result[0].Nome); 
+            Assert.NotNull(result);
+            Assert.Equal(contatoDtos.Count, result.Count);
+            Assert.Equal(contatoDtos[0].Nome, result[0].Nome);
 
             _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
             _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
@@ -142,13 +140,7 @@ namespace TechChallenge.Tests.Domain.Services
             Assert.Null(_memoryCache.Get<List<Contato>>("Contatos"));
         }
 
-
-
-
-
-        // =========================================================================================================================================================================
-
-        /*[Fact]
+        [Fact]
         public void GetAll_ShouldReturnMappedContatos()
         {
             // Arrange
@@ -162,6 +154,7 @@ namespace TechChallenge.Tests.Domain.Services
 
             // Assert
             Assert.NotNull(result);
+
             //Assert.Equal(contatoDtos, result);
             Assert.Equal(contatoDtos.Count, result.Count);
             for (int i = 0; i < contatoDtos.Count; i++)
@@ -171,9 +164,33 @@ namespace TechChallenge.Tests.Domain.Services
             }
             _mockContatosRepository.Verify(repo => repo.GetAll(), Times.Once);
             _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
-        }*/
+        }
 
-        // ==============================================================================================================================================================================
+        [Fact]
+        public async Task GetAllAsync_ShouldReturnMappedContatos()
+        {
+            // Arrange
+            var contatos = new List<Contato> { new Contato { Id = 1, Nome = "Teste" } };
+            var contatoDtos = new List<ContatoDto> { new ContatoDto { Id = 1, Nome = "Teste" } };
+            _mockContatosRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(contatos);
+            _mockMapper.Setup(mapper => mapper.Map<List<ContatoDto>>(contatos)).Returns(contatoDtos);
+
+            // Act
+            var result = await _contatoService.GetAllAsync();
+
+            // Assert
+            Assert.NotNull(result);
+
+            //Assert.Equal(contatoDtos, result);
+            Assert.Equal(contatoDtos.Count, result.Count);
+            for (int i = 0; i < contatoDtos.Count; i++)
+            {
+                Assert.Equal(contatoDtos[i].Id, result[i].Id);
+                Assert.Equal(contatoDtos[i].Nome, result[i].Nome);
+            }
+            _mockContatosRepository.Verify(repo => repo.GetAllAsync(), Times.Once);
+            _mockMapper.Verify(mapper => mapper.Map<List<ContatoDto>>(contatos), Times.Once);
+        }
 
         [Fact]
         public async Task GetByIdAsync_ShouldReturnMappedContato_WhenIdExists()
@@ -210,12 +227,19 @@ namespace TechChallenge.Tests.Domain.Services
         public void Update_ShouldReturnFailure_WhenContatoDoesNotExist()
         {
             // Arrange
-            var contatoAlteracao = new ContatoAlteracaoViewModel { Id = 1, Nome = "Novo Nome" };
+            var contatoAlteracao = new ContatoAlteracaoViewModel { Id = 1, Nome = "Novo Nome",IdDDD = 11 };
             _mockContatosRepository.Setup(repo => repo.GetById(1)).Returns((Contato)null);
 
             // Act
-            var result = _contatoService.Update(contatoAlteracao);
+            var service = new Mock<ContatoService>(
+                _mockMapper.Object,
+                _mockContatosRepository.Object,
+                _mockCodigoAreaRepository.Object,
+                _memoryCache);
 
+            var teste = service.Object.DDDExiste(contatoAlteracao.IdDDD);
+
+            var result = _contatoService.Update(contatoAlteracao);
             // Assert
             Assert.False(result.IsSuccess);
             Assert.Equal("Contato não encontrado!", result.Message);
@@ -233,6 +257,44 @@ namespace TechChallenge.Tests.Domain.Services
             // Assert
             Assert.False(result.IsSuccess);
             Assert.Equal("Contato não encontrado!", result.Message);
+        }
+
+        [Fact]
+        public void BuildContato_ShouldReturnContatoEqualsContatoModel()
+        {
+            // Arrange
+            var contato = new Contato()
+            {
+                Id = 1,
+                Nome = "Thiago",
+                Email = "thiago@gamil.com",
+                Telefone = "123456789"
+            };
+
+            ContatoAlteracaoViewModel contatoModel = new ContatoAlteracaoViewModel()
+            {
+                Id = 1,
+                Nome = "Roberto",
+                Email = "roberto@gamil.com",
+                Telefone = "987654321"
+            };
+
+            var service = new Mock<ContatoService>(
+                _mockMapper.Object,
+                _mockContatosRepository.Object,
+                _mockCodigoAreaRepository.Object,
+                _memoryCache);
+
+            var contatoEditado = service.Object.MontarContatoParaEditar(contatoModel, contato);
+
+            // Act
+            var result = _contatoService.Delete(1);
+
+            // Assert
+            Assert.Equal(contatoEditado.Nome, contatoModel.Nome);
+            Assert.Equal(contatoEditado.Email, contatoModel.Email);
+            Assert.Equal(contatoEditado.Telefone, contatoModel.Telefone);
+            Assert.Equal(contatoEditado.IdDDD, contatoModel.IdDDD);
         }
     }
 }
