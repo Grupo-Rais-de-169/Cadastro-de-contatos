@@ -2,7 +2,7 @@
 
 namespace TechChallenge.Api.Configuration
 {
-    public static class SwaggerConfigurationOLD
+    public static class SwaggerConfiguration
     {
     //    public static void AddSwaggerConfiguration(this IServiceCollection services)
     //    {
