@@ -95,7 +95,7 @@ namespace TechChallenge.Domain.Services
             DeletaCache();
             return Result.Success();
         }
-        private bool PerfilExiste(int permissaoId)
+        public bool PerfilExiste(int permissaoId)
         {
             return _permissaoRepository.GetById(permissaoId) != null;
         }
