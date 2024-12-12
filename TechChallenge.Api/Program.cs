@@ -48,6 +48,7 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+#region [SWAGGER]
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -86,26 +87,28 @@ builder.Services.AddSwaggerGen(c =>
                     }
                 });
 });
-
-
+#endregion
 
 var app = builder.Build();
 var cache = app.Services.GetRequiredService<IMemoryCache>();
 
+#region[CACHE]
 cache.Set("key", "value", new MemoryCacheEntryOptions
 {
-    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8)
+    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
 });
-
+#endregion
 app.UseSwagger();
 app.UseSwaggerUI();
 
+#region[ReDoc]
 app.UseReDoc(c =>
 {
     c.SpecUrl("/swagger/v1/swagger.json"); // URL do JSON do Swagger
     c.DocumentTitle = "Documentação da API com ReDoc";
     c.RoutePrefix = "redoc"; // ReDoc acessível em /redoc
 });
+#endregion
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()
