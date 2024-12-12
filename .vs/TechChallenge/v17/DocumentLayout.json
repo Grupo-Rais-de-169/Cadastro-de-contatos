@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.tests\\domain\\services\\usuarioservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\domain\\services\\usuarioservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.tests\\infra\\repositories\\codigodearearepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\infra\\repositories\\codigodearearepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.domain\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|solutionrelative:techchallenge.domain\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.tests\\infra\\repositories\\authrepositoriestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\infra\\repositories\\authrepositoriestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.infra\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AFD19F4-BAB8-49A7-A8F2-554CF951F5A1}|TechChallenge.Infra\\TechChallenge.Infra.csproj|solutionrelative:techchallenge.infra\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.domain\\services\\contatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|solutionrelative:techchallenge.domain\\services\\contatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.domain\\interfaces\\services\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CCE1D3C-EAE7-48F3-8FBF-1A9E0792F8DC}|TechChallenge.Domain\\TechChallenge.Domain.csproj|solutionrelative:techchallenge.domain\\interfaces\\services\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|c:\\bypass\\fiap\\backend\\cadastro-de-contatos\\techchallenge.tests\\infra\\repositories\\repositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC21DAA-6785-42F9-9D2E-4581187DC1F0}|TechChallenge.Tests\\TechChallenge.Tests.csproj|solutionrelative:techchallenge.tests\\infra\\repositories\\repositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 23,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,67 +102,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ContatoService.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\ContatoService.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Domain\\Services\\ContatoService.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\ContatoService.cs",
-              "RelativeToolTip": "TechChallenge.Domain\\Services\\ContatoService.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAIwHQAAAAuAAAA",
+              "DocumentIndex": 1,
+              "Title": "AuthRepositoriesTests.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\AuthRepositoriesTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Infra\\Repositories\\AuthRepositoriesTests.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\AuthRepositoriesTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Infra\\Repositories\\AuthRepositoriesTests.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACMAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T23:39:26.508Z",
+              "WhenOpened": "2024-12-12T01:34:14.366Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Infra\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Infra\\Repositories\\Repository.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Infra\\Repositories\\Repository.cs",
-              "RelativeToolTip": "TechChallenge.Infra\\Repositories\\Repository.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAwwDIAAAAYAAAA",
+              "Title": "RepositoryTests.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Infra\\Repositories\\RepositoryTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T23:34:58.755Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IUsuarioService.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IUsuarioService.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Domain\\Interfaces\\Services\\IUsuarioService.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Interfaces\\Services\\IUsuarioService.cs",
-              "RelativeToolTip": "TechChallenge.Domain\\Interfaces\\Services\\IUsuarioService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAhwA0AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T23:18:57.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioService.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\UsuarioService.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Domain\\Services\\UsuarioService.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Domain\\Services\\UsuarioService.cs",
-              "RelativeToolTip": "TechChallenge.Domain\\Services\\UsuarioService.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAnwDcAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T23:18:29.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsuarioServiceTests.cs",
-              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Domain\\Services\\UsuarioServiceTests.cs",
-              "RelativeDocumentMoniker": "TechChallenge.Tests\\Domain\\Services\\UsuarioServiceTests.cs",
-              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Domain\\Services\\UsuarioServiceTests.cs",
-              "RelativeToolTip": "TechChallenge.Tests\\Domain\\Services\\UsuarioServiceTests.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAxwC0AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T22:48:03.522Z",
+              "WhenOpened": "2024-12-12T01:31:39.414Z",
               "EditorCaption": ""
             }
           ]
@@ -190,6 +143,40 @@
             {
               "$type": "Bookmark",
               "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "61cda9a6-f0d0-4ac7-b643-31afb281d89a",
+        "Display": 0,
+        "X": -719,
+        "Y": 165,
+        "Width": 1966,
+        "Height": 801,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CodigoDeAreaRepositoryTests.cs",
+              "DocumentMoniker": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "RelativeDocumentMoniker": "TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "ToolTip": "C:\\ByPass\\FIAP\\BackEnd\\Cadastro-de-contatos\\TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "RelativeToolTip": "TechChallenge.Tests\\Infra\\Repositories\\CodigoDeAreaRepositoryTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T01:31:10.625Z",
+              "EditorCaption": ""
             }
           ]
         }
