@@ -10,9 +10,11 @@ using TechChallenge.Domain.Services;
 using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 using TechChallenge.Infra;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TechChallenge.Api
 {
+    [ExcludeFromCodeCoverage]
     public static class StartupExtensions
     {
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)

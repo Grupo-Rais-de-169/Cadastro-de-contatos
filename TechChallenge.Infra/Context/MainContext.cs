@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Entities;
@@ -20,6 +21,7 @@ namespace TechChallenge.Infra.Context
             }
         }
 
+        [ExcludeFromCodeCoverage]
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var extension = optionsBuilder.Options.FindExtension<RelationalOptionsExtension>();

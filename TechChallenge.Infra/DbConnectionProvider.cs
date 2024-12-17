@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TechChallenge.Infra
 {
+    [ExcludeFromCodeCoverage]
     public class DbConnectionProvider: IDisposable
     {
         private IDbConnection _connection;
