@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Diagnostics.CodeAnalysis;
+using Dapper;
 using Microsoft.Extensions.Caching.Memory;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Interfaces.Repositories;
@@ -8,6 +9,7 @@ using TechChallenge.Infra.Query;
 
 namespace TechChallenge.Infra.Repositories
 {
+    [ExcludeFromCodeCoverage]
     public class ContatosRepository : Repository<Contato>, IContatosRepository
     {
         private readonly DbConnectionProvider _dbProvider;

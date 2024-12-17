@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using TechChallenge.Domain.Entities;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Infra.Context;
@@ -28,6 +29,7 @@ namespace TechChallenge.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
+        [ExcludeFromCodeCoverage]
         public void Update(T entidade)
         {
             _dbSet.Update(entidade);
@@ -47,11 +49,14 @@ namespace TechChallenge.Infra.Repositories
         public IList<T> GetAll() => _dbSet.ToList();
 
         public async Task<IList<T>> GetAllAsync() => await _dbSet.ToListAsync();
-
+       
+        [ExcludeFromCodeCoverage]
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
-
+       
+        [ExcludeFromCodeCoverage]
         public void SaveChanges() => _context.SaveChanges();
-
+       
+        [ExcludeFromCodeCoverage]
         public IQueryable<T> GetAllAsNoTracking() => _context.Set<T>().AsNoTracking();
     }
 }

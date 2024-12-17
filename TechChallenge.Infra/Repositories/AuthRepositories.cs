@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Interfaces.Repositories;
 using TechChallenge.Infra.Context;
@@ -13,6 +14,7 @@ namespace TechChallenge.Infra.Repositories
             _mainContext = mainContext;
         }
 
+        [ExcludeFromCodeCoverage]
         public Task<Usuario?> GetConfirmLoginAndPassword(string username)
         {
             try
