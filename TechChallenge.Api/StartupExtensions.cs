@@ -11,6 +11,7 @@ using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 using TechChallenge.Infra;
 using System.Diagnostics.CodeAnalysis;
+using Prometheus;
 
 namespace TechChallenge.Api
 {
@@ -89,6 +90,8 @@ namespace TechChallenge.Api
 
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
+            app.UseHttpMetrics();
+            app.UseMetricServer();
             app.UseSwagger();
             app.UseSwaggerUI();
 
@@ -105,6 +108,7 @@ namespace TechChallenge.Api
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapMetrics();
 
             return app;
         }

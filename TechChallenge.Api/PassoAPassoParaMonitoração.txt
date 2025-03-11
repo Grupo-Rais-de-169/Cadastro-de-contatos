@@ -1,0 +1,18 @@
+﻿Esse comando é para rodar o docker do prometheus. É importante na parte do -v apontar para o caminho do prometheus.yml que você baixou na sua máquina.
+
+1 - 
+docker run --name prometheus-techchallenge -v "C:\Users\luizmarinho.brq\Desktop\Estudo\POS FIAP\Fase2\Challenge\Cadastro-de-contatos\TechChallenge.Api\prometheus.yml:/etc/prometheus/prometheus.yml" -d -p 9090:9090 prom/prometheus
+
+Esse é para subir o grafana
+2 - 
+docker run -d --name=grafana -p 3000:3000 grafana/grafana-enterprise
+
+3 - Quando for logar no grafana a senha padrão é usuario admin senha admin
+Ele pede para alterar a senha logo em seguida, pode colocar a mesma se desejar
+
+4 - Vá em Connections - Add new Connection e adicione o data source do prometheus
+
+5 - Nas configurações do datasource colocar o ip da sua máquina, já que o prometheus está no container e a porta do prometheus
+no meu caso, ficou http://192.168.0.101:9090
+
+6 - Agora é só fazer algumas requisições e você consegue verificar pelo prometheus, pelas métricas ou criar um dashboard no grafana.
