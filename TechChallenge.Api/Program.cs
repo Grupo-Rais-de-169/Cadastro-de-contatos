@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Caching.Memory;
 using Prometheus;
+using TechChallenge.Api.Configuration;
+using TechChallenge.Api.Monitoramento;
 
 namespace TechChallenge.Api
 {
@@ -22,6 +24,9 @@ namespace TechChallenge.Api
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
             });
+
+            app.UseMonitoringConfiguration();
+
             app.UseHttpMetrics();
             app.UseMetricServer();
             app.ConfigureMiddleware();
