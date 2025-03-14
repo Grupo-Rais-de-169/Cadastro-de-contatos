@@ -24,9 +24,10 @@ namespace TechChallenge.Api
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
             });
-
+            app.UseMiddleware<MonitoramentoMiddleware>();
             app.UseMonitoringConfiguration();
-
+            
+            app.MapMetrics();
             app.UseHttpMetrics();
             app.UseMetricServer();
             app.ConfigureMiddleware();

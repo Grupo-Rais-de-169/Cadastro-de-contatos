@@ -12,6 +12,7 @@ using TechChallenge.Infra.Repositories;
 using TechChallenge.Infra;
 using System.Diagnostics.CodeAnalysis;
 using Prometheus;
+using TechChallenge.Api.Monitoramento;
 
 namespace TechChallenge.Api
 {
@@ -37,7 +38,8 @@ namespace TechChallenge.Api
                 .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
                 .AddScoped<IUsuarioRepository, UsuarioRepository>()
                 .AddScoped<IPermissaoRepository, PermissaoRepository>()
-                .AddSingleton<DbConnectionProvider>();
+                .AddSingleton<DbConnectionProvider>()
+                .AddSingleton<SystemMetricsCollector>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.AddJwtConfiguration();

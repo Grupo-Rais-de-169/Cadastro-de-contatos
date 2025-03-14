@@ -25,10 +25,10 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="NLog" Version="5.3.4" />
 		<PackageReference Include="NLog.Web.AspNetCore" Version="5.3.14" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="7.0.0" />
 		<PackageReference Include="prometheus-net" Version="8.2.1" />
 		<PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="7.0.0" />
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.3" />
 		<PackageReference Include="System.Management" Version="9.0.3" />
 	</ItemGroup>
@@ -47,7 +47,6 @@
 
 	<ItemGroup>
 		<Folder Include="Models\" />
-	    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
 </ItemGroup>
 
 </Project>

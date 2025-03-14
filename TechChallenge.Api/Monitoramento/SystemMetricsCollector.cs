@@ -16,6 +16,10 @@ namespace TechChallenge.Api.Monitoramento
             .CreateGauge("server_cpu_usage_percent", "Uso da CPU pelo sistema (%).");
 
         private readonly PerformanceCounter _cpuCounter;
+        private readonly Counter _requestCounter = Metrics.CreateCounter("http_requests_by_status_custom",
+                                                 "Contagem de requisições HTTP por código de status",
+                                                  new[] { "method", "status_code" });
+
 
         public SystemMetricsCollector()
         {
@@ -25,6 +29,11 @@ namespace TechChallenge.Api.Monitoramento
                 _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
                 _cpuCounter.NextValue(); // Primeira leitura retorna 0, então descartamos
             }
+        }
+
+        public void IncrementRequestCounter(string method, string statusCode)
+        {
+            _requestCounter.Labels(method, statusCode).Inc();
         }
 
         public void Collect()
@@ -58,5 +67,6 @@ namespace TechChallenge.Api.Monitoramento
         {
             return _cpuCounter?.NextValue() ?? 0;
         }
+
     }
 }
