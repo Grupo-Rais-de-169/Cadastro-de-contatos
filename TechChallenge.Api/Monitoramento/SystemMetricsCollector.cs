@@ -15,10 +15,10 @@ namespace TechChallenge.Api.Monitoramento
         private readonly Gauge _cpuUsageGauge = Metrics
             .CreateGauge("server_cpu_usage_percent", "Uso da CPU pelo sistema (%).");
 
-        private readonly PerformanceCounter _cpuCounter;
+        private readonly PerformanceCounter? _cpuCounter;
         private readonly Counter _requestCounter = Metrics.CreateCounter("http_requests_by_status_custom",
                                                  "Contagem de requisições HTTP por código de status",
-                                                  new[] { "method", "status_code" });
+                                                  ["method", "status_code"]);
 
 
         public SystemMetricsCollector()
@@ -45,27 +45,85 @@ namespace TechChallenge.Api.Monitoramento
 
         private static long GetTotalMemory()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
-            foreach (var obj in searcher.Get())
+            if (OperatingSystem.IsWindows())
             {
-                return Convert.ToInt64(obj["TotalPhysicalMemory"]);
+                using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["TotalPhysicalMemory"]);
+                }
             }
             return 0;
         }
 
         private long GetAvailableMemory()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
-            foreach (var obj in searcher.Get())
+            if (OperatingSystem.IsWindows())
             {
-                return Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024; // Convertendo de KB para Bytes
+                using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024;
+                }
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                return GetLinuxMemoryInfo("MemAvailable");
+            }
+            else if (OperatingSystem.IsMacOS())
+            {
+                return GetMacMemoryInfo();
             }
             return 0;
         }
 
         private double GetCpuUsage()
         {
-            return _cpuCounter?.NextValue() ?? 0;
+            if (OperatingSystem.IsWindows())
+            {
+                return _cpuCounter?.NextValue() ?? 0;
+            }
+            return 0; // Retorna 0 para outros sistemas operacionais
+        }
+
+        // Para Linux
+        private static long GetLinuxMemoryInfo(string key)
+        {
+            var lines = File.ReadAllLines("/proc/meminfo");
+            foreach (var line in lines)
+            {
+                if (line.StartsWith(key))
+                {
+                    var parts = line.Split(':');
+                    return Convert.ToInt64(parts[1].Trim().Split(' ')[0]) * 1024;
+                }
+            }
+            return 0;
+        }
+
+        // Para macOS
+        private static long GetMacMemoryInfo()
+        {
+            var output = ExecuteCommand("sysctl hw.memsize");
+            var parts = output.Split(':');
+            return parts.Length > 1 ? Convert.ToInt64(parts[1].Trim()) : 0;
+        }
+
+        private static string ExecuteCommand(string command)
+        {
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "/bin/bash",
+                    Arguments = $"-c \"{command}\"",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
+            process.Start();
+            return process.StandardOutput.ReadToEnd().Trim();
         }
 
     }
