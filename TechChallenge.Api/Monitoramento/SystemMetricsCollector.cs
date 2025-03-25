@@ -43,26 +43,17 @@ namespace TechChallenge.Api.Monitoramento
             _cpuUsageGauge.Set(GetCpuUsage());
         }
 
-        //private static long GetTotalMemory()
-        //{
-        //    if (OperatingSystem.IsWindows())
-        //    {
-        //        using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
-        //        foreach (var obj in searcher.Get())
-        //        {
-        //            return Convert.ToInt64(obj["TotalPhysicalMemory"]);
-        //        }
-        //    }
-        //    return 0;
-        //}
-
         private static long GetTotalMemory()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
-            return searcher.Get()
-                .Cast<ManagementObject>()
-                .Select(obj => Convert.ToInt64(obj["TotalPhysicalMemory"]))
-                .FirstOrDefault();
+            if (OperatingSystem.IsWindows())
+            {
+                using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["TotalPhysicalMemory"]);
+                }
+            }
+            return 0;
         }
 
         private static long GetAvailableMemory()
