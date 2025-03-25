@@ -47,36 +47,20 @@ namespace TechChallenge.Api.Monitoramento
 
         private static long GetTotalMemory()
         {
-            if (OperatingSystem.IsWindows())
-            {
-                using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
-                foreach (var obj in searcher.Get())
-                {
-                    return Convert.ToInt64(obj["TotalPhysicalMemory"]);
-                }
-            }
-            return 0;
+            using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
+            return searcher.Get()
+                .Cast<ManagementObject>()
+                .Select(obj => Convert.ToInt64(obj["TotalPhysicalMemory"]))
+                .FirstOrDefault();
         }
 
         private static long GetAvailableMemory()
         {
-            if (OperatingSystem.IsWindows())
-            {
-                using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
-                foreach (var obj in searcher.Get())
-                {
-                    return Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024;
-                }
-            }
-            else if (OperatingSystem.IsLinux())
-            {
-                return GetLinuxMemoryInfo("MemAvailable");
-            }
-            else if (OperatingSystem.IsMacOS())
-            {
-                return GetMacMemoryInfo();
-            }
-            return 0;
+            using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
+            return searcher.Get()
+                .Cast<ManagementObject>()
+                .Select(obj => Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024) // Convertendo de KB para Bytes
+                .FirstOrDefault();
         }
 
         private double GetCpuUsage()
