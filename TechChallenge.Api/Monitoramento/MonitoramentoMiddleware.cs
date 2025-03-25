@@ -5,7 +5,6 @@ namespace TechChallenge.Api.Monitoramento
     public class MonitoramentoMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly Counter _requestCounter;
         private readonly SystemMetricsCollector _metricsCollector;
 
         public MonitoramentoMiddleware(RequestDelegate next, SystemMetricsCollector metricsCollector)

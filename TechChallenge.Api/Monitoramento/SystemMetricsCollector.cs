@@ -43,7 +43,7 @@ namespace TechChallenge.Api.Monitoramento
             _cpuUsageGauge.Set(GetCpuUsage());
         }
 
-        private long GetTotalMemory()
+        private static long GetTotalMemory()
         {
             using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
             foreach (var obj in searcher.Get())
