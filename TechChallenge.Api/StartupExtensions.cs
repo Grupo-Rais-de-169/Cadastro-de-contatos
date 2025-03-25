@@ -48,6 +48,8 @@ namespace TechChallenge.Api
             builder.Services.AddSingleton(mapper);
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            var url = builder.Configuration.GetSection("URL:Value").Value;
+
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -58,7 +60,7 @@ namespace TechChallenge.Api
                     License = new OpenApiLicense
                     {
                         Name = "MIT",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
+                        Url = new Uri(url)
                     }
                 });
 

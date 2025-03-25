@@ -22,7 +22,6 @@ namespace TechChallenge.Api.Monitoramento
                                                  "Contagem de requisições HTTP por código de status",
                                                   "method", "status_code");
 
-
         public SystemMetricsCollector()
         {
             // Inicializa o contador de CPU apenas no Windows
@@ -66,24 +65,25 @@ namespace TechChallenge.Api.Monitoramento
             return 0;
         }
 
-        private long GetAvailableMemory()
+        private static long GetAvailableMemory()
         {
             if (OperatingSystem.IsWindows())
             {
                 using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
-                foreach (var obj in searcher.Get())
-                {
-                    return Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024;
-                }
+                var result = searcher.Get().Cast<ManagementObject>().FirstOrDefault();
+                return result != null ? Convert.ToInt64(result["FreePhysicalMemory"]) * 1024 : 0;
             }
-            else if (OperatingSystem.IsLinux())
+
+            if (OperatingSystem.IsLinux())
             {
                 return GetLinuxMemoryInfo("MemAvailable");
             }
-            else if (OperatingSystem.IsMacOS())
+
+            if (OperatingSystem.IsMacOS())
             {
                 return GetMacMemoryInfo();
             }
+
             return 0;
         }
 
@@ -99,12 +99,18 @@ namespace TechChallenge.Api.Monitoramento
         // Para Linux
         private static long GetLinuxMemoryInfo(string key)
         {
-            var lines = File.ReadAllLines("/proc/meminfo");
-            foreach (var line in lines.Where(x => x.StartsWith(key)))
+            var line = File.ReadLines("/proc/meminfo")
+                           .FirstOrDefault(x => x.StartsWith(key));
+
+            if (line != null)
             {
                 var parts = line.Split(':');
-                return Convert.ToInt64(parts[1].Trim().Split(' ')[0]) * 1024;
+                if (parts.Length > 1)
+                {
+                    return Convert.ToInt64(parts[1].Trim().Split(' ')[0]) * 1024;
+                }
             }
+
             return 0;
         }
 
