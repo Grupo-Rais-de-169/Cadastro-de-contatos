@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using TechChallenge.Domain;
 using TechChallenge.Domain.Entities;
 
@@ -13,6 +14,9 @@ namespace TechChallenge.Infra.Context
         public DbSet<Contato> Contatos { get; set; }
         public DbSet<CodigoDeArea> CodigosDeArea { get; set; }
 
+        public MainContext(DbContextOptions<MainContext> options) : base(options) { }
+
+        [ActivatorUtilitiesConstructor]
         public MainContext(DbContextOptions<MainContext> options, IDbContextFactory<MainContext> context) : base(options)
         {
             if(Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
