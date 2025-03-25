@@ -47,20 +47,44 @@ namespace TechChallenge.Api.Monitoramento
 
         private static long GetTotalMemory()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
-            return searcher.Get()
-                .Cast<ManagementObject>()
-                .Select(obj => Convert.ToInt64(obj["TotalPhysicalMemory"]))
-                .FirstOrDefault();
+            if (OperatingSystem.IsWindows())
+            {
+                using var searcher = new ManagementObjectSearcher("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["TotalPhysicalMemory"]);
+                }
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                return GetLinuxMemoryInfo("MemTotal");
+            }
+            else if (OperatingSystem.IsMacOS())
+            {
+                return GetMacMemoryInfo();
+            }
+            return 0;
         }
 
-        private static long GetAvailableMemory()
+        private long GetAvailableMemory()
         {
-            using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
-            return searcher.Get()
-                .Cast<ManagementObject>()
-                .Select(obj => Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024) // Convertendo de KB para Bytes
-                .FirstOrDefault();
+            if (OperatingSystem.IsWindows())
+            {
+                using var searcher = new ManagementObjectSearcher("SELECT FreePhysicalMemory FROM Win32_OperatingSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["FreePhysicalMemory"]) * 1024;
+                }
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                return GetLinuxMemoryInfo("MemAvailable");
+            }
+            else if (OperatingSystem.IsMacOS())
+            {
+                return GetMacMemoryInfo();
+            }
+            return 0;
         }
 
         private double GetCpuUsage()
@@ -76,13 +100,10 @@ namespace TechChallenge.Api.Monitoramento
         private static long GetLinuxMemoryInfo(string key)
         {
             var lines = File.ReadAllLines("/proc/meminfo");
-            foreach (var line in lines)
+            foreach (var line in lines.Where(x => x.StartsWith(key)))
             {
-                if (line.StartsWith(key))
-                {
-                    var parts = line.Split(':');
-                    return Convert.ToInt64(parts[1].Trim().Split(' ')[0]) * 1024;
-                }
+                var parts = line.Split(':');
+                return Convert.ToInt64(parts[1].Trim().Split(' ')[0]) * 1024;
             }
             return 0;
         }
