@@ -1,9 +1,11 @@
 ﻿using Prometheus;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Management;
 
 namespace TechChallenge.Api.Monitoramento
 {
+    [ExcludeFromCodeCoverage]
     public class SystemMetricsCollector
     {
         private readonly Gauge _totalMemoryGauge = Metrics
