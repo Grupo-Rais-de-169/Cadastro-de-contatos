@@ -11,6 +11,8 @@ using TechChallenge.Infra.Context;
 using TechChallenge.Infra.Repositories;
 using TechChallenge.Infra;
 using System.Diagnostics.CodeAnalysis;
+using Prometheus;
+using TechChallenge.Api.Monitoramento;
 
 namespace TechChallenge.Api
 {
@@ -36,7 +38,8 @@ namespace TechChallenge.Api
                 .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
                 .AddScoped<IUsuarioRepository, UsuarioRepository>()
                 .AddScoped<IPermissaoRepository, PermissaoRepository>()
-                .AddSingleton<DbConnectionProvider>();
+                .AddSingleton<DbConnectionProvider>()
+                .AddSingleton<SystemMetricsCollector>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.AddJwtConfiguration();
@@ -44,6 +47,8 @@ namespace TechChallenge.Api
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             builder.Services.AddSingleton(mapper);
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            var url = builder.Configuration.GetSection("URL:Value").Value;
 
             builder.Services.AddSwaggerGen(c =>
             {
@@ -55,7 +60,7 @@ namespace TechChallenge.Api
                     License = new OpenApiLicense
                     {
                         Name = "MIT",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
+                        Url = new Uri(url)
                     }
                 });
 
@@ -89,6 +94,8 @@ namespace TechChallenge.Api
 
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
+            app.UseHttpMetrics();
+            app.UseMetricServer();
             app.UseSwagger();
             app.UseSwaggerUI();
 
@@ -105,6 +112,7 @@ namespace TechChallenge.Api
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapMetrics();
 
             return app;
         }
