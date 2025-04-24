@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api;
-using TechChallenge.DAO.Api.Context;
-using TechChallenge.DAO.Api.Repository;
+using TechChallenge.DAO.Api.Infra.Context;
+using TechChallenge.DAO.Api.Infra.Repository;
+using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Domain.Config;
 
 namespace TechChallenge.Cadastro.Api.Configuration

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechChallenge.DAO.Api.Entities;
-using TechChallenge.DAO.Api.Repository;
+using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Api.Utils;
 using TechChallenge.DAO.Api.ViewModel;
 

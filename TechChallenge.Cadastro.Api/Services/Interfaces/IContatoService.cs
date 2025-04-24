@@ -2,7 +2,7 @@
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Cadastro.Api.ViewModel;
 
-namespace TechChallenge.Cadastro.Api.Services
+namespace TechChallenge.Cadastro.Api.Services.Interfaces
 {
     public interface IContatoService
     {

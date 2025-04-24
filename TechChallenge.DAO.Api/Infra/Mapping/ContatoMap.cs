@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TechChallenge.DAO.Api.Entities;
 
-namespace TechChallenge.DAO.Api.Mapping
+namespace TechChallenge.DAO.Api.Infra.Mapping
 {
     public class ContatoMap : IEntityTypeConfiguration<Contato>
     {

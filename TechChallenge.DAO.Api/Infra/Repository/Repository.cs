@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
-using TechChallenge.DAO.Api.Context;
 using TechChallenge.DAO.Api.Entities;
+using TechChallenge.DAO.Api.Infra.Context;
+using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 
-namespace TechChallenge.DAO.Api.Repository
+namespace TechChallenge.DAO.Api.Infra.Repository
 {
     public class Repository<T> : IRepository<T> where T : EntityBase
     {

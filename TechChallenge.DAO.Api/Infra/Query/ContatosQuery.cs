@@ -1,4 +1,4 @@
-﻿namespace TechChallenge.Infra.Query
+﻿namespace TechChallenge.DAO.Api.Infra.Query
 {
     public static class ContatosQuery
     {

@@ -1,6 +1,6 @@
 ﻿using TechChallenge.DAO.Api.Entities;
 
-namespace TechChallenge.DAO.Api.Repository
+namespace TechChallenge.DAO.Api.Infra.Repository.Interfaces
 {
     public interface IRepository<T> where T : EntityBase
     {

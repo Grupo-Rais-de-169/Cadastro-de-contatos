@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Model;
+using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Cadastro.Api.ViewModel;
 

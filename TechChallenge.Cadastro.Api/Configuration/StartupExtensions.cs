@@ -1,6 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Services;
+using TechChallenge.Cadastro.Api.Services.Interfaces;
 
 namespace TechChallenge.Cadastro.Api.Configuration
 {

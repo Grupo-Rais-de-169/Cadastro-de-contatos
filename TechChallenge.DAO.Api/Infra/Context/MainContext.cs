@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api.Entities;
 
-namespace TechChallenge.DAO.Api.Context
+namespace TechChallenge.DAO.Api.Infra.Context
 {
     public class MainContext : DbContext
     {

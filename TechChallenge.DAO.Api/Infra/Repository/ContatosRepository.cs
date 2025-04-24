@@ -1,10 +1,11 @@
 ﻿using Dapper;
 using System.Diagnostics.CodeAnalysis;
-using TechChallenge.DAO.Api.Context;
 using TechChallenge.DAO.Api.Entities;
-using TechChallenge.Infra.Query;
+using TechChallenge.DAO.Api.Infra.Context;
+using TechChallenge.DAO.Api.Infra.Query;
+using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 
-namespace TechChallenge.DAO.Api.Repository
+namespace TechChallenge.DAO.Api.Infra.Repository
 {
     [ExcludeFromCodeCoverage]
     public class ContatosRepository : Repository<Contato>, IContatosRepository

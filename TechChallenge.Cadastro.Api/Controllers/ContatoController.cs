@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TechChallenge.Cadastro.Api.Services;
+using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.ViewModel;
 
 namespace TechChallenge.Cadastro.Api.Controllers
