@@ -15,7 +15,8 @@ namespace TechChallenge.Cadastro.Api.Configuration
             builder.Services
                 .AddSingleton(new HttpClient())
                 //.AddScoped<ITokenServices, TokenServices>()
-                .AddScoped<IContatoService, ContatoService>();
+                .AddScoped<IContatoService, ContatoService>()
+                .Configure<MicroservicoConfig>(builder.Configuration.GetSection("Microservicos"));
  
 
             builder.Services.AddEndpointsApiExplorer();

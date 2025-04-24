@@ -1,136 +1,104 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using System.Text;
 using System.Text.Json;
+using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Model;
+using TechChallenge.Cadastro.Api.Utils;
+using TechChallenge.Cadastro.Api.ViewModel;
 
 namespace TechChallenge.Cadastro.Api.Services
 {
     public class ContatoService : IContatoService
     {
         private readonly IMemoryCache _cache;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient; 
+        private readonly string _urlDAO;
 
         public ContatoService(HttpClient httpClient,
+                              IOptions<MicroservicoConfig> config,
                               IMemoryCache cache)
         {
             _httpClient = httpClient;
             _cache = cache;
+            _urlDAO = config.Value.DAO;
         }
 
-        //public async Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null)
-        //{
-        //    var url = "https://url-do-microservico-ddd/api/ddd";
-        //    if (id != null) url += $"?id={id}";
 
-        //    var response = await _httpClient.GetAsync(url);
-        //    response.EnsureSuccessStatusCode();
-
-        //    var content = await response.Content.ReadAsStringAsync();
-        //    return JsonSerializer.Deserialize<IEnumerable<CodigoDeArea>>(content);
-        //}
-
-
-        public async Task<IEnumerable<Contato>> GetContatoByDDD(int id)
+        public async Task<IEnumerable<Contato>> GetContatoByDDD(int ddd)
         {
-            var url = "https://url-do-microservico-ddd/api/ddd";
-            if (id != null) url += $"?id={id}";
+            var url = $"{_urlDAO}GetContatoPorDDD/{ddd}";
 
             var response = await _httpClient.GetAsync(url);
-            response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<IEnumerable<Contato>>(content);
+
+            return JsonConvert.DeserializeObject<IEnumerable<Contato>>(content);
         }
 
 
-        //public IList<ContatoDto> GetAll()
-        //{
-        //    var contatos = _cache.GetOrCreate("Contatos", entry =>
-        //    {
-        //        entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
-        //        try
-        //        {
-        //            return _contatosRepository.GetAll();
-        //        }
-        //        catch (Exception)
-        //        {
-        //            throw;
-        //        }
-        //    });
-        //    return _mapper.Map<List<ContatoDto>>(contatos);
+        public async Task<IEnumerable<Contato>> GetAllAsync()
+        {
+            var url = $"{_urlDAO}GetAllContatos/";
 
-        //}
+            return await _cache.GetOrCreateAsync("Contatos", async entry =>
+            {
+                entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
 
-        //public async Task<IList<ContatoDto>> GetAllAsync()
-        //{
-        //    var contatos = await _cache.GetOrCreateAsync("ContatosAsync", async entry =>
-        //    {
-        //        entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
-        //        try
-        //        {
-        //            return await _contatosRepository.GetAllAsync();
-        //        }
-        //        catch (Exception)
-        //        {
+                var response = await _httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
 
-        //            throw;
-        //        }
-        //    });
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<IEnumerable<Contato>>(content);
+            });
+        }
 
-        //    return await Task.FromResult(_mapper.Map<List<ContatoDto>>(contatos));
-        //}
 
         //public async Task<ContatoDto> GetByIdAsync(int id) =>
         //     _mapper.Map<ContatoDto>(await _contatosRepository.GetByIdAsync(id));
 
         //public ContatoDto GetById(int id) => _mapper.Map<ContatoDto>(id);
 
-        //public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
-        //{
-        //    if (!DDDExiste(contato.IdDDD))
-        //        return Result.Failure("O DDD informado não existe.");
+        public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
+        {
+            var url = $"{_urlDAO}CadastraContato/";
+            var json = JsonConvert.SerializeObject(contato);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            DeletaCache();
+            var response = await _httpClient.PostAsync(url, content);
 
-        //    await _contatosRepository.AddAsync(_mapper.Map<Contato>(contato));
-        //    DeletaCache();
-        //    return Result.Success();
-        //}
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            return result;
+        }
 
-        //public Result Update(ContatoAlteracaoViewModel contatoModel)
-        //{
-        //    var contato = _contatosRepository.GetById(contatoModel.Id);
-        //    if (contato == null)
-        //        return Result.Failure("Contato não encontrado!");
-        //    if (!DDDExiste(contatoModel.IdDDD))
-        //        return Result.Failure("O DDD informado não existe.");
+        public async Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel)
+        {
+            var url = $"{_urlDAO}AtualizaContato/";
+            var json = JsonConvert.SerializeObject(contatoModel);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            DeletaCache();
+            var response = await _httpClient.PutAsync(url, content);
 
-        //    contato = MontarContatoParaEditar(contatoModel, contato);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            return result;
+        }
 
-        //    _contatosRepository.Update(contato);
-        //    DeletaCache();
-        //    return Result.Success();
-        //}
+        public async Task<Result> DeleteAsync(int id)
+        {
+            var url = $"{_urlDAO}DeletaContato/{id}";
 
-        //public Contato MontarContatoParaEditar(ContatoAlteracaoViewModel contatoModel, Contato contato)
-        //{
-        //    contato.Nome = contatoModel.Nome;
-        //    contato.Email = contatoModel.Email;
-        //    contato.Telefone = contatoModel.Telefone;
-        //    contato.IdDDD = contatoModel.IdDDD;
+            DeletaCache();
 
-        //    return contato;
-        //}
+            var response = await _httpClient.DeleteAsync(url);
 
-        //public Result Delete(int id)
-        //{
-        //    var contato = _contatosRepository.GetById(id);
-        //    if (contato == null)
-        //        return Result.Failure("Contato não encontrado!");
-        //    _contatosRepository.Delete(id);
-        //    DeletaCache();
-        //    return Result.Success();
-        //}
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            return result;
+        }
 
-        //public bool DDDExiste(int ddd) =>
-        //    _codigoAreaRepository.GetById(ddd) != null;
 
         public void DeletaCache()
         {

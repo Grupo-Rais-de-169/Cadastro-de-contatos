@@ -1,20 +1,15 @@
 ﻿using TechChallenge.Cadastro.Api.Model;
+using TechChallenge.Cadastro.Api.Utils;
+using TechChallenge.Cadastro.Api.ViewModel;
 
 namespace TechChallenge.Cadastro.Api.Services
 {
     public interface IContatoService
     {
-        //Task<IEnumerable<CodigoDeArea>> GetAllDDD(int? id = null);
         Task<IEnumerable<Contato>> GetContatoByDDD(int id);
-        //Task<IList<ContatoDto>> GetAllAsync();
-        //IList<ContatoDto> GetAll();
-        //Task<ContatoDto> GetByIdAsync(int id);
-        //ContatoDto GetById(int id);
-        //Task<Result> AddAsync(ContatoInclusaoViewModel contato);
-        //Result Update(ContatoAlteracaoViewModel contatoModel);
-        //Result Delete(int id);
-        //bool DDDExiste(int ddd);
-        //void DeletaCache();
-        //Contato MontarContatoParaEditar(ContatoAlteracaoViewModel contatoModel, Contato contato);
+        Task<IEnumerable<Contato>> GetAllAsync();
+        Task<Result> AddAsync(ContatoInclusaoViewModel contato);
+        Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel);
+        Task<Result> DeleteAsync(int id);
     }
 }

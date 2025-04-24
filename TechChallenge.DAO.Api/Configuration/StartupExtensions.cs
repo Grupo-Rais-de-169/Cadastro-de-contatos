@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Context;
 using TechChallenge.DAO.Api.Repository;
+using TechChallenge.DAO.Domain.Config;
 
 namespace TechChallenge.Cadastro.Api.Configuration
 {
@@ -25,6 +27,10 @@ namespace TechChallenge.Cadastro.Api.Configuration
 
             builder.Services.AddEndpointsApiExplorer();
             //builder.AddJwtConfiguration();
+
+            IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+            builder.Services.AddSingleton(mapper);
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddSwaggerGen(c =>
             {
