@@ -15,6 +15,7 @@ namespace TechChallenge.Usuarios.Api.Configuration
                 //.ReverseMap();
 
                 config.CreateMap<Usuario, UsuarioInclusaoViewModel>().ReverseMap();
+                config.CreateMap<Usuario, UsuarioDTO>().ReverseMap();
 
             });
             return MappingConfig;

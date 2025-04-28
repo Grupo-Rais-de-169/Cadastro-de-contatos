@@ -22,13 +22,13 @@ namespace TechChallenge.Usuarios.Api.Configuration
             builder.Services.AddControllers();
 
             builder.Services
-                //.AddScoped<ITokenServices, TokenServices>()
                 .AddScoped<IAuthService, AuthService>()
                 .AddScoped<IAuthRepositories, AuthRepositories>()
                 .AddScoped<IUsuarioService, UsuarioService>()
                 .AddScoped<IPasswordService, PasswordService>()
                 .AddScoped<IUsuarioRepository, UsuarioRepository>()
                 .AddScoped<IPermissaoRepository, PermissaoRepository>()
+                .AddScoped<ITokenServices, TokenServices>()
                 .AddSingleton<DbConnectionProvider>();
 
             builder.Services.AddEndpointsApiExplorer();
