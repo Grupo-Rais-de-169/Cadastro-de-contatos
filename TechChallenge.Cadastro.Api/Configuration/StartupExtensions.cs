@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
+using TechChallenge.Cadastro.Api.Monitoramento;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 
@@ -17,7 +18,8 @@ namespace TechChallenge.Cadastro.Api.Configuration
                 .AddSingleton(new HttpClient())
                 //.AddScoped<ITokenServices, TokenServices>()
                 .AddScoped<IContatoService, ContatoService>()
-                .Configure<MicroservicoConfig>(builder.Configuration.GetSection("Microservicos"));
+                .Configure<MicroservicoConfig>(builder.Configuration.GetSection("Microservicos"))
+                .AddSingleton<SystemMetricsCollector>();
  
 
             builder.Services.AddEndpointsApiExplorer();
