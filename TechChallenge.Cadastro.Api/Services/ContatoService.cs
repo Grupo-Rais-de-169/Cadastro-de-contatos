@@ -55,12 +55,6 @@ namespace TechChallenge.Cadastro.Api.Services
             });
         }
 
-
-        //public async Task<ContatoDto> GetByIdAsync(int id) =>
-        //     _mapper.Map<ContatoDto>(await _contatosRepository.GetByIdAsync(id));
-
-        //public ContatoDto GetById(int id) => _mapper.Map<ContatoDto>(id);
-
         public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
             var url = $"{_urlDAO}CadastraContato/";

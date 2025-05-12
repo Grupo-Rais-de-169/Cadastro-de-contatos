@@ -6,7 +6,7 @@ using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Api.Utils;
 using TechChallenge.DAO.Api.ViewModel;
 
-namespace TechChallenge.Api.Controllers
+namespace TechChallenge.DAO.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
