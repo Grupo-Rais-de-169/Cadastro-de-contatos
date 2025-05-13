@@ -11,24 +11,18 @@ using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Cadastro.Api.ViewModel;
 
-namespace TechChallenge.UnitTest.Cadastro.Services
+namespace TechChallenge.IntegrationTests.Cadastro.Services
 {
     public class ContatoServiceTests
     {
         private readonly Mock<HttpClient> _httpClientMock;
-        private readonly Mock<IMemoryCache> _cacheMock;
-        private readonly ContatoService _contatoService;
         private readonly string _baseUrl = "http://mocked-url/";
 
         public ContatoServiceTests()
         {
             _httpClientMock = new Mock<HttpClient>();
-            _cacheMock = new Mock<IMemoryCache>();
-
             var configMock = new Mock<IOptions<MicroservicoConfig>>();
             configMock.Setup(c => c.Value).Returns(new MicroservicoConfig { DAO = _baseUrl });
-
-            _contatoService = new ContatoService(_httpClientMock.Object, configMock.Object, _cacheMock.Object);
         }
 
 
