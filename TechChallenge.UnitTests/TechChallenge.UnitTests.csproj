@@ -32,10 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Usuarios\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TechChallenge.Cadastro.Api\TechChallenge.Cadastro.Api.csproj" />
     <ProjectReference Include="..\TechChallenge.DAO.Api\TechChallenge.DAO.Api.csproj" />
     <ProjectReference Include="..\TechChallenge.Usuarios.Api\TechChallenge.Usuarios.Api\TechChallenge.Usuarios.Api.csproj" />
