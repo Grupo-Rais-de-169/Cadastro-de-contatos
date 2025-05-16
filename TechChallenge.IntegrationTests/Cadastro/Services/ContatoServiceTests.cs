@@ -28,7 +28,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
 
 
         [Fact]
-        public async Task GetContatoByDDD_DeveRetornarContatos()
+        public async Task GetContatoByDDD_QuandoDDDExiste_DeveRetornarContatos()
         {
             // Arrange
             int ddd = 11;
@@ -60,7 +60,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         }
 
         [Fact]
-        public async Task GetContatoByDDD_DeveRetornarContatos_DoCache()
+        public async Task GetAllAsync_QuandoChamadoMultiplasVezes_DeveRetornarContatosDoCache()
         {
             // Arrange
             var expectedContatos = new List<Contato> { new Contato { Id = 1, Nome = "Maria" } };
@@ -98,7 +98,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
 
 
         [Fact]
-        public async Task AddAsync_DeveRetornarResultadoEsperado()
+        public async Task AddAsync_QuandoContatoValido_DeveRetornarSucesso()
         {
             // Arrange
             var contato = new ContatoInclusaoViewModel
@@ -137,7 +137,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         }
 
         [Fact]
-        public async Task UpdateAsync_DeveRetornarResultadoEsperado()
+        public async Task UpdateAsync_QuandoContatoExiste_DeveRetornarSucesso()
         {
             // Arrange
             var contato = new ContatoAlteracaoViewModel
@@ -179,7 +179,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         }
 
         [Fact]
-        public async Task DeleteAsync_DeveRetornarResultadoEsperado()
+        public async Task DeleteAsync_QuandoContatoExiste_DeveRetornarSucesso()
         {
             // Arrange
             int contatoId = 1;
@@ -215,7 +215,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         }
 
         [Fact]
-        public void DeletaCache_ShouldRemoveCacheEntries()
+        public void DeletaCache_QuandoExecutado_DeveRemoverContatosDoCache()
         {
             // Arrange
             var cacheMock = new Mock<IMemoryCache>();

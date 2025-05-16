@@ -6,6 +6,7 @@ using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Infra.Context;
 using TechChallenge.DAO.Api.Infra.Repository;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
+using TechChallenge.DAO.Api.Monitoramento;
 using TechChallenge.DAO.Domain.Config;
 
 namespace TechChallenge.Cadastro.Api.Configuration
@@ -24,7 +25,8 @@ namespace TechChallenge.Cadastro.Api.Configuration
             builder.Services
                 .AddScoped<IContatosRepository, ContatosRepository>()
                 .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
-                .AddSingleton<DbConnectionProvider>();
+                .AddSingleton<DbConnectionProvider>()
+                .AddSingleton<SystemMetricsCollector>();
 
             builder.Services.AddEndpointsApiExplorer();
             //builder.AddJwtConfiguration();
@@ -32,6 +34,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             builder.Services.AddSingleton(mapper);
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
             builder.Services.AddSwaggerGen(c =>
             {

@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Monitoramento;
 
-namespace TechChallenge.Api
+namespace TechChallenge.Cadastro.Api
 {
     [ExcludeFromCodeCoverage]
     public class Program

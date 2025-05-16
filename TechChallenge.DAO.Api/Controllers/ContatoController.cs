@@ -61,13 +61,13 @@ namespace TechChallenge.DAO.Api.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         //[Authorize(Roles = "admin")]
-        public async Task<Result> CriaContato([FromBody] ContatoInclusaoViewModel contato)
+        public async Task<IActionResult> CriaContato([FromBody] ContatoInclusaoViewModel contato)
         {
             if (!DDDExiste(contato.IdDDD))
-                return Result.Failure("O DDD informado não existe.");
+                return BadRequest(Result.Failure("O DDD informado não existe."));
 
             await _contatoRepository.AddAsync(_mapper.Map<Contato>(contato));
-            return Result.Success();
+            return Ok(Result.Success());
         }
 
         /// <summary>
@@ -79,19 +79,19 @@ namespace TechChallenge.DAO.Api.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         //[Authorize(Roles = "admin")]
-        public async Task<Result> AlteraContato([FromBody] ContatoAlteracaoViewModel contatoModel)
+        public async Task<IActionResult> AlteraContato([FromBody] ContatoAlteracaoViewModel contatoModel)
         {
             var contato = _contatoRepository.GetById(contatoModel.Id);
             if (contato == null)
-                return Result.Failure("Contato não encontrado!");
+                return NotFound(Result.Failure("Contato não encontrado!"));
             if (!DDDExiste(contatoModel.IdDDD))
-                return Result.Failure("O DDD informado não existe.");
+                return BadRequest(Result.Failure("O DDD informado não existe."));
 
             contato = MontarContatoParaEditar(contatoModel, contato);
 
             _contatoRepository.Update(contato);
 
-            return Result.Success();
+            return Ok(Result.Success());
         }
 
         /// <summary>
@@ -103,14 +103,14 @@ namespace TechChallenge.DAO.Api.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(400)]
         //[Authorize(Roles = "admin")]
-        public async Task<Result> DeleteContato(int id = -1)
+        public async Task<IActionResult> DeleteContato(int id = -1)
         {
             var contato = _contatoRepository.GetById(id);
             if (contato == null)
-                return Result.Failure("Contato não encontrado!");
+                return NotFound(Result.Failure("Contato não encontrado!"));
             _contatoRepository.Delete(id);
 
-            return Result.Success();
+            return Ok(Result.Success());
         }
 
         private bool DDDExiste(int ddd) =>

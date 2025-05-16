@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using TechChallenge.DAO.Api.Controllers;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
+using TechChallenge.DAO.Api.Utils;
 
 namespace TechChallenge.UnitTests.DAO
 {
@@ -36,8 +38,10 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.DeleteContato(id);
 
             // Assert
-            Assert.False(result.IsSuccess);
-            Assert.Equal("Contato não encontrado!", result.Message);
+            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
+            var response = Assert.IsAssignableFrom<Result>(notFoundResult.Value);
+            Assert.False(response.IsSuccess);
+            Assert.Equal("Contato não encontrado!", response.Message);
         }
 
         [Fact]
@@ -52,7 +56,9 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.DeleteContato(id);
 
             // Assert
-            Assert.True(result.IsSuccess);
+            var notFoundResult = Assert.IsType<OkObjectResult>(result);
+            var response = Assert.IsAssignableFrom<Result>(notFoundResult.Value);
+            Assert.True(response.IsSuccess);
         }
     }
 }

@@ -1,19 +1,35 @@
+using Prometheus;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Configuration;
+using TechChallenge.DAO.Api.Configuration;
+using TechChallenge.DAO.Api.Monitoramento;
 
-[ExcludeFromCodeCoverage]
-public class Program
+namespace TechChallenge.DAO.Api
 {
-    public static async Task Main(string[] args)
+    [ExcludeFromCodeCoverage]
+    public class Program
     {
-        var builder = WebApplication.CreateBuilder(args);
+        public static async Task Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            //Monitoramento
+            using var server = new KestrelMetricServer(port: 1235);
+            server.Start();
 
-        builder.ConfigureServices();
+            builder.ConfigureServices();
 
-        var app = builder.Build();
+            var app = builder.Build();
 
-        app.ConfigureMiddleware();
+            app.UseMiddleware<MonitoramentoMiddleware>();
+            app.UseMonitoringConfiguration();
 
-        await app.RunAsync();
+            app.MapMetrics();
+            app.UseHttpMetrics();
+            app.UseMetricServer();
+
+            app.ConfigureMiddleware();
+
+            await app.RunAsync();
+        }
     }
 }

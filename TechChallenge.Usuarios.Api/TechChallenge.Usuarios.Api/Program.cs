@@ -1,19 +1,22 @@
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Usuarios.Api.Configuration;
 
-[ExcludeFromCodeCoverage]
-public class Program
+namespace TechChallenge.Usuarios.Api
 {
-    public static async Task Main(string[] args)
+    [ExcludeFromCodeCoverage]
+    public class Program
     {
-        var builder = WebApplication.CreateBuilder(args);
+        public static async Task Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-        builder.ConfigureServices();
+            builder.ConfigureServices();
 
-        var app = builder.Build();
+            var app = builder.Build();
 
-        app.ConfigureMiddleware();
+            app.ConfigureMiddleware();
 
-        await app.RunAsync();
+            await app.RunAsync();
+        }
     }
 }

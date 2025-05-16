@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using TechChallenge.DAO.Api.Controllers;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
+using TechChallenge.DAO.Api.Utils;
 using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.UnitTests.DAO
@@ -37,8 +39,11 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.CriaContato(contato);
 
             // Assert
-            Assert.False(result.IsSuccess);
-            Assert.Equal("O DDD informado não existe.", result.Message);
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            var resultValue = Assert.IsType<Result>(badRequestResult.Value);
+
+            Assert.False(resultValue.IsSuccess);
+            Assert.Equal("O DDD informado não existe.", resultValue.Message);
         }
 
         [Fact]
@@ -47,6 +52,7 @@ namespace TechChallenge.UnitTests.DAO
             // Arrange
             var contato = new ContatoInclusaoViewModel { IdDDD = 11 };
             var mappedContato = new Contato();
+
             _mockCodigoAreaRepository.Setup(repo => repo.GetById(contato.IdDDD)).Returns(new CodigoDeArea());
             _mockMapper.Setup(mapper => mapper.Map<Contato>(contato)).Returns(mappedContato);
 
@@ -54,7 +60,10 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.CriaContato(contato);
 
             // Assert
-            Assert.True(result.IsSuccess);
+            var createdAtResult = Assert.IsType<OkObjectResult>(result);
+            var returnedContato = Assert.IsType<Result>(createdAtResult.Value);
+
+            Assert.True(returnedContato.IsSuccess);
         }
     }
 }

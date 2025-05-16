@@ -1,10 +1,12 @@
 ﻿
 
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using TechChallenge.DAO.Api.Controllers;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
+using TechChallenge.DAO.Api.Utils;
 using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.UnitTests.DAO
@@ -39,8 +41,10 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.AlteraContato(contatoModel);
 
             // Assert
-            Assert.False(result.IsSuccess);
-            Assert.Equal("Contato não encontrado!", result.Message);
+            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
+            var response = Assert.IsAssignableFrom<Result>(notFoundResult.Value);
+
+            Assert.Contains("Contato não encontrado", (string)response.Message);
         }
 
         [Fact]
@@ -49,6 +53,7 @@ namespace TechChallenge.UnitTests.DAO
             // Arrange
             var contatoModel = new ContatoAlteracaoViewModel { Id = 1, IdDDD = 11 };
             var existingContato = new Contato();
+
             _mockContatoRepository.Setup(repo => repo.GetById(contatoModel.Id)).Returns(existingContato);
             _mockCodigoAreaRepository.Setup(repo => repo.GetById(contatoModel.IdDDD)).Returns(new CodigoDeArea());
 
@@ -56,7 +61,9 @@ namespace TechChallenge.UnitTests.DAO
             var result = await _controller.AlteraContato(contatoModel);
 
             // Assert
-            Assert.True(result.IsSuccess);
+            var notFoundResult = Assert.IsType<OkObjectResult>(result);
+            var response = Assert.IsAssignableFrom<Result>(notFoundResult.Value);
+            Assert.True(response.IsSuccess);
         }
     }
 }
