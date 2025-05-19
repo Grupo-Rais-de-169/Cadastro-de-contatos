@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
+using TechChallenge.Cadastro.Api.Handler;
 using TechChallenge.Cadastro.Api.Monitoramento;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
@@ -13,17 +14,17 @@ namespace TechChallenge.Cadastro.Api.Configuration
         {
             builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
+            builder.Services.AddHttpClient<IContatoService, ContatoService>()
+                            .AddHttpMessageHandler<JwtDelegatingHandler>();
 
             builder.Services
-                .AddSingleton(new HttpClient())
-                //.AddScoped<ITokenServices, TokenServices>()
-                .AddScoped<IContatoService, ContatoService>()
                 .Configure<MicroservicoConfig>(builder.Configuration.GetSection("Microservicos"))
-                .AddSingleton<SystemMetricsCollector>();
- 
+                .AddSingleton<SystemMetricsCollector>()
+                .AddHttpContextAccessor()
+                .AddTransient<JwtDelegatingHandler>();
 
             builder.Services.AddEndpointsApiExplorer();
-            //builder.AddJwtConfiguration();
+            builder.AddJwtConfiguration();
 
             builder.Services.AddSwaggerGen(c =>
             {

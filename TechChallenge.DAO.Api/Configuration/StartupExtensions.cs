@@ -29,7 +29,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
                 .AddSingleton<SystemMetricsCollector>();
 
             builder.Services.AddEndpointsApiExplorer();
-            //builder.AddJwtConfiguration();
+            builder.AddJwtConfiguration();
 
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             builder.Services.AddSingleton(mapper);

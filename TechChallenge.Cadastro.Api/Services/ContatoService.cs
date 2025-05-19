@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using TechChallenge.Cadastro.Api.Configuration;
@@ -93,7 +94,6 @@ namespace TechChallenge.Cadastro.Api.Services
             var result = JsonConvert.DeserializeObject<Result>(responseBody);
             return result;
         }
-
 
         public void DeletaCache()
         {

@@ -10,7 +10,7 @@ namespace TechChallenge.DAO.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class ContatoController : ControllerBase
     {
         private readonly IContatosRepository _contatoRepository;

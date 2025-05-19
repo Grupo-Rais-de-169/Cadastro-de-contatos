@@ -28,7 +28,6 @@ namespace TechChallenge.Cadastro.Api.Configuration
                     ValidateAudience = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
