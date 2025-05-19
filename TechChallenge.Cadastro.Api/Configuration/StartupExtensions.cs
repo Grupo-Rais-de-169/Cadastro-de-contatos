@@ -1,7 +1,9 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Handler;
+using TechChallenge.Cadastro.Api.Middleware;
 using TechChallenge.Cadastro.Api.Monitoramento;
+using TechChallenge.Cadastro.Api.Policies;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 
@@ -15,7 +17,9 @@ namespace TechChallenge.Cadastro.Api.Configuration
             builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
             builder.Services.AddHttpClient<IContatoService, ContatoService>()
-                            .AddHttpMessageHandler<JwtDelegatingHandler>();
+                            .AddHttpMessageHandler<JwtDelegatingHandler>()
+                            .AddPolicyHandler(PollyPolicyFactory.GetRetryPolicy()) 
+                            .AddPolicyHandler(PollyPolicyFactory.GetCircuitBreakerPolicy());
 
             builder.Services
                 .Configure<MicroservicoConfig>(builder.Configuration.GetSection("Microservicos"))
@@ -70,6 +74,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
 
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
+            app.UseMiddleware<GlobalExceptionMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI();
 
