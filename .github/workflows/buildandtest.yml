@@ -13,53 +13,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: 🔨 Build
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 8.0.302
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.0.302
 
-      - name: Restore dependencies
-        run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore
 
-      - name: Build solution
-        run: dotnet build --no-restore --configuration Release
+    - name: Build
+      run: dotnet build
 
-  unit-test:
-    runs-on: ubuntu-latest
-    name: ✅ Unit Tests
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
+    - name: Run Unit Tests
+      run: dotnet test --no-build --verbosity normal TechChallenge.Tests/
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 8.0.302
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Run Unit Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/
-
-  integration-test:
-    runs-on: ubuntu-latest
-    name: 🔁 Integration Tests
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 8.0.302
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Run Integration Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTests/
+    - name: Run Integration Tests
+      run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTest/
