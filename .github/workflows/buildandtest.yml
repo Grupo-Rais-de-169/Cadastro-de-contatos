@@ -42,7 +42,7 @@ jobs:
         run: dotnet restore
 
       - name: Run Unit Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/
+        run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/TechChallenge.UnitTests.csproj
 
   integration-test:
     runs-on: ubuntu-latest
@@ -60,4 +60,4 @@ jobs:
         run: dotnet restore
 
       - name: Run Integration Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTests/
+        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTests/TechChallenge.IntegrationTests.csproj
