@@ -13,70 +13,65 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      build-path: ${{ steps.build.outputs.build-path }}
+    name: Build Project
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.302
+          dotnet-version: 8.0.x
 
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build solution
-        run: dotnet build --no-restore -c Debug
-
-      - name: Publish build output
-        run: |
-          mkdir -p ./build
-          dotnet publish TechChallenge.UnitTests/TechChallenge.UnitTests.csproj -c Debug -o ./build/UnitTests
-          dotnet publish TechChallenge.IntegrationTests/TechChallenge.IntegrationTests.csproj -c Debug -o ./build/IntegrationTests
+        run: dotnet build --no-restore --configuration Debug
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          name: build-artifacts
-          path: ./build
+          name: build-output
+          path: |
+            **/bin/Debug/net8.0/
+            **/obj/
 
-  test-unit:
-    needs: build
+  unit-tests:
     runs-on: ubuntu-latest
+    name: Run Unit Tests
+    needs: build
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.302
+          dotnet-version: 8.0.x
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
-          name: build-artifacts
-          path: ./build
+          name: build-output
 
       - name: Run Unit Tests
-        run: dotnet test ./build/UnitTests/TechChallenge.UnitTests.dll --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/
 
-  test-integration:
-    needs: build
+  integration-tests:
     runs-on: ubuntu-latest
+    name: Run Integration Tests
+    needs: build
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.302
+          dotnet-version: 8.0.x
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
-          name: build-artifacts
-          path: ./build
+          name: build-output
 
       - name: Run Integration Tests
-        run: dotnet test ./build/IntegrationTests/TechChallenge.IntegrationTests.dll --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTests/
