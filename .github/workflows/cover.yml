@@ -1,4 +1,5 @@
-name: Unit Test With Coverage
+name: Unit Test and Test Integration
+
 on:
   push:
     branches:
@@ -6,31 +7,23 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 8.0.302
+
     - name: Restore dependencies
-      run: dotnet restore   
+      run: dotnet restore
+
     - name: Build
       run: dotnet build
-    - name: Test
-      run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal TechChallenge.Tests/
-    - name: Create Test Coverage Badge
-      uses: simon-k/dotnet-code-coverage-badge@v1.0.0
-      id: create_coverage_badge
-      with:
-        label: Unit Test Coverage
-        color: brightgreen
-        path: TechChallenge.Tests/TestResults/coverage.opencover.xml
-        gist-filename: code-coverage.json
-        gist-id: CA72A3F135728DF13F37A4896FBDE1AD184095CB068A82537EFC97A55538979141FA8E8FB202B8D5A51B5B801F9F14990C8B98596887E94F7EEBB418CF84EFF5
-        gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
-    - name: Print code coverage
-      run: echo "Code coverage percentage ${{steps.create_coverage_badge.outputs.percentage}}%"
+
+    - name: Run Unit Tests
+      run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/
