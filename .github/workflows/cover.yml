@@ -3,7 +3,7 @@ name: Unit Test and Test Integration
 on:
   push:
     branches:
-      - master
+      - Microservicos
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
