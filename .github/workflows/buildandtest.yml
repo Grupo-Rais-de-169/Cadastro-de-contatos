@@ -13,7 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: 🔨 Build
+    outputs:
+      build-path: ${{ steps.build.outputs.build-path }}
     steps:
       - uses: actions/checkout@v2
 
@@ -26,40 +27,56 @@ jobs:
         run: dotnet restore
 
       - name: Build solution
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore -c Debug
 
-  unit-test:
-    runs-on: ubuntu-latest
-    name: ✅ Unit Tests
+      - name: Publish build output
+        run: |
+          mkdir -p ./build
+          dotnet publish TechChallenge.UnitTests/TechChallenge.UnitTests.csproj -c Debug -o ./build/UnitTests
+          dotnet publish TechChallenge.IntegrationTests/TechChallenge.IntegrationTests.csproj -c Debug -o ./build/IntegrationTests
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./build
+
+  test-unit:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 8.0.302
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./build
 
       - name: Run Unit Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.UnitTests/
+        run: dotnet test ./build/UnitTests/TechChallenge.UnitTests.dll --no-build --verbosity normal
 
-  integration-test:
-    runs-on: ubuntu-latest
-    name: 🔁 Integration Tests
+  test-integration:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 8.0.302
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./build
 
       - name: Run Integration Tests
-        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTests/
+        run: dotnet test ./build/IntegrationTests/TechChallenge.IntegrationTests.dll --no-build --verbosity normal
