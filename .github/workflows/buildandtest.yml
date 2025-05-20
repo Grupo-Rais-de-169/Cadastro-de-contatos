@@ -1,0 +1,63 @@
+name: Build, Unit Test and Integration Test
+
+on:
+  push:
+    branches:
+      - Microservices
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 🔨 Build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.302
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --no-restore --configuration Release
+
+  unit-test:
+    runs-on: ubuntu-latest
+    name: ✅ Unit Tests
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.302
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run Unit Tests
+        run: dotnet test --no-build --verbosity normal TechChallenge.Tests/
+
+  integration-test:
+    runs-on: ubuntu-latest
+    name: 🔁 Integration Tests
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.302
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run Integration Tests
+        run: dotnet test --no-build --verbosity normal TechChallenge.IntegrationTest/
