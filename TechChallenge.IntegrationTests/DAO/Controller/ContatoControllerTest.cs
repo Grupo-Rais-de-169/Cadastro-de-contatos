@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Utils;
@@ -15,6 +16,10 @@ namespace TechChallenge.IntegrationTests.DAO.Controller
         public ContatoControllerTests(WebApplicationFactory<Program> factory)
         {
             _client = factory.CreateClient();
+            var configuration = JwtTokenGenerator.LoadConfiguration();
+            var token = JwtTokenGenerator.GerarJwt(configuration);
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
 
         [Fact]

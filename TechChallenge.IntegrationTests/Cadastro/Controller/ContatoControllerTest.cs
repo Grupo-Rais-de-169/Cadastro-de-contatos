@@ -2,6 +2,7 @@
 using Moq;
 using Newtonsoft.Json;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
@@ -19,6 +20,10 @@ namespace TechChallenge.IntegrationTests.Cadastro.Controller
         {
             _client = factory.CreateClient();
             _contatoServiceMock = factory.ContatoServiceMock;
+            var configuration = JwtTokenGenerator.LoadConfiguration();
+            var token = JwtTokenGenerator.GerarJwt(configuration);
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
 
 
