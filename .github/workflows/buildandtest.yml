@@ -3,8 +3,10 @@ name: Build, Unit Test and Integration Test
 on:
   push:
     branches:
-      - Microservices
+      - Microservicos
   pull_request:
+    branches:
+      - Microservicos
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
