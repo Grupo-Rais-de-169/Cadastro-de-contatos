@@ -26,7 +26,7 @@ namespace TechChallenge.Cadastro.Api.Middleware
 
                 var response = new
                 {
-                    message = "Serviço temporariamente indisponível devido a alta carga. Tente novamente mais tarde."
+                    message = "Serviço temporariamente indisponível. Tente novamente mais tarde."
                 };
 
                 await context.Response.WriteAsJsonAsync(response);
