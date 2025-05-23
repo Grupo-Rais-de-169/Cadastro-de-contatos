@@ -13,7 +13,7 @@ namespace TechChallenge.Cadastro.Api.Policies
                 .OrResult(msg => msg.StatusCode == HttpStatusCode.TooManyRequests)
                 .CircuitBreakerAsync(
                     handledEventsAllowedBeforeBreaking: 3,
-                    durationOfBreak: TimeSpan.FromSeconds(30)
+                    durationOfBreak: TimeSpan.FromSeconds(30) 
                 );
         }
 
