@@ -1,9 +1,12 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using MassTransit;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Handler;
 using TechChallenge.Cadastro.Api.Middleware;
 using TechChallenge.Cadastro.Api.Monitoramento;
 using TechChallenge.Cadastro.Api.Policies;
+using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 
@@ -18,7 +21,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
             builder.Services.AddControllers();
             builder.Services.AddHttpClient<IContatoService, ContatoService>()
                             .AddHttpMessageHandler<JwtDelegatingHandler>()
-                            .AddPolicyHandler(PollyPolicyFactory.GetRetryPolicy()) 
+                            .AddPolicyHandler(PollyPolicyFactory.GetRetryPolicy())
                             .AddPolicyHandler(PollyPolicyFactory.GetCircuitBreakerPolicy());
 
             builder.Services
@@ -66,6 +69,25 @@ namespace TechChallenge.Cadastro.Api.Configuration
                         },
                         Array.Empty<string>()
                     }
+                });
+            });
+
+            //RabbitMQ
+            builder.Services
+                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransitConfig"))
+                .AddScoped<IContatoProducer, ContatoProducer>();
+
+            MassTransitConfig config = (MassTransitConfig)builder.Configuration.GetSection("MassTransitConfig");
+
+            builder.Services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(config.Server, "/", h =>
+                    {
+                        h.Username(config.User);
+                        h.Password(config.Password);
+                    });
                 });
             });
 

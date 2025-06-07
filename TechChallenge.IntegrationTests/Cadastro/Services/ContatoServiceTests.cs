@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using MassTransit;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Moq;
 using Moq.Protected;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Text;
 using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Model;
+using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Cadastro.Api.ViewModel;
@@ -17,15 +19,19 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
     {
         private readonly Mock<HttpClient> _httpClientMock;
         private readonly string _baseUrl = "http://mocked-url/";
+        private readonly IOptions<MassTransitConfig> _config;
+        private readonly IBus _bus;
+        private readonly ContatoProducer _producer;
 
-        public ContatoServiceTests()
+        public ContatoServiceTests(IOptions<MassTransitConfig> config, IBus bus)
         {
             _httpClientMock = new Mock<HttpClient>();
             var configMock = new Mock<IOptions<MicroservicoConfig>>();
             configMock.Setup(c => c.Value).Returns(new MicroservicoConfig { DAO = _baseUrl });
+            _config = config;
+            _bus = bus;
+            _producer = new ContatoProducer(_bus, _config);
         }
-
-
 
         [Fact]
         public async Task GetContatoByDDD_QuandoDDDExiste_DeveRetornarContatos()
@@ -47,7 +53,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var cache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, cache);
+            var service = new ContatoService(httpClient, config, cache, _producer);
 
             // Act
             var result = await service.GetContatoByDDD(ddd);
@@ -78,7 +84,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache);
+            var service = new ContatoService(httpClient, config, memoryCache, _producer);
 
             // Act 1: Primeira chamada popula o cache
             var primeiraChamada = await service.GetAllAsync();
@@ -125,7 +131,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache);
+            var service = new ContatoService(httpClient, config, memoryCache, _producer);
 
             // Act
             var result = await service.AddAsync(contato);
@@ -167,7 +173,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache);
+            var service = new ContatoService(httpClient, config, memoryCache, _producer);
 
             // Act
             var result = await service.UpdateAsync(contato);
@@ -203,7 +209,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache);
+            var service = new ContatoService(httpClient, config, memoryCache, _producer);
 
             // Act
             var result = await service.DeleteAsync(contatoId);
@@ -219,7 +225,8 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         {
             // Arrange
             var cacheMock = new Mock<IMemoryCache>();
-            var service = new ContatoService(_httpClientMock.Object, Options.Create(new MicroservicoConfig { DAO = _baseUrl }), cacheMock.Object);
+            var producerMock = new Mock<IContatoProducer>();
+            var service = new ContatoService(_httpClientMock.Object, Options.Create(new MicroservicoConfig { DAO = _baseUrl }), cacheMock.Object, producerMock.Object);
 
             // Act
             service.DeletaCache();

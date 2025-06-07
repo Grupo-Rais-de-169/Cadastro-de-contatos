@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Text.Json;
 using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Model;
+using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Cadastro.Api.ViewModel;
@@ -17,14 +16,17 @@ namespace TechChallenge.Cadastro.Api.Services
         private readonly IMemoryCache _cache;
         private readonly HttpClient _httpClient; 
         private readonly string _urlDAO;
+        private readonly IContatoProducer _contatoProducer;
 
         public ContatoService(HttpClient httpClient,
                               IOptions<MicroservicoConfig> config,
-                              IMemoryCache cache)
+                              IMemoryCache cache,
+                              IContatoProducer contatoProducer)
         {
             _httpClient = httpClient;
             _cache = cache;
             _urlDAO = config.Value.DAO;
+            _contatoProducer = contatoProducer;
         }
 
 
@@ -58,15 +60,18 @@ namespace TechChallenge.Cadastro.Api.Services
 
         public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
-            var url = $"{_urlDAO}CadastraContato/";
-            var json = JsonConvert.SerializeObject(contato);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            DeletaCache();
-            var response = await _httpClient.PostAsync(url, content);
+            //var url = $"{_urlDAO}CadastraContato/";
+            //var json = JsonConvert.SerializeObject(contato);
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+            //DeletaCache();
+            //var response = await _httpClient.PostAsync(url, content);
 
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            return result;
+            //var responseBody = await response.Content.ReadAsStringAsync();
+            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            //return result;
+            await _contatoProducer.Execute(contato);
+
+            return Result.Success();
         }
 
         public async Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel)
