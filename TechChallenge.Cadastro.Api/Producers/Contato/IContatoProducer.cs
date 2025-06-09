@@ -4,6 +4,8 @@ namespace TechChallenge.Cadastro.Api.Producers.Contato
 {
     public interface IContatoProducer
     {
-        Task Execute(ContatoInclusaoViewModel contato);
+        Task ExecuteAsync(ContatoInclusaoViewModel contato);
+        Task ExecuteAsync(ContatoAlteracaoViewModel contato);
+        Task ExecuteAsync(int id);
     }
 }

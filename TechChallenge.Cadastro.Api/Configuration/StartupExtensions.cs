@@ -74,19 +74,22 @@ namespace TechChallenge.Cadastro.Api.Configuration
 
             //RabbitMQ
             builder.Services
-                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransitConfig"))
+                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransit"))
                 .AddScoped<IContatoProducer, ContatoProducer>();
 
-            MassTransitConfig config = (MassTransitConfig)builder.Configuration.GetSection("MassTransitConfig");
+            var config = builder.Configuration;
+            var server = config.GetSection("MassTransit")["server"] ?? string.Empty;
+            var user = config.GetSection("MassTransit")["user"] ?? string.Empty;
+            var password = config.GetSection("MassTransit")["password"] ?? string.Empty;
 
             builder.Services.AddMassTransit(x =>
             {
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host(config.Server, "/", h =>
+                    cfg.Host(server, "/", h =>
                     {
-                        h.Username(config.User);
-                        h.Password(config.Password);
+                        h.Username(user);
+                        h.Password(password);
                     });
                 });
             });

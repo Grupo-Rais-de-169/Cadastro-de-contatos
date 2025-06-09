@@ -69,35 +69,43 @@ namespace TechChallenge.Cadastro.Api.Services
             //var responseBody = await response.Content.ReadAsStringAsync();
             //var result = JsonConvert.DeserializeObject<Result>(responseBody);
             //return result;
-            await _contatoProducer.Execute(contato);
+            await _contatoProducer.ExecuteAsync(contato);
 
             return Result.Success();
         }
 
         public async Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel)
         {
-            var url = $"{_urlDAO}AtualizaContato/";
-            var json = JsonConvert.SerializeObject(contatoModel);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            DeletaCache();
-            var response = await _httpClient.PutAsync(url, content);
+            //var url = $"{_urlDAO}AtualizaContato/";
+            //var json = JsonConvert.SerializeObject(contatoModel);
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+            //DeletaCache();
+            //var response = await _httpClient.PutAsync(url, content);
 
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            return result;
+            //var responseBody = await response.Content.ReadAsStringAsync();
+            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            //return result;
+
+            await _contatoProducer.ExecuteAsync(contatoModel);
+
+            return Result.Success();
         }
 
         public async Task<Result> DeleteAsync(int id)
         {
-            var url = $"{_urlDAO}DeletaContato/{id}";
+            //var url = $"{_urlDAO}DeletaContato/{id}";
 
-            DeletaCache();
+            //DeletaCache();
 
-            var response = await _httpClient.DeleteAsync(url);
+            //var response = await _httpClient.DeleteAsync(url);
 
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            return result;
+            //var responseBody = await response.Content.ReadAsStringAsync();
+            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
+            //return result;
+
+            await _contatoProducer.ExecuteAsync(id);
+
+            return Result.Success();
         }
 
         public void DeletaCache()
