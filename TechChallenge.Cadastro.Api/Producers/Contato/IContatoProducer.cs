@@ -6,6 +6,6 @@ namespace TechChallenge.Cadastro.Api.Producers.Contato
     {
         Task ExecuteAsync(ContatoInclusaoViewModel contato);
         Task ExecuteAsync(ContatoAlteracaoViewModel contato);
-        Task ExecuteAsync(int id);
+        Task ExecuteAsync(ContatoExclusaoViewModel contato);
     }
 }

@@ -5,6 +5,7 @@ using System.Text.Json;
 using TechChallenge.Cadastro.Api.Controllers;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
+using TechChallenge.Cadastro.Api.ViewModel;
 
 namespace TechChallenge.UnitTest
 {
@@ -25,7 +26,11 @@ namespace TechChallenge.UnitTest
             // Arrange
             int id = 1; // ID válido
             var serviceResult = new Result { IsSuccess = true };
-            _contatoService.Setup(service => service.DeleteAsync(id)).ReturnsAsync(serviceResult);
+            var contato = new ContatoExclusaoViewModel()
+            {
+                Id = id
+            };
+            _contatoService.Setup(service => service.DeleteAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
             var result = await _controller.DeleteContato(id) as NoContentResult;
@@ -44,8 +49,9 @@ namespace TechChallenge.UnitTest
             // Arrange
             //int id = 99; // ID inexistente
             var serviceResult = new Result { Message = "Contato não encontrado" };
+            var contato = new ContatoExclusaoViewModel();
 
-            _contatoService.Setup(service => service.DeleteAsync(id)).ReturnsAsync(serviceResult);
+            _contatoService.Setup(service => service.DeleteAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
             var result = await _controller.DeleteContato(id) as NotFoundObjectResult;

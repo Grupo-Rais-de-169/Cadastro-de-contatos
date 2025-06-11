@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api;
+using TechChallenge.DAO.Api.Configuration;
+using TechChallenge.DAO.Api.Consumers.Contato;
 using TechChallenge.DAO.Api.Infra.Context;
 using TechChallenge.DAO.Api.Infra.Repository;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Api.Monitoramento;
+using TechChallenge.DAO.Api.Services;
+using TechChallenge.DAO.Api.Services.Interfaces;
 using TechChallenge.DAO.Domain.Config;
 
 namespace TechChallenge.Cadastro.Api.Configuration
@@ -25,6 +30,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
             builder.Services
                 .AddScoped<IContatosRepository, ContatosRepository>()
                 .AddScoped<ICodigoDeAreaRepository, CodigoDeAreaRepository>()
+                .AddScoped<IContatoService, ContatoService>()
                 .AddSingleton<DbConnectionProvider>()
                 .AddSingleton<SystemMetricsCollector>();
 
@@ -73,6 +79,48 @@ namespace TechChallenge.Cadastro.Api.Configuration
                         Array.Empty<string>()
                     }
                 });
+            });
+
+            //RabbitMQ
+            builder.Services
+                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransit"));
+
+            var config = builder.Configuration;
+            var server = config.GetSection("MassTransit")["server"] ?? string.Empty;
+            var user = config.GetSection("MassTransit")["user"] ?? string.Empty;
+            var password = config.GetSection("MassTransit")["password"] ?? string.Empty;
+            var createQueue = config.GetSection("MassTransit")["CreateContato"] ?? string.Empty;
+            var updateQueue = config.GetSection("MassTransit")["UpdateContato"] ?? string.Empty;
+            var deleteQueue = config.GetSection("MassTransit")["DeleteContato"] ?? string.Empty;
+
+            builder.Services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(server, "/", h =>
+                    {
+                        h.Username(user);
+                        h.Password(password);
+                    });
+                    cfg.ReceiveEndpoint(createQueue, e =>
+                    {
+                        e.Consumer<CreateContatoConsumer>(context);
+                    });
+                    cfg.ReceiveEndpoint(updateQueue, e =>
+                    {
+                        e.Consumer<UpdateContatoConsumer>(context);
+                    });
+                    cfg.ReceiveEndpoint(deleteQueue, e =>
+                    {
+                        e.Consumer<DeleteContatoConsumer>(context);
+                    });
+
+                    cfg.ConfigureEndpoints(context);
+                });
+
+                x.AddConsumer<CreateContatoConsumer>();
+                x.AddConsumer<UpdateContatoConsumer>();
+                x.AddConsumer<DeleteContatoConsumer>();
             });
 
             return builder;

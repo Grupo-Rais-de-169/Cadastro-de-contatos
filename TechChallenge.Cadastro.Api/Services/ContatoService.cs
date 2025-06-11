@@ -91,7 +91,7 @@ namespace TechChallenge.Cadastro.Api.Services
             return Result.Success();
         }
 
-        public async Task<Result> DeleteAsync(int id)
+        public async Task<Result> DeleteAsync(ContatoExclusaoViewModel contatoModel)
         {
             //var url = $"{_urlDAO}DeletaContato/{id}";
 
@@ -103,7 +103,7 @@ namespace TechChallenge.Cadastro.Api.Services
             //var result = JsonConvert.DeserializeObject<Result>(responseBody);
             //return result;
 
-            await _contatoProducer.ExecuteAsync(id);
+            await _contatoProducer.ExecuteAsync(contatoModel);
 
             return Result.Success();
         }

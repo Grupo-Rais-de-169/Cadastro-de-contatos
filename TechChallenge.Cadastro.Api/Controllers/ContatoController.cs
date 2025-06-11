@@ -98,7 +98,12 @@ namespace TechChallenge.Cadastro.Api.Controllers
         //[Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteContato(int id = -1)
         {
-            var result = await _contatoService.DeleteAsync(id);
+            var contato = new ContatoExclusaoViewModel()
+            {
+                Id = id
+            };
+
+            var result = await _contatoService.DeleteAsync(contato);
 
             if (!result.IsSuccess)
             {

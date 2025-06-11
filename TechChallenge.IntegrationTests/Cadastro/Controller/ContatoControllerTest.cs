@@ -109,7 +109,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Controller
         public async Task DeleteContato_ComIdInvalido_DeveRetornarNotFound()
         {
             _contatoServiceMock
-                .Setup(service => service.DeleteAsync(It.IsAny<int>()))
+                .Setup(service => service.DeleteAsync(It.IsAny<ContatoExclusaoViewModel>()))
                 .ReturnsAsync(Result.Failure("Contato não encontrado!"));
 
             var response = await _client.DeleteAsync("/api/Contato/-1");

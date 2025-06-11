@@ -32,11 +32,11 @@ namespace TechChallenge.Cadastro.Api.Producers.Contato
             await endpoint.Send(contato);
         }
 
-        public async Task ExecuteAsync(int id)
+        public async Task ExecuteAsync(ContatoExclusaoViewModel contato)
         {
             var uriQueue = "queue:" + _deleteQueue;
             var endpoint = await _bus.GetSendEndpoint(new Uri(uriQueue));
-            await endpoint.Send(id);
+            await endpoint.Send(contato);
         }
     }
 }

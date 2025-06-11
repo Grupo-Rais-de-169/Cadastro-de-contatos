@@ -10,6 +10,6 @@ namespace TechChallenge.Cadastro.Api.Services.Interfaces
         Task<IEnumerable<Contato>> GetAllAsync();
         Task<Result> AddAsync(ContatoInclusaoViewModel contato);
         Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel);
-        Task<Result> DeleteAsync(int id);
+        Task<Result> DeleteAsync(ContatoExclusaoViewModel contato);
     }
 }
