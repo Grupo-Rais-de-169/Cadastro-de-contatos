@@ -89,9 +89,9 @@ namespace TechChallenge.Cadastro.Api.Configuration
             var server = config.GetSection("MassTransit")["server"] ?? string.Empty;
             var user = config.GetSection("MassTransit")["user"] ?? string.Empty;
             var password = config.GetSection("MassTransit")["password"] ?? string.Empty;
-            var createQueue = config.GetSection("MassTransit")["CreateContato"] ?? string.Empty;
-            var updateQueue = config.GetSection("MassTransit")["UpdateContato"] ?? string.Empty;
-            var deleteQueue = config.GetSection("MassTransit")["DeleteContato"] ?? string.Empty;
+            var createQueue = config.GetSection("MassTransit")["createQueue"] ?? string.Empty;
+            var updateQueue = config.GetSection("MassTransit")["updateQueue"] ?? string.Empty;
+            var deleteQueue = config.GetSection("MassTransit")["deleteQueue"] ?? string.Empty;
 
             builder.Services.AddMassTransit(x =>
             {
@@ -117,10 +117,6 @@ namespace TechChallenge.Cadastro.Api.Configuration
 
                     cfg.ConfigureEndpoints(context);
                 });
-
-                x.AddConsumer<CreateContatoConsumer>();
-                x.AddConsumer<UpdateContatoConsumer>();
-                x.AddConsumer<DeleteContatoConsumer>();
             });
 
             return builder;
