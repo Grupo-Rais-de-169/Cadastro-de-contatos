@@ -189,6 +189,10 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
         {
             // Arrange
             int contatoId = 1;
+            var contato = new ContatoExclusaoViewModel()
+            {
+                Id = contatoId,
+            };
 
             var expectedResult = new Result
             {
@@ -212,7 +216,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             var service = new ContatoService(httpClient, config, memoryCache, _producer);
 
             // Act
-            var result = await service.DeleteAsync(contatoId);
+            var result = await service.DeleteAsync(contato);
 
             // Assert
             Assert.NotNull(result);

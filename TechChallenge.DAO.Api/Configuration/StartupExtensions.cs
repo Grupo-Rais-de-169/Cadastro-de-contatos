@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Configuration;
+using TechChallenge.DAO.Api.Consumers;
 using TechChallenge.DAO.Api.Consumers.Contato;
 using TechChallenge.DAO.Api.Infra.Context;
 using TechChallenge.DAO.Api.Infra.Repository;
@@ -93,6 +94,8 @@ namespace TechChallenge.Cadastro.Api.Configuration
             var updateQueue = config.GetSection("MassTransit")["updateQueue"] ?? string.Empty;
             var deleteQueue = config.GetSection("MassTransit")["deleteQueue"] ?? string.Empty;
 
+            builder.Services.AddHostedService<Worker>();
+
             builder.Services.AddMassTransit(x =>
             {
                 x.UsingRabbitMq((context, cfg) =>
@@ -106,17 +109,21 @@ namespace TechChallenge.Cadastro.Api.Configuration
                     {
                         e.Consumer<CreateContatoConsumer>(context);
                     });
-                    cfg.ReceiveEndpoint(updateQueue, e =>
-                    {
-                        e.Consumer<UpdateContatoConsumer>(context);
-                    });
-                    cfg.ReceiveEndpoint(deleteQueue, e =>
-                    {
-                        e.Consumer<DeleteContatoConsumer>(context);
-                    });
+                    //cfg.ReceiveEndpoint(updateQueue, e =>
+                    //{
+                    //    e.Consumer<UpdateContatoConsumer>(context);
+                    //});
+                    //cfg.ReceiveEndpoint(deleteQueue, e =>
+                    //{
+                    //    e.Consumer<DeleteContatoConsumer>(context);
+                    //});
 
                     cfg.ConfigureEndpoints(context);
                 });
+
+                //x.AddConsumer<CreateContatoConsumer>();
+                //x.AddConsumer<UpdateContatoConsumer>();
+                //x.AddConsumer<DeleteContatoConsumer>();
             });
 
             return builder;
