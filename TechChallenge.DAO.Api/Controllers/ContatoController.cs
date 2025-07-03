@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
-using TechChallenge.DAO.Api.Utils;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.DAO.Api.Controllers
 {
@@ -52,78 +50,31 @@ namespace TechChallenge.DAO.Api.Controllers
             return Ok(contatos);
         }
 
-
         /// <summary>
-        /// Cria um novo contato.
+        /// Obtém Modelo do DDD.
         /// </summary>
-        /// <param name="contato">Dados do contato a ser criado.</param>
-        [HttpPost("CadastraContato")]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        //[Authorize(Roles = "admin")]
-        public async Task<IActionResult> CriaContato([FromBody] ContatoInclusaoViewModel contato)
-        {
-            if (!DDDExiste(contato.IdDDD))
-                return BadRequest(Result.Failure("O DDD informado não existe."));
-
-            await _contatoRepository.AddAsync(_mapper.Map<Contato>(contato));
-            return Ok(Result.Success());
-        }
-
-        /// <summary>
-        /// Altera um contato existente.
-        /// </summary>
-        /// <param name="contato">Dados do contato a serem atualizados.</param>
-        [HttpPut("AtualizaContato")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
+        /// <param name="ddd">Código DDD para buscar contatos.</param>
+        /// <returns>DDD com o id informado</returns>
+        [HttpGet("GetDDDById/{id}")]
+        [ProducesResponseType(typeof(CodigoDeArea), 200)]
         [ProducesResponseType(404)]
-        //[Authorize(Roles = "admin")]
-        public async Task<IActionResult> AlteraContato([FromBody] ContatoAlteracaoViewModel contatoModel)
-        {
-            var contato = _contatoRepository.GetById(contatoModel.Id);
-            if (contato == null)
-                return NotFound(Result.Failure("Contato não encontrado!"));
-            if (!DDDExiste(contatoModel.IdDDD))
-                return BadRequest(Result.Failure("O DDD informado não existe."));
-
-            contato = MontarContatoParaEditar(contatoModel, contato);
-
-            _contatoRepository.Update(contato);
-
-            return Ok(Result.Success());
+        public async Task<IActionResult> GetDDDById(int id)
+        {            
+            return Ok(await _codigoAreaRepository.GetByIdAsync(id));
         }
 
         /// <summary>
-        /// Deleta um contato.
+        /// Obtém contatos pelo DDD.
         /// </summary>
-        /// <param name="id">ID do contato a ser excluído.</param>
-        [HttpDelete("DeletaContato/{id}")]
-        [ProducesResponseType(204)]
+        /// <param name="ddd">Código DDD para buscar contatos.</param>
+        /// <returns>Lista de contatos associados ao DDD informado.</returns>
+        [HttpGet("GetContatoById/{id}")]
+        [ProducesResponseType(typeof(Contato), 200)]
         [ProducesResponseType(404)]
-        [ProducesResponseType(400)]
-        //[Authorize(Roles = "admin")]
-        public async Task<IActionResult> DeleteContato(int id = -1)
+        public async Task<IActionResult> GetContatoById(int id)
         {
-            var contato = _contatoRepository.GetById(id);
-            if (contato == null)
-                return NotFound(Result.Failure("Contato não encontrado!"));
-            _contatoRepository.Delete(id);
+            return Ok(await _contatoRepository.GetByIdAsync(id));
+        } 
 
-            return Ok(Result.Success());
-        }
-
-        private bool DDDExiste(int ddd) =>
-            _codigoAreaRepository.GetById(ddd) != null;
-
-        private Contato MontarContatoParaEditar(ContatoAlteracaoViewModel contatoModel, Contato contato)
-        {
-            contato.Nome = contatoModel.Nome;
-            contato.Email = contatoModel.Email;
-            contato.Telefone = contatoModel.Telefone;
-            contato.IdDDD = contatoModel.IdDDD;
-
-            return contato;
-        }
     }
 }

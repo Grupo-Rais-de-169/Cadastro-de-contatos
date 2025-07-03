@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Api.Services.Interfaces;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.DAO.Api.Services
 {

@@ -1,21 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace TechChallenge.DAO.Worker.ViewModel
+namespace TechChallenge.Core.ViewModels
 {
-    public class ContatoInclusaoViewModel
+    public class ContatoAlteracaoViewModel
     {
+        [Required(ErrorMessage = "O Id é obrigatório.")]
+        public int Id { get; set; }
         [Required(ErrorMessage = "O nome é obrigatório.")]
         public string Nome { get; set; } = null!;
-
         [Required(ErrorMessage = "O telefone é obrigatório.")]
         public string Telefone { get; set; } = null!;
-
         [Required(ErrorMessage = "O email é obrigatório.")]
         [EmailAddress(ErrorMessage = "O email informado não é válido.")]
         public string Email { get; set; } = null!;
-
-        [JsonIgnore] // Não será exibido na view
+        [JsonIgnore]
         public int IdDDD { get; set; }
 
         [Required(ErrorMessage = "O DDD é obrigatório.")]

@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System.Text;
 using TechChallenge.Cadastro.Api.Configuration;
 using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.Cadastro.Api.Services
 {
@@ -41,7 +40,6 @@ namespace TechChallenge.Cadastro.Api.Services
             return JsonConvert.DeserializeObject<IEnumerable<Contato>>(content);
         }
 
-
         public async Task<IEnumerable<Contato>> GetAllAsync()
         {
             var url = $"{_urlDAO}GetAllContatos/";
@@ -60,52 +58,44 @@ namespace TechChallenge.Cadastro.Api.Services
 
         public async Task<Result> AddAsync(ContatoInclusaoViewModel contato)
         {
-            //var url = $"{_urlDAO}CadastraContato/";
-            //var json = JsonConvert.SerializeObject(contato);
-            //var content = new StringContent(json, Encoding.UTF8, "application/json");
-            //DeletaCache();
-            //var response = await _httpClient.PostAsync(url, content);
-
-            //var responseBody = await response.Content.ReadAsStringAsync();
-            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            //return result;
+            DeletaCache();
             await _contatoProducer.ExecuteAsync(contato);
-
             return Result.Success();
         }
 
         public async Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel)
         {
-            //var url = $"{_urlDAO}AtualizaContato/";
-            //var json = JsonConvert.SerializeObject(contatoModel);
-            //var content = new StringContent(json, Encoding.UTF8, "application/json");
-            //DeletaCache();
-            //var response = await _httpClient.PutAsync(url, content);
-
-            //var responseBody = await response.Content.ReadAsStringAsync();
-            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            //return result;
-
+            DeletaCache();
             await _contatoProducer.ExecuteAsync(contatoModel);
-
             return Result.Success();
         }
 
         public async Task<Result> DeleteAsync(ContatoExclusaoViewModel contatoModel)
         {
-            //var url = $"{_urlDAO}DeletaContato/{id}";
-
-            //DeletaCache();
-
-            //var response = await _httpClient.DeleteAsync(url);
-
-            //var responseBody = await response.Content.ReadAsStringAsync();
-            //var result = JsonConvert.DeserializeObject<Result>(responseBody);
-            //return result;
-
+            DeletaCache();
             await _contatoProducer.ExecuteAsync(contatoModel);
-
             return Result.Success();
+        }
+
+        public async Task<Contato> GetContatoById(int id)
+        {
+            var url = $"{_urlDAO}GetContatoById/{id}";
+
+            var response = await _httpClient.GetAsync(url);
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<Contato>(content);
+        }
+        public async Task<CodigoDeArea> GetDDDById(int id)
+        {
+            var url = $"{_urlDAO}GetDDDById/{id}";
+
+            var response = await _httpClient.GetAsync(url);
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<CodigoDeArea>(content);
         }
 
         public void DeletaCache()

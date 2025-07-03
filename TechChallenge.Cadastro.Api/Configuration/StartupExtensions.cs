@@ -1,12 +1,9 @@
-﻿using MassTransit;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.Cadastro.Api.Handler;
 using TechChallenge.Cadastro.Api.Middleware;
 using TechChallenge.Cadastro.Api.Monitoramento;
 using TechChallenge.Cadastro.Api.Policies;
-using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 
@@ -72,27 +69,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
                 });
             });
 
-            //RabbitMQ
-            builder.Services
-                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransit"))
-                .AddScoped<IContatoProducer, ContatoProducer>();
-
-            var config = builder.Configuration;
-            var server = config.GetSection("MassTransit")["server"] ?? string.Empty;
-            var user = config.GetSection("MassTransit")["user"] ?? string.Empty;
-            var password = config.GetSection("MassTransit")["password"] ?? string.Empty;
-
-            builder.Services.AddMassTransit(x =>
-            {
-                x.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(server, "/", h =>
-                    {
-                        h.Username(user);
-                        h.Password(password);
-                    });
-                });
-            });
+            RabbitConfiguration.Configure(builder);
 
             return builder;
         }

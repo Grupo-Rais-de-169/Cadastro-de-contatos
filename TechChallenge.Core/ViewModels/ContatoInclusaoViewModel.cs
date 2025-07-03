@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace TechChallenge.DAO.Api.ViewModel
+namespace TechChallenge.Core.ViewModels
 {
     public class ContatoInclusaoViewModel
     {
@@ -37,3 +37,4 @@ namespace TechChallenge.DAO.Api.ViewModel
         }
     }
 }
+

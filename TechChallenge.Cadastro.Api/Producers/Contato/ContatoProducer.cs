@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Options;
 using TechChallenge.Cadastro.Api.Configuration;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.Cadastro.Api.Producers.Contato
 {

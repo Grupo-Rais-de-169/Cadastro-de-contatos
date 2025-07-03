@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Utils;
-using TechChallenge.DAO.Api.ViewModel;
 namespace TechChallenge.IntegrationTests.DAO.Controller
 {
     public class ContatoControllerTests : IClassFixture<WebApplicationFactory<Program>>

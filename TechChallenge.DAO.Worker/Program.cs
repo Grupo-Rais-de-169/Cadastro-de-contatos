@@ -22,6 +22,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 
         services.AddMassTransit(x =>
         {
+            x.AddConsumer<CreateContatoConsumer>();
             x.UsingRabbitMq((context, cfg) =>
             {
                 cfg.Host(server, "/", h =>
@@ -31,6 +32,8 @@ IHost host = Host.CreateDefaultBuilder(args)
                 });
                 cfg.ReceiveEndpoint(createQueue, e =>
                 {
+                    e.ConfigureConsumeTopology = false;
+
                     e.Consumer<CreateContatoConsumer>(context);
 
                     e.ConfigureDeadLetter(x =>
@@ -47,10 +50,9 @@ IHost host = Host.CreateDefaultBuilder(args)
                 //    e.Consumer<DeleteContatoConsumer>(context);
                 //});
 
-                cfg.ConfigureEndpoints(context);
             });
 
-            //x.AddConsumer<CreateContatoConsumer>();
+            
             //x.AddConsumer<UpdateContatoConsumer>();
             //x.AddConsumer<DeleteContatoConsumer>();
         });

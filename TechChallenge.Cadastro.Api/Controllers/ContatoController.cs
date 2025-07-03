@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Cadastro.Api.Utils;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.Cadastro.Api.Controllers
 {
@@ -51,7 +51,10 @@ namespace TechChallenge.Cadastro.Api.Controllers
         public async Task<IActionResult> CriaContato([FromBody] ContatoInclusaoViewModel contato)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                return BadRequest(ModelState);           
+
+            if (await _contatoService.GetDDDById(contato.IdDDD) is null)
+                return BadRequest(Result.Failure("O DDD informado não existe."));
 
             var result = await _contatoService.AddAsync(contato);
 
@@ -76,6 +79,12 @@ namespace TechChallenge.Cadastro.Api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            if (await _contatoService.GetDDDById(contato.IdDDD) is null)
+                return BadRequest(Result.Failure("O DDD informado não existe."));
+
+            if (await _contatoService.GetContatoById(contato.Id) is null)
+                return NotFound(Result.Failure("Contato não encontrado!"));
 
             var result = await _contatoService.UpdateAsync(contato);
 
@@ -102,6 +111,10 @@ namespace TechChallenge.Cadastro.Api.Controllers
             {
                 Id = id
             };
+
+            if (await _contatoService.GetContatoById(contato.Id) is null)
+                return NotFound(Result.Failure("Contato não encontrado!"));
+
 
             var result = await _contatoService.DeleteAsync(contato);
 

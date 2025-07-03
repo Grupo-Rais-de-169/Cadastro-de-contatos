@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api.Entities;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.DAO.Domain.Config
 {

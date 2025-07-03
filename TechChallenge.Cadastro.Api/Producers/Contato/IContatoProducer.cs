@@ -1,4 +1,4 @@
-﻿using TechChallenge.Cadastro.Api.ViewModel;
+﻿using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.Cadastro.Api.Producers.Contato
 {

@@ -7,7 +7,7 @@ using System.Text.Json;
 using TechChallenge.Cadastro.Api.Controllers;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.UnitTest
 {

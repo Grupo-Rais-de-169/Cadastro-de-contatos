@@ -2,6 +2,6 @@
 {
     public class MicroservicoConfig
     {
-        public string DAO { get; set; }
+        public string DAO { get; set; } = "";
     }
 }

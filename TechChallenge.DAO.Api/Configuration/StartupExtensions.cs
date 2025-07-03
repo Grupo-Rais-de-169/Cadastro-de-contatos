@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using MassTransit;
+using MassTransit.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
 using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Configuration;
-using TechChallenge.DAO.Api.Consumers;
 using TechChallenge.DAO.Api.Consumers.Contato;
 using TechChallenge.DAO.Api.Infra.Context;
 using TechChallenge.DAO.Api.Infra.Repository;
@@ -82,49 +82,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
                 });
             });
 
-            //RabbitMQ
-            builder.Services
-                .Configure<MassTransitConfig>(builder.Configuration.GetSection("MassTransit"));
-
-            var config = builder.Configuration;
-            var server = config.GetSection("MassTransit")["server"] ?? string.Empty;
-            var user = config.GetSection("MassTransit")["user"] ?? string.Empty;
-            var password = config.GetSection("MassTransit")["password"] ?? string.Empty;
-            var createQueue = config.GetSection("MassTransit")["createQueue"] ?? string.Empty;
-            var updateQueue = config.GetSection("MassTransit")["updateQueue"] ?? string.Empty;
-            var deleteQueue = config.GetSection("MassTransit")["deleteQueue"] ?? string.Empty;
-
-            builder.Services.AddHostedService<Worker>();
-
-            builder.Services.AddMassTransit(x =>
-            {
-                x.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(server, "/", h =>
-                    {
-                        h.Username(user);
-                        h.Password(password);
-                    });
-                    cfg.ReceiveEndpoint(createQueue, e =>
-                    {
-                        e.Consumer<CreateContatoConsumer>(context);
-                    });
-                    //cfg.ReceiveEndpoint(updateQueue, e =>
-                    //{
-                    //    e.Consumer<UpdateContatoConsumer>(context);
-                    //});
-                    //cfg.ReceiveEndpoint(deleteQueue, e =>
-                    //{
-                    //    e.Consumer<DeleteContatoConsumer>(context);
-                    //});
-
-                    cfg.ConfigureEndpoints(context);
-                });
-
-                //x.AddConsumer<CreateContatoConsumer>();
-                //x.AddConsumer<UpdateContatoConsumer>();
-                //x.AddConsumer<DeleteContatoConsumer>();
-            });
+            RabbitConfiguration.Configure(builder);
 
             return builder;
         }

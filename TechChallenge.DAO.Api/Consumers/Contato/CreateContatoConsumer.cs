@@ -1,6 +1,6 @@
 ﻿using MassTransit;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api.Services.Interfaces;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.DAO.Api.Consumers.Contato
 {
@@ -12,12 +12,10 @@ namespace TechChallenge.DAO.Api.Consumers.Contato
         {
             _contatoService = contatoService;
         }
-        public Task Consume(ConsumeContext<ContatoInclusaoViewModel> context)
+        public async Task Consume(ConsumeContext<ContatoInclusaoViewModel> context)
         {
             var contatoModel = context.Message;
-
-            _contatoService.AddAsync(contatoModel);
-            return Task.CompletedTask;
+            await _contatoService.AddAsync(contatoModel);
         }
     }
 }

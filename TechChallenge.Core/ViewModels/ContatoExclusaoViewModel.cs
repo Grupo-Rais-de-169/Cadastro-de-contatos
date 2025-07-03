@@ -1,4 +1,4 @@
-﻿namespace TechChallenge.DAO.Api.ViewModel
+﻿namespace TechChallenge.Core.ViewModels
 {
     public class ContatoExclusaoViewModel
     {

@@ -11,7 +11,7 @@ using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Producers.Contato;
 using TechChallenge.Cadastro.Api.Services;
 using TechChallenge.Cadastro.Api.Utils;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.IntegrationTests.Cadastro.Services
 {

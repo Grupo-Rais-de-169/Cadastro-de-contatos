@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api.Controllers;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 using TechChallenge.DAO.Api.Utils;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.UnitTests.DAO
 {

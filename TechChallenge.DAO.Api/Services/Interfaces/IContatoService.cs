@@ -1,4 +1,4 @@
-﻿using TechChallenge.DAO.Api.ViewModel;
+﻿using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.DAO.Api.Services.Interfaces
 {

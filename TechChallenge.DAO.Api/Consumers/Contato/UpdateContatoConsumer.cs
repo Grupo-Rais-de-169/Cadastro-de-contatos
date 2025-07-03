@@ -1,6 +1,6 @@
 ﻿using MassTransit;
+using TechChallenge.Core.ViewModels;
 using TechChallenge.DAO.Api.Services.Interfaces;
-using TechChallenge.DAO.Api.ViewModel;
 
 namespace TechChallenge.DAO.Api.Consumers.Contato
 {

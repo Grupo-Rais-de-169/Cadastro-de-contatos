@@ -7,7 +7,7 @@ using System.Text;
 using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
-using TechChallenge.Cadastro.Api.ViewModel;
+using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.IntegrationTests.Cadastro.Controller
 {

@@ -1,5 +1,5 @@
-﻿using TechChallenge.DAO.Worker.Services.Interfaces;
-using TechChallenge.DAO.Worker.ViewModel;
+﻿using TechChallenge.Core.ViewModels;
+using TechChallenge.DAO.Worker.Services.Interfaces;
 
 namespace TechChallenge.DAO.Worker.Services
 {
