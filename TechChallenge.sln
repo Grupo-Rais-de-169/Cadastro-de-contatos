@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechChallenge.IntegrationTests", "TechChallenge.IntegrationTests\TechChallenge.IntegrationTests.csproj", "{AC441C93-8E44-4E8C-B71B-E11F1D72D77C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{627C70FC-41F2-4C6C-B35C-C7837D293AA2}"
+	ProjectSection(SolutionItems) = preProject
+		TechChallenge.Cadastro.Api\Docker\docker-compose.yml = TechChallenge.Cadastro.Api\Docker\docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FD0A84E0-CDDC-40A1-9FB8-5E549EE22C75}"
 EndProject

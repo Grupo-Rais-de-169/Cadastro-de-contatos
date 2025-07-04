@@ -2,6 +2,33 @@
   grafana-storage:
   prometheus:
 services:
+  cadastro-api:
+    build:
+      context: .
+      dockerfile: TechChallenge.Cadastro.Api/Dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      
+  dao-api:
+    build:
+      context: .
+      dockerfile: TechChallenge.DAO.Api/Dockerfile
+    ports:
+      - "8082:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      
+  usuario-api:
+    build: 
+        context: .
+        dockerfile: TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api/Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      
   prometheus:
     image: prom/prometheus
     container_name: prometheus-monitor
@@ -11,6 +38,7 @@ services:
       - prometheus:/prometheus
     ports:
       - 9090:9090
+      
   grafana:
     image: grafana/grafana-enterprise
     container_name: grafana-dashboard
@@ -20,6 +48,7 @@ services:
       - 3000:3000
     depends_on:
       - prometheus
+      
   rabbitmq:
     image: "masstransit/rabbitmq"
     ports:
