@@ -1,0 +1,240 @@
+# =======================================
+# DEPLOYMENTS + SERVICES PARA KUBERNETES
+# =======================================
+# Cada serviço do seu docker-compose foi separado em:
+# - Deployment (com replica 1, pode ajustar)
+# - Service (tipo ClusterIP para acesso interno)
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cadastro-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cadastro-api
+  template:
+    metadata:
+      labels:
+        app: cadastro-api
+    spec:
+      containers:
+        - name: cadastro-api
+          image: gustascarvalho/cadastro_api:1.0  # ou substitua com imagem certa
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cadastro-api
+spec:
+  selector:
+    app: cadastro-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30081
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dao-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dao-api
+  template:
+    metadata:
+      labels:
+        app: dao-api
+    spec:
+      containers:
+        - name: dao-api
+          image: gustascarvalho/dao_api:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dao-api
+spec:
+  selector:
+    app: dao-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30082
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuario-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuario-api
+  template:
+    metadata:
+      labels:
+        app: usuario-api
+    spec:
+      containers:
+        - name: usuario-api
+          image: gustascarvalho/usuario_api:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usuario-api
+spec:
+  selector:
+    app: usuario-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30083
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus
+          args: ["--config.file=/prometheus-data/prometheus.yml"]
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - name: prometheus-data
+              mountPath: /prometheus-data
+      volumes:
+        - name: prometheus-data
+          hostPath:
+            path: /data/prometheus-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  selector:
+    app: prometheus
+  ports:
+    - port: 9090
+      targetPort: 9090
+      nodePort: 30090
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana-enterprise
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: grafana-storage
+              mountPath: /var/lib/grafana
+      volumes:
+        - name: grafana-storage
+          hostPath:
+            path: /data/grafana-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30030
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: masstransit/rabbitmq
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+      nodePort: 30567
+    - name: http
+      port: 15672
+      targetPort: 15672
+      nodePort: 31567
+  type: NodePort
