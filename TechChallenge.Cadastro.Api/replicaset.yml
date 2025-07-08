@@ -1,0 +1,19 @@
+﻿     apiVersion: apps/v1
+     kind: ReplicaSet
+     metadata:
+       name: cadastroapi
+       labels:
+         app: cadastroapi
+     spec:
+       replicas: 3
+       selector:
+         matchLabels:
+           app: cadastroapi
+       template:
+         metadata:
+           labels:
+             app: cadastroapi
+         spec:
+           containers:
+           - name: cadastroapi
+             image: gustascarvalho/cadastro_api:1.0

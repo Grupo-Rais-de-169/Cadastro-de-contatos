@@ -1,0 +1,19 @@
+﻿     apiVersion: apps/v1
+     kind: ReplicaSet
+     metadata:
+       name: daoapi
+       labels:
+         app: daoapi
+     spec:
+       replicas: 3
+       selector:
+         matchLabels:
+           app: daoapi
+       template:
+         metadata:
+           labels:
+             app: daoapi
+         spec:
+           containers:
+           - name: daoapi
+             image: gustascarvalho/dao_api:latest

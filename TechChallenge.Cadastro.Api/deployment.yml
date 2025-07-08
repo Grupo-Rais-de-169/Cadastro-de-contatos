@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cadastroapi
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cadastroapi
+    spec:
+      containers:
+      - name: cadastroapi
+        image: gustascarvalho/cadastro_api:1.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:80
+  selector:
+    matchLabels:
+        app: cadastroapi

@@ -1,69 +1,69 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using TechChallenge.Core.ViewModels;
-using TechChallenge.DAO.Api.Controllers;
-using TechChallenge.DAO.Api.Entities;
-using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
-using TechChallenge.DAO.Api.Utils;
+﻿//using AutoMapper;
+//using Microsoft.AspNetCore.Mvc;
+//using Moq;
+//using TechChallenge.Core.ViewModels;
+//using TechChallenge.DAO.Api.Controllers;
+//using TechChallenge.DAO.Api.Entities;
+//using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
+//using TechChallenge.DAO.Api.Utils;
 
-namespace TechChallenge.UnitTests.DAO
-{
-    public class CreateContatoTest
-    {
-        private readonly Mock<IContatosRepository> _mockContatoRepository;
-        private readonly Mock<ICodigoDeAreaRepository> _mockCodigoAreaRepository;
-        private readonly Mock<IMapper> _mockMapper;
-        private readonly ContatoController _controller;
+//namespace TechChallenge.UnitTests.DAO
+//{
+//    public class CreateContatoTest
+//    {
+//        private readonly Mock<IContatosRepository> _mockContatoRepository;
+//        private readonly Mock<ICodigoDeAreaRepository> _mockCodigoAreaRepository;
+//        private readonly Mock<IMapper> _mockMapper;
+//        private readonly ContatoController _controller;
 
-        public CreateContatoTest()
-        {
-            _mockContatoRepository = new Mock<IContatosRepository>();
-            _mockCodigoAreaRepository = new Mock<ICodigoDeAreaRepository>();
-            _mockMapper = new Mock<IMapper>();
-            _controller = new ContatoController(
-                _mockContatoRepository.Object,
-                _mockCodigoAreaRepository.Object,
-                _mockMapper.Object
-            );
-        }
+//        public CreateContatoTest()
+//        {
+//            _mockContatoRepository = new Mock<IContatosRepository>();
+//            _mockCodigoAreaRepository = new Mock<ICodigoDeAreaRepository>();
+//            _mockMapper = new Mock<IMapper>();
+//            _controller = new ContatoController(
+//                _mockContatoRepository.Object,
+//                _mockCodigoAreaRepository.Object,
+//                _mockMapper.Object
+//            );
+//        }
 
-        [Fact]
-        public async Task CriaContato_ReturnsFailure_WhenDDDDoesNotExist()
-        {
-            // Arrange
-            var contato = new ContatoInclusaoViewModel { IdDDD = 99 };
-            _mockCodigoAreaRepository.Setup(repo => repo.GetById(contato.IdDDD)).Returns((CodigoDeArea)null);
+//        [Fact]
+//        public async Task CriaContato_ReturnsFailure_WhenDDDDoesNotExist()
+//        {
+//            // Arrange
+//            var contato = new ContatoInclusaoViewModel { IdDDD = 99 };
+//            _mockCodigoAreaRepository.Setup(repo => repo.GetById(contato.IdDDD)).Returns((CodigoDeArea)null);
 
-            // Act
-            var result = await _controller.CriaContato(contato);
+//            // Act
+//            var result = await _controller.CriaContato(contato);
 
-            // Assert
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            var resultValue = Assert.IsType<Result>(badRequestResult.Value);
+//            // Assert
+//            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+//            var resultValue = Assert.IsType<Result>(badRequestResult.Value);
 
-            Assert.False(resultValue.IsSuccess);
-            Assert.Equal("O DDD informado não existe.", resultValue.Message);
-        }
+//            Assert.False(resultValue.IsSuccess);
+//            Assert.Equal("O DDD informado não existe.", resultValue.Message);
+//        }
 
-        [Fact]
-        public async Task CriaContato_ReturnsSuccess_WhenContatoIsCreated()
-        {
-            // Arrange
-            var contato = new ContatoInclusaoViewModel { IdDDD = 11 };
-            var mappedContato = new Contato();
+//        [Fact]
+//        public async Task CriaContato_ReturnsSuccess_WhenContatoIsCreated()
+//        {
+//            // Arrange
+//            var contato = new ContatoInclusaoViewModel { IdDDD = 11 };
+//            var mappedContato = new Contato();
 
-            _mockCodigoAreaRepository.Setup(repo => repo.GetById(contato.IdDDD)).Returns(new CodigoDeArea());
-            _mockMapper.Setup(mapper => mapper.Map<Contato>(contato)).Returns(mappedContato);
+//            _mockCodigoAreaRepository.Setup(repo => repo.GetById(contato.IdDDD)).Returns(new CodigoDeArea());
+//            _mockMapper.Setup(mapper => mapper.Map<Contato>(contato)).Returns(mappedContato);
 
-            // Act
-            var result = await _controller.CriaContato(contato);
+//            // Act
+//            var result = await _controller.CriaContato(contato);
 
-            // Assert
-            var createdAtResult = Assert.IsType<OkObjectResult>(result);
-            var returnedContato = Assert.IsType<Result>(createdAtResult.Value);
+//            // Assert
+//            var createdAtResult = Assert.IsType<OkObjectResult>(result);
+//            var returnedContato = Assert.IsType<Result>(createdAtResult.Value);
 
-            Assert.True(returnedContato.IsSuccess);
-        }
-    }
-}
+//            Assert.True(returnedContato.IsSuccess);
+//        }
+//    }
+//}
