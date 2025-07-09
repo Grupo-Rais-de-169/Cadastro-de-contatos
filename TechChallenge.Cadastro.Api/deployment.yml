@@ -13,7 +13,7 @@ spec:
       - name: cadastroapi
         image: gustascarvalho/cadastro_api:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
         - name: ASPNETCORE_URLS
           value: http://*:80

@@ -19,11 +19,19 @@ namespace TechChallenge.DAO.Api
         {
             if (_connection == null || _connection.State != ConnectionState.Open)
             {
-                _connection = new NpgsqlConnection(_configuration.GetConnectionString("PostgreSQL"));
+                //_connection = new NpgsqlConnection(_configuration.GetConnectionString("PostgreSQL"));
+                var connectionString = GetConnectionString();
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    throw new Exception("Connection string não definida.");
+                }
+                _connection = new NpgsqlConnection(connectionString);
                 _connection.Open();
             }
             return _connection;
         }
+
+        public static string GetConnectionString() => Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
         public void Dispose()
         {

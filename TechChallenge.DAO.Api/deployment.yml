@@ -13,10 +13,13 @@ spec:
       - name: daoapi
         image: gustascarvalho/dao_api:latest
         ports:
-        - containerPort: 80
+        - containerPort: 3100
         env:
-        - name: ASPNETCORE_URLS
-          value: http://*:80
+        - name: CONNECTION_STRING
+          valueFrom:
+            configMapKeyRef:
+                name: db-config
+                key: CONNECTION_STRING
   selector:
     matchLabels:
         app: daoapi

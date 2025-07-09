@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{282CA7C1-F145-4870-B45F-75B8DF22D2A7}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		k8s.yaml = k8s.yaml
 	EndProjectSection
 EndProject
 Global
