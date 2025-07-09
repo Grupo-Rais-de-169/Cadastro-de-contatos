@@ -238,3 +238,10 @@ spec:
       targetPort: 15672
       nodePort: 31567
   type: NodePort
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: db-config
+data:
+    CONNECTION_STRING: "Host=aws-0-sa-east-1.pooler.supabase.com;Port=6543;Username=postgres.uiviwynagxzmwoilaehs;Password=Mushroom$875985;Database=postgres;Pooling=false;"   
