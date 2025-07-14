@@ -5,6 +5,13 @@
 # - Deployment (com replica 1, pode ajustar)
 # - Service (tipo ClusterIP para acesso interno)
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: db-config
+data:
+    CONNECTION_STRING: "Host=aws-0-sa-east-1.pooler.supabase.com;Port=6543;Username=postgres.uiviwynagxzmwoilaehs;Password=Mushroom$875985;Database=postgres;Pooling=false;"   
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -49,27 +56,26 @@ metadata:
   name: dao-api
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: dao-api
   template:
     metadata:
       labels:
         app: dao-api
     spec:
       containers:
-        - name: dao-api
-          image: gustascarvalho/dao_api:1.0
-          ports:
-            - containerPort: 8080
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://+:8080
+      - name: dao-api
+        image: gustascarvalho/dao_api:latest
+        ports:
+        - containerPort: 80
+        env:
         - name: CONNECTION_STRING
           valueFrom:
             configMapKeyRef:
                 name: db-config
                 key: CONNECTION_STRING
+  selector:
+    matchLabels:
+        app: dao-api
+
 ---
 apiVersion: v1
 kind: Service
@@ -84,42 +90,63 @@ spec:
       nodePort: 30082
   type: NodePort
 
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: usuario-api
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: usuario-api
-  template:
-    metadata:
-      labels:
-        app: usuario-api
-    spec:
-      containers:
-        - name: usuario-api
-          image: gustascarvalho/usuario_api:1.0
-          ports:
-            - containerPort: 8080
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://+:8080
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: usuario-api
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: usuario-api
+#   template:
+#     metadata:
+#       labels:
+#         app: usuario-api
+#     spec:
+#       containers:
+#         - name: usuario-api
+#           image: gustascarvalho/usuario_api:1.0
+#           ports:
+#             - containerPort: 8080
+#           env:
+#             - name: ASPNETCORE_URLS
+#               value: http://+:8080
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: usuario-api
+# spec:
+#   selector:
+#     app: usuario-api
+#   ports:
+#     - port: 8080
+#       targetPort: 8080
+#       nodePort: 30083
+#   type: NodePort
+
 ---
 apiVersion: v1
-kind: Service
+kind: ConfigMap
 metadata:
-  name: usuario-api
-spec:
-  selector:
-    app: usuario-api
-  ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 30083
-  type: NodePort
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global: 
+      scrape_interval: 5s
+
+    scrape_configs:
+      - job_name: 'Prometheus-Cadastro-Api'
+        metrics_path: '/metrics'
+        static_configs:
+          - targets: ['cadastro-api:8080']
+
+      - job_name: 'Prometheus-DAO-Api'
+        metrics_path: '/metrics'
+        static_configs:
+          - targets: ['dao-api:8080']
 
 ---
 apiVersion: apps/v1
@@ -138,17 +165,20 @@ spec:
     spec:
       containers:
         - name: prometheus
-          image: prom/prometheus
-          args: ["--config.file=/prometheus-data/prometheus.yml"]
+          image: prom/prometheus:latest
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
           ports:
             - containerPort: 9090
           volumeMounts:
-            - name: prometheus-data
-              mountPath: /prometheus-data
+            - name: prometheus-config-volume
+              mountPath: /etc/prometheus
+              readOnly: true
       volumes:
-        - name: prometheus-data
-          hostPath:
-            path: /data/prometheus-data
+        - name: prometheus-config-volume
+          configMap:
+            name: prometheus-config
+
 ---
 apiVersion: v1
 kind: Service
@@ -188,8 +218,8 @@ spec:
               mountPath: /var/lib/grafana
       volumes:
         - name: grafana-storage
-          hostPath:
-            path: /data/grafana-storage
+          emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
@@ -243,10 +273,3 @@ spec:
       targetPort: 15672
       nodePort: 31567
   type: NodePort
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-    name: db-config
-data:
-    CONNECTION_STRING: "Host=aws-0-sa-east-1.pooler.supabase.com;Port=6543;Username=postgres.uiviwynagxzmwoilaehs;Password=Mushroom$875985;Database=postgres;Pooling=false;"   

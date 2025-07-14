@@ -23,7 +23,7 @@ namespace TechChallenge.Cadastro.Api.Configuration
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddDbContextFactory<MainContext>(options =>
-                options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
+                options.UseNpgsql(builder.Configuration.GetValue<string>("CONNECTION_STRING")));
 
             builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
