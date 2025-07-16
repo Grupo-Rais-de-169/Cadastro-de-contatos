@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
+        "uid": "bes1dwdt6j30ga"
       },
       "fieldConfig": {
         "defaults": {
@@ -37,8 +37,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -82,12 +81,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1+security-01",
       "targets": [
         {
           "editorMode": "code",
           "expr": "((server_memory_total_bytes - server_memory_available_bytes) / server_memory_total_bytes) * 100\r\n",
-          "legendFormat": "__auto",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -98,40 +97,59 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
+        "uid": "bes1dwdt6j30ga"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "green",
-                "value": 20
-              },
-              {
-                "color": "green",
-                "value": 40
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unit": "percent"
+          }
         },
         "overrides": []
       },
@@ -141,43 +159,37 @@
         "x": 12,
         "y": 0
       },
-      "id": 3,
+      "id": 9,
       "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        "showThresholdLabels": true,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1+security-01",
       "targets": [
         {
-          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "server_cpu_usage_percent",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "legendFormat": "__auto",
+          "expr": "rate(process_cpu_seconds_total[1m]) * 100",
+          "legendFormat": "{{instance}}",
           "range": true,
-          "refId": "A",
-          "useBackend": false
+          "refId": "A"
         }
       ],
-      "title": "Uso de CPU (%)",
-      "type": "gauge"
+      "title": "Consumo de CPU",
+      "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
+        "uid": "bes1dwdt6j30ga"
       },
       "fieldConfig": {
         "defaults": {
@@ -223,8 +235,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -268,12 +279,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1+security-01",
       "targets": [
         {
           "editorMode": "code",
           "expr": "process_private_memory_bytes/ 1024 / 1024",
-          "legendFormat": "Consumo de memória pela aplicação",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -284,7 +295,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
+        "uid": "bes1dwdt6j30ga"
       },
       "fieldConfig": {
         "defaults": {
@@ -332,8 +343,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -364,7 +374,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1+security-01",
       "targets": [
         {
           "editorMode": "code",
@@ -380,7 +390,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
+        "uid": "bes1dwdt6j30ga"
       },
       "fieldConfig": {
         "defaults": {
@@ -434,8 +444,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -470,7 +479,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1+security-01",
       "targets": [
         {
           "datasource": {
@@ -490,87 +499,22 @@
       "title": "Latência por Endpoint",
       "transparent": true,
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beftijf1ogiyoc"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 16
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.5.1",
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "floor(sum(increase(http_requests_by_status_custom[5m])))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Quantidade de Requisição",
-      "type": "stat"
     }
   ],
   "preload": false,
   "refresh": "5s",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
-    "to": "now"
+    "from": "2025-07-15T21:03:07.930Z",
+    "to": "2025-07-15T21:13:07.930Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Monitoramento aplicação",
   "uid": "defkt2mmjjoxsc",
-  "version": 15,
-  "weekStart": ""
+  "version": 18
 }

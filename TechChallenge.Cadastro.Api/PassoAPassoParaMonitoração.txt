@@ -1,4 +1,9 @@
-﻿Esse comando é para rodar o docker do prometheus. É importante na parte do -v apontar para o caminho do prometheus.yml que você baixou na sua máquina.
+﻿Para rodar em kubernetes, basta rodar o k8s
+e no ip no grafana, colocar o http://prometheus:9090
+
+
+
+Esse comando é para rodar o docker do prometheus. É importante na parte do -v apontar para o caminho do prometheus.yml que você baixou na sua máquina.
 
 1 - navegar até a pasta onde está o docker-compose e rodar o comando abaixo
 docker-compose up -d

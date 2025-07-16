@@ -14,9 +14,6 @@ namespace TechChallenge.Cadastro.Api.Monitoramento
         private readonly Gauge _availableMemoryGauge = Metrics
             .CreateGauge("server_memory_available_bytes", "Memória RAM disponível no servidor.");
 
-        private readonly Gauge _cpuUsageGauge = Metrics
-            .CreateGauge("server_cpu_usage_percent", "Uso da CPU pelo sistema (%).");
-
         private readonly PerformanceCounter? _cpuCounter;
         private readonly Counter _requestCounter = Metrics.CreateCounter("http_requests_by_status_custom",
                                                  "Contagem de requisições HTTP por código de status",
@@ -41,7 +38,6 @@ namespace TechChallenge.Cadastro.Api.Monitoramento
         {
             _totalMemoryGauge.Set(GetTotalMemory());
             _availableMemoryGauge.Set(GetAvailableMemory());
-            _cpuUsageGauge.Set(GetCpuUsage());
         }
 
         private static long GetTotalMemory()
@@ -85,15 +81,6 @@ namespace TechChallenge.Cadastro.Api.Monitoramento
             }
 
             return 0;
-        }
-
-        private double GetCpuUsage()
-        {
-            if (OperatingSystem.IsWindows())
-            {
-                return _cpuCounter?.NextValue() ?? 0;
-            }
-            return 0; // Retorna 0 para outros sistemas operacionais
         }
 
         // Para Linux
