@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dao-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dao-api
+    spec:
+      containers:
+      - name: dao-api
+        image: gustascarvalho/dao_api:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: CONNECTION_STRING
+          valueFrom:
+            configMapKeyRef:
+                name: db-config
+                key: CONNECTION_STRING
+  selector:
+    matchLabels:
+        app: dao-api
