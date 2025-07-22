@@ -90,42 +90,42 @@ spec:
       nodePort: 30082
   type: NodePort
 
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: usuario-api
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: usuario-api
-#   template:
-#     metadata:
-#       labels:
-#         app: usuario-api
-#     spec:
-#       containers:
-#         - name: usuario-api
-#           image: gustascarvalho/usuario_api:1.0
-#           ports:
-#             - containerPort: 8080
-#           env:
-#             - name: ASPNETCORE_URLS
-#               value: http://+:8080
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: usuario-api
-# spec:
-#   selector:
-#     app: usuario-api
-#   ports:
-#     - port: 8080
-#       targetPort: 8080
-#       nodePort: 30083
-#   type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuario-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuario-api
+  template:
+    metadata:
+      labels:
+        app: usuario-api
+    spec:
+      containers:
+        - name: usuario-api
+          image: gustascarvalho/usuario_api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usuario-api
+spec:
+  selector:
+    app: usuario-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30083
+  type: NodePort
 
 ---
 apiVersion: v1

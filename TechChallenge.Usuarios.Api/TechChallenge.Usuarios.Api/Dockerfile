@@ -1,16 +1,16 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 8080
+EXPOSE 8081
 
 
-# This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api.csproj", "TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api/"]
-RUN dotnet restore "./TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api.csproj"
+COPY ["TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api.csproj", "TechChallenge.Usuarios.Api/"]
+RUN dotnet restore "./TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api.csproj"
 COPY . .
-WORKDIR "/src/TechChallenge.Usuarios.Api/TechChallenge.Usuarios.Api"
+WORKDIR "/src/TechChallenge.Usuarios.Api"
 RUN dotnet build "./TechChallenge.Usuarios.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
