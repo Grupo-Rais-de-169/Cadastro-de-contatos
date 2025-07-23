@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuario-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuario-api
+  template:
+    metadata:
+      labels:
+        app: usuario-api
+    spec:
+      containers:
+        - name: usuario-api
+          image: gustascarvalho/usuario_api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080

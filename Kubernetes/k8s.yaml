@@ -190,7 +190,7 @@ spec:
   ports:
     - port: 9090
       targetPort: 9090
-      nodePort: 30090
+      nodePort: 30084
   type: NodePort
 
 ---
@@ -231,7 +231,7 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 30030
+      nodePort: 30085
   type: NodePort
 
 ---
@@ -267,9 +267,9 @@ spec:
     - name: amqp
       port: 5672
       targetPort: 5672
-      nodePort: 30567
+      nodePort: 30087
     - name: http
       port: 15672
       targetPort: 15672
-      nodePort: 31567
+      nodePort: 30086
   type: NodePort
