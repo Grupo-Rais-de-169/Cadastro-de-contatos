@@ -3,10 +3,10 @@ name: Unit Test and Integration Test
 on:
   push:
     branches:
-      - Microservicos
+      - Mensageria
   pull_request:
     branches:
-      - Microservicos
+      - Mensageria
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
