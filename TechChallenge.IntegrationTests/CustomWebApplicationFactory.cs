@@ -1,29 +1,39 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Moq;
 using TechChallenge.Cadastro.Api;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
+using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
 
 namespace TechChallenge.IntegrationTests
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         public Mock<IContatoService> ContatoServiceMock { get; } = new();
-
+        public Mock<IContatosRepository> ContatosRepositoryMock { get; } = new();
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
+            builder.ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+            });
+
             builder.ConfigureServices(services =>
             {
-                // Remove implementações reais, se existirem
-                var descriptor = services.SingleOrDefault(
+                var contatoServiceDescriptor = services.SingleOrDefault(
                     d => d.ServiceType == typeof(IContatoService));
+                if (contatoServiceDescriptor != null)
+                    services.Remove(contatoServiceDescriptor);
 
-                if (descriptor != null)
-                    services.Remove(descriptor);
+                var contatosRepoDescriptor = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(IContatosRepository));
+                if (contatosRepoDescriptor != null)
+                    services.Remove(contatosRepoDescriptor);
 
-                // Injeta o mock
                 services.AddSingleton(ContatoServiceMock.Object);
+                services.AddSingleton(ContatosRepositoryMock.Object);
             });
         }
     }

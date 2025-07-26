@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Dynamic;
 using System.Text.Json;
 using TechChallenge.Cadastro.Api.Controllers;
+using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Core.ViewModels;
@@ -38,7 +39,7 @@ namespace TechChallenge.UnitTest
             };
 
             var serviceResult = new Result { IsSuccess = true };
-
+            _contatoService.Setup(service => service.GetDDDById(contato.IdDDD)).ReturnsAsync(new CodigoDeArea());
             _contatoService.Setup(service => service.AddAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
@@ -98,11 +99,11 @@ namespace TechChallenge.UnitTest
             {
                 Nome = "Contato Teste",
                 Telefone = "11999999999",
-                IdDDD = 11
+                IdDDD = 111
             };
 
             var serviceResult = new Result { Message = "O DDD informado não existe." };
-
+            _contatoService.Setup(service => service.GetDDDById(contato.IdDDD)).ReturnsAsync((CodigoDeArea?)null);
             _contatoService.Setup(service => service.AddAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
@@ -114,7 +115,7 @@ namespace TechChallenge.UnitTest
 
             var json = JsonSerializer.Serialize(result.Value);
             dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
-            Assert.Equal("O DDD informado não existe.", response?.message.GetString());
+            Assert.Equal("O DDD informado não existe.", response?.Message.GetString());
         }
     }
 }

@@ -60,24 +60,24 @@ namespace TechChallenge.Cadastro.Api.Services
         {
             DeletaCache();
             await _contatoProducer.ExecuteAsync(contato);
-            return Result.Success();
+            return Result.Success("Contato adicionado com sucesso");
         }
 
         public async Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel)
         {
             DeletaCache();
             await _contatoProducer.ExecuteAsync(contatoModel);
-            return Result.Success();
+            return Result.Success("Contato atualizado com sucesso");
         }
 
         public async Task<Result> DeleteAsync(ContatoExclusaoViewModel contatoModel)
         {
             DeletaCache();
             await _contatoProducer.ExecuteAsync(contatoModel);
-            return Result.Success();
+            return Result.Success("Contato removido com sucesso");
         }
 
-        public async Task<Contato> GetContatoById(int id)
+        public async Task<Contato?> GetContatoById(int id)
         {
             var url = $"{_urlDAO}GetContatoById/{id}";
 
@@ -87,7 +87,7 @@ namespace TechChallenge.Cadastro.Api.Services
 
             return JsonConvert.DeserializeObject<Contato>(content);
         }
-        public async Task<CodigoDeArea> GetDDDById(int id)
+        public async Task<CodigoDeArea?> GetDDDById(int id)
         {
             var url = $"{_urlDAO}GetDDDById/{id}";
 

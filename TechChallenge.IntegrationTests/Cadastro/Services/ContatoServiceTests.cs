@@ -15,22 +15,20 @@ using TechChallenge.Core.ViewModels;
 
 namespace TechChallenge.IntegrationTests.Cadastro.Services
 {
-    public class ContatoServiceTests
+    public class ContatoServiceTests : IClassFixture<ContatoServiceFixture>
     {
+        private readonly ContatoServiceFixture _fixture;
         private readonly Mock<HttpClient> _httpClientMock;
         private readonly string _baseUrl = "http://mocked-url/";
-        private readonly IOptions<MassTransitConfig> _config;
-        private readonly IBus _bus;
         private readonly ContatoProducer _producer;
 
-        public ContatoServiceTests(IOptions<MassTransitConfig> config, IBus bus)
+        public ContatoServiceTests(ContatoServiceFixture fixture)
         {
+            _fixture = fixture;
             _httpClientMock = new Mock<HttpClient>();
             var configMock = new Mock<IOptions<MicroservicoConfig>>();
             configMock.Setup(c => c.Value).Returns(new MicroservicoConfig { DAO = _baseUrl });
-            _config = config;
-            _bus = bus;
-            _producer = new ContatoProducer(_bus, _config);
+            _producer = new ContatoProducer(_fixture.Bus, _fixture.Config);
         }
 
         [Fact]
@@ -111,7 +109,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             {
                 Nome = "Lucas",
                 IdDDD = 31,
-                Telefone = "98888-1234"
+                Telefone = "98888-3333"
             };
 
             var jsonResult = JsonConvert.SerializeObject(new Result
@@ -127,11 +125,15 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
             };
 
             var httpClient = CreateMockHttpClient("CadastraContato/", responseMessage);
+            var producerMock = new Mock<IContatoProducer>();
+            producerMock
+                .Setup(p => p.ExecuteAsync(It.IsAny<ContatoInclusaoViewModel>()))
+                .Returns(Task.CompletedTask);
 
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache, _producer);
+            var service = new ContatoService(httpClient, config, memoryCache, producerMock.Object);
 
             // Act
             var result = await service.AddAsync(contato);
@@ -151,7 +153,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
                 Id = 1,
                 Nome = "Carlos",
                 IdDDD = 85,
-                Telefone = "97777-1234"
+                Telefone = "97777-3333"
             };
 
             var expectedResult = new Result
@@ -170,10 +172,15 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
 
             var httpClient = CreateMockHttpClient("AtualizaContato/", responseMessage);
 
+            var producerMock = new Mock<IContatoProducer>();
+            producerMock
+                .Setup(p => p.ExecuteAsync(It.IsAny<ContatoAlteracaoViewModel>()))
+                .Returns(Task.CompletedTask);
+
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache, _producer);
+            var service = new ContatoService(httpClient, config, memoryCache, producerMock.Object);
 
             // Act
             var result = await service.UpdateAsync(contato);
@@ -210,10 +217,15 @@ namespace TechChallenge.IntegrationTests.Cadastro.Services
 
             var httpClient = CreateMockHttpClient($"DeletaContato/{contatoId}", responseMessage);
 
+            var producerMock = new Mock<IContatoProducer>();
+            producerMock
+                .Setup(p => p.ExecuteAsync(It.IsAny<ContatoExclusaoViewModel>()))
+                .Returns(Task.CompletedTask);
+
             var config = Options.Create(new MicroservicoConfig { DAO = "http://localhost/" });
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-            var service = new ContatoService(httpClient, config, memoryCache, _producer);
+            var service = new ContatoService(httpClient, config, memoryCache, producerMock.Object);
 
             // Act
             var result = await service.DeleteAsync(contato);

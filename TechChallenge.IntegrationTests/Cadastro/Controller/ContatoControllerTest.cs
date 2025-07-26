@@ -61,7 +61,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Controller
             {
                 Nome = "Maria",
                 Email = "maria@email.com",
-                Telefone = "11912345678",
+                Telefone = "11944445678",
                 IdDDD = 99 // inválido
             };
 
@@ -102,7 +102,7 @@ namespace TechChallenge.IntegrationTests.Cadastro.Controller
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
 
             var body = await response.Content.ReadAsStringAsync();
-            body.Should().Contain("Contato");
+            body.Should().Contain("O DDD informado não existe.");
         }
 
         [Fact]

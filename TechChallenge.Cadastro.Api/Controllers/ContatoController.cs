@@ -54,7 +54,7 @@ namespace TechChallenge.Cadastro.Api.Controllers
                 return BadRequest(ModelState);           
 
             if (await _contatoService.GetDDDById(contato.IdDDD) is null)
-                return BadRequest(Result.Failure("O DDD informado não existe."));
+                return NotFound(Result.Failure("O DDD informado não existe."));
 
             var result = await _contatoService.AddAsync(contato);
 
@@ -81,7 +81,7 @@ namespace TechChallenge.Cadastro.Api.Controllers
                 return BadRequest(ModelState);
 
             if (await _contatoService.GetDDDById(contato.IdDDD) is null)
-                return BadRequest(Result.Failure("O DDD informado não existe."));
+                return NotFound(Result.Failure("O DDD informado não existe."));
 
             if (await _contatoService.GetContatoById(contato.Id) is null)
                 return NotFound(Result.Failure("Contato não encontrado!"));

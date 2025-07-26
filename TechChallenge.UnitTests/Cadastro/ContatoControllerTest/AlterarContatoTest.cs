@@ -3,6 +3,7 @@ using Moq;
 using System.Dynamic;
 using System.Text.Json;
 using TechChallenge.Cadastro.Api.Controllers;
+using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Core.ViewModels;
@@ -33,6 +34,8 @@ namespace TechChallenge.UnitTest
             };
 
             var serviceResult = new Result { IsSuccess = true };
+            _contatoService.Setup(service => service.GetDDDById(contato.IdDDD)).ReturnsAsync(new CodigoDeArea());
+            _contatoService.Setup(service => service.GetContatoById(contato.Id)).ReturnsAsync(new Contato());
             _contatoService.Setup(service => service.UpdateAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
@@ -78,7 +81,10 @@ namespace TechChallenge.UnitTest
             };
 
             var serviceResult = new Result { Message = "Contato não encontrado" };
-            _contatoService.Setup(service => service.UpdateAsync(contato)).ReturnsAsync(serviceResult);
+            _contatoService.Setup(service => service.GetDDDById(contato.IdDDD)).ReturnsAsync(new CodigoDeArea());
+
+            // Mock contato inexistente
+            _contatoService.Setup(service => service.GetContatoById(contato.Id)).ReturnsAsync((Contato?)null);
 
             // Act
             var result = await _controller.AlteraContato(contato) as NotFoundObjectResult;
@@ -89,7 +95,8 @@ namespace TechChallenge.UnitTest
 
             var json = JsonSerializer.Serialize(result.Value);
             dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
-            Assert.Equal("Contato não encontrado", response?.message.GetString());
+            var teste = response?.Message.GetString();
+            Assert.Equal("Contato não encontrado!", response?.Message.GetString());
         }
     }
 }

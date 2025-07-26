@@ -11,7 +11,7 @@ namespace TechChallenge.Cadastro.Api.Services.Interfaces
         Task<Result> AddAsync(ContatoInclusaoViewModel contato);
         Task<Result> UpdateAsync(ContatoAlteracaoViewModel contatoModel);
         Task<Result> DeleteAsync(ContatoExclusaoViewModel contato);
-        Task<Contato> GetContatoById(int id);
-        Task<CodigoDeArea> GetDDDById(int id);
+        Task<Contato?> GetContatoById(int id);
+        Task<CodigoDeArea?> GetDDDById(int id);
     }
 }

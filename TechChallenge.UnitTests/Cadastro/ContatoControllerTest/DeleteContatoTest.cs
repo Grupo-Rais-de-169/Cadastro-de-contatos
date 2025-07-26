@@ -3,6 +3,7 @@ using Moq;
 using System.Dynamic;
 using System.Text.Json;
 using TechChallenge.Cadastro.Api.Controllers;
+using TechChallenge.Cadastro.Api.Model;
 using TechChallenge.Cadastro.Api.Services.Interfaces;
 using TechChallenge.Cadastro.Api.Utils;
 using TechChallenge.Core.ViewModels;
@@ -30,7 +31,9 @@ namespace TechChallenge.UnitTest
             {
                 Id = id
             };
-            _contatoService.Setup(service => service.DeleteAsync(contato)).ReturnsAsync(serviceResult);
+            _contatoService.Setup(service => service.GetContatoById(id)).ReturnsAsync(new Contato());
+            _contatoService.Setup(service => service.DeleteAsync(It.Is<ContatoExclusaoViewModel>(c => c.Id == id)))
+            .ReturnsAsync(serviceResult);
 
             // Act
             var result = await _controller.DeleteContato(id) as NoContentResult;
@@ -47,10 +50,10 @@ namespace TechChallenge.UnitTest
         public async Task DeleteContato_ContatoNaoEncontrado_RetornaNotFound(int id)
         {
             // Arrange
-            //int id = 99; // ID inexistente
-            var serviceResult = new Result { Message = "Contato não encontrado" };
+            var serviceResult = new Result { Message = "Contato não encontrado!" };
             var contato = new ContatoExclusaoViewModel();
 
+            _contatoService.Setup(service => service.GetContatoById(id)).ReturnsAsync((Contato?)null);
             _contatoService.Setup(service => service.DeleteAsync(contato)).ReturnsAsync(serviceResult);
 
             // Act
@@ -62,7 +65,7 @@ namespace TechChallenge.UnitTest
 
             var json = JsonSerializer.Serialize(result.Value);
             dynamic? response = JsonSerializer.Deserialize<ExpandoObject>(json);
-            Assert.Equal("Contato não encontrado", response?.message.GetString());
+            Assert.Equal("Contato não encontrado!", response?.Message.GetString());
         }
     }
 }
