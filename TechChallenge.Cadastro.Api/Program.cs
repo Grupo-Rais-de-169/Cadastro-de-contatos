@@ -13,8 +13,11 @@ namespace TechChallenge.Cadastro.Api
         {
             var builder = WebApplication.CreateBuilder(args);
             //Monitoramento
-            using var server = new KestrelMetricServer(port: 1234);
-            server.Start();
+            if (!builder.Environment.IsEnvironment("Testing"))
+            {
+                using var server = new KestrelMetricServer(port: 1234);
+                server.Start();
+            }
 
             builder.ConfigureServices();
 

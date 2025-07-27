@@ -1,16 +1,9 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
-using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http.Headers;
-using System.Text;
-using TechChallenge.Cadastro.Api.Producers.Contato;
-using TechChallenge.Core.ViewModels;
-using TechChallenge.DAO.Api;
 using TechChallenge.DAO.Api.Entities;
 using TechChallenge.DAO.Api.Infra.Repository.Interfaces;
-using TechChallenge.DAO.Api.Utils;
 namespace TechChallenge.IntegrationTests.DAO.Controller
 {
     public class ContatoControllerTests : IClassFixture<CustomWebApplicationFactory>

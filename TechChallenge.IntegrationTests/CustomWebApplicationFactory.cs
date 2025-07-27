@@ -15,6 +15,9 @@ namespace TechChallenge.IntegrationTests
         public Mock<IContatosRepository> ContatosRepositoryMock { get; } = new();
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
+            builder.UseSetting("https_port", "0"); // Isso garante que ele use uma porta dinâmica
+            builder.UseEnvironment("Testing");
+            builder.UseSetting("urls", "http://127.0.0.1:0");
             builder.ConfigureLogging(logging =>
             {
                 logging.ClearProviders();
@@ -22,6 +25,7 @@ namespace TechChallenge.IntegrationTests
 
             builder.ConfigureServices(services =>
             {
+                
                 var contatoServiceDescriptor = services.SingleOrDefault(
                     d => d.ServiceType == typeof(IContatoService));
                 if (contatoServiceDescriptor != null)
